@@ -38,12 +38,14 @@ public class Projectmodel {
         conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/ejercito", "root", "pamaloyo18");
     }
 
-    public void login(String usuario, String contrasena) {
+    public String login(String usuario, String contrasena) {
 
         System.out.println(usuario + " " + contrasena);
 
-        String sql = "SELECT usuario FROM usuarios WHERE " +
+        String sql = "SELECT usuario, rol FROM usuarios WHERE " +
                 "usuario = ? AND password = SHA1(?)";
+
+        String rol = "";
 
         try {
             PreparedStatement sentencia = conexion.prepareStatement(sql);
@@ -53,12 +55,14 @@ public class Projectmodel {
 
             if (!resultado.next()) {
                 Utilities.mensajeError("Usuario y contraseña incorrectos");
-                return;
+                return null;
             }
-
+            rol = resultado.getString("rol");
         } catch (SQLException sqle) {
             Utilities.mensajeError("Error Sql");
         }
+
+        return rol;
     }
 
     public void conexionPostgresql() throws ClassNotFoundException, SQLException {

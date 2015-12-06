@@ -47,7 +47,6 @@ public class Projectcontroller implements ChangeListener, ActionListener, KeyLis
     Soldado s;
 
     public DateFormat format;
-
     // Constructor
 
     public Projectcontroller(Ventana ve) {
@@ -59,7 +58,7 @@ public class Projectcontroller implements ChangeListener, ActionListener, KeyLis
             pm.conexionMysql();
             Login log = new Login();
             log.setVisible(true);
-            pm.login(log.getUsuario(), log.getContrasena());
+            rol(pm.login(log.getUsuario(), log.getContrasena()));
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -97,6 +96,106 @@ public class Projectcontroller implements ChangeListener, ActionListener, KeyLis
 
     // Agregamos datos fijos a las combo box (Fijos, que no varian con la introducción de datos)
 
+    public void rol(String rol) {
+
+        if (rol.equalsIgnoreCase("administrador")) {
+            visibilidadAdministrador();
+        } else {
+
+            if (rol.equalsIgnoreCase("tecnico")) {
+                visibilidadTecnico();
+            } else {
+
+                if (rol.equalsIgnoreCase("usuario")) {
+                    visibilidadUsuario();
+                }
+            }
+        }
+    }
+
+    public void visibilidadUsuario() {
+
+        v.btEliminarcuartel.setEnabled(false);
+        v.btEliminarsoldado.setEnabled(false);
+        v.btEliminarunidad.setEnabled(false);
+        v.btGuardarcuartel.setEnabled(false);
+        v.btGuardarunidad.setEnabled(false);
+        v.btGuardarsoldado.setEnabled(false);
+        v.btModificarcuartel.setEnabled(false);
+        v.btModificarunidad.setEnabled(false);
+        v.btModificarsoldado.setEnabled(false);
+        v.cbTipo.setEnabled(false);
+        v.cbActividad.setEnabled(false);
+        v.cbCuartel.setEnabled(false);
+        v.cbRango.setEnabled(false);
+        v.cbUnidad.setEnabled(false);
+        v.txtApellidos.setEnabled(false);
+        v.txtLatitud.setEnabled(false);
+        v.txtLocalidad.setEnabled(false);
+        v.txtLongitud.setEnabled(false);
+        v.txtLugarNacimiento.setEnabled(false);
+        v.txtNombre.setEnabled(false);
+        v.txtNombrecuartel.setEnabled(false);
+        v.txtNombreunidad.setEnabled(false);
+        v.txtNoTropas.setEnabled(false);
+        v.dcFechanacimiento.setEnabled(false);
+        v.dcFechaUnidad.setEnabled(false);
+    }
+
+    public void visibilidadTecnico() {
+
+        v.btEliminarcuartel.setEnabled(true);
+        v.btEliminarsoldado.setEnabled(true);
+        v.btEliminarunidad.setEnabled(true);
+        v.btGuardarcuartel.setEnabled(true);
+        v.btGuardarunidad.setEnabled(true);
+        v.btGuardarsoldado.setEnabled(true);
+        v.btModificarcuartel.setEnabled(true);
+        v.btModificarunidad.setEnabled(true);
+        v.btModificarsoldado.setEnabled(true);
+        v.cbTipo.setEnabled(true);
+        v.cbActividad.setEnabled(true);
+        v.cbCuartel.setEnabled(true);
+        v.cbRango.setEnabled(true);
+        v.cbUnidad.setEnabled(true);
+        v.txtApellidos.setEnabled(true);
+        v.txtLatitud.setEnabled(true);
+        v.txtLocalidad.setEnabled(true);
+        v.txtLongitud.setEnabled(true);
+        v.txtLugarNacimiento.setEnabled(true);
+        v.txtNombre.setEnabled(true);
+        v.txtNombrecuartel.setEnabled(true);
+        v.txtNombreunidad.setEnabled(true);
+        v.txtNoTropas.setEnabled(true);
+    }
+
+    public void visibilidadAdministrador() {
+
+        v.btEliminarcuartel.setEnabled(true);
+        v.btEliminarsoldado.setEnabled(true);
+        v.btEliminarunidad.setEnabled(true);
+        v.btGuardarcuartel.setEnabled(true);
+        v.btGuardarunidad.setEnabled(true);
+        v.btGuardarsoldado.setEnabled(true);
+        v.btModificarcuartel.setEnabled(true);
+        v.btModificarunidad.setEnabled(true);
+        v.btModificarsoldado.setEnabled(true);
+        v.cbTipo.setEnabled(true);
+        v.cbActividad.setEnabled(true);
+        v.cbCuartel.setEnabled(true);
+        v.cbRango.setEnabled(true);
+        v.cbUnidad.setEnabled(true);
+        v.txtApellidos.setEnabled(true);
+        v.txtLatitud.setEnabled(true);
+        v.txtLocalidad.setEnabled(true);
+        v.txtLongitud.setEnabled(true);
+        v.txtLugarNacimiento.setEnabled(true);
+        v.txtNombre.setEnabled(true);
+        v.txtNombrecuartel.setEnabled(true);
+        v.txtNombreunidad.setEnabled(true);
+        v.txtNoTropas.setEnabled(true);
+    }
+
     public void iniciarComboBox() {
 
         v.cbActividad.addItem("true");
@@ -128,24 +227,6 @@ public class Projectcontroller implements ChangeListener, ActionListener, KeyLis
         v.cbRango.addItem("General de Division");
         v.cbRango.addItem("Teniente General");
         v.cbRango.addItem("General de Ejército");
-    }
-
-    // Metodo que cambia la ruta de guardado, por una a elegir
-
-    public void cambiarPath() {
-
-        JFileChooser jfc = new JFileChooser();
-
-        jfc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-        jfc.setCurrentDirectory(new File(System.getProperty("user.home")));
-        jfc.setDialogTitle("Cambiar Path");
-        int val = jfc.showSaveDialog(null);
-
-        if (val == JFileChooser.APPROVE_OPTION) {
-            File selectedFile = jfc.getSelectedFile();
-            Values.PATHmod = selectedFile.getAbsolutePath() + File.separator + "ArchivoEjercito.dat";
-            actualizarLabel();
-        }
     }
 
     // Metodo que carga los datos de un archivo XML en los ARRAYLIST y posteriormente los lista
@@ -190,10 +271,6 @@ public class Projectcontroller implements ChangeListener, ActionListener, KeyLis
     }
 
     // Metodo que actualiza la label con la ruta actual de guardado
-
-    public void actualizarLabel() {
-        v.lbRuta.setText("Ruta Guardado: " + Values.PATHmod);
-    }
 
     // Metodo que actualiza las ComboBox que tienen datos variables
 
@@ -550,7 +627,6 @@ public class Projectcontroller implements ChangeListener, ActionListener, KeyLis
                     importar();
                     break;
                 case "Change PATH":
-                    cambiarPath();
                     break;
             }
         }
