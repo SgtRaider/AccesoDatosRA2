@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ProyectoRA1:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ProyectoRA1_jar</output-path>
+    <root id="archive" name="ProyectoRA1.jar">
+      <element id="module-output" name="ProyectoRA1" />
+      <element id="extracted-dir" path="$USER_HOME$/Librerias/jcalendar-1.4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Librerias/Util.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Librerias/jgoodies-forms-1.9.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Librerias/jgoodies-common-1.8.1.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
