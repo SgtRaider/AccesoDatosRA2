@@ -14,18 +14,62 @@ import javax.xml.transform.*;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.*;
+import java.sql.*;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Properties;
 
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
+import raider.Util.Utilities;
 
 /**
  * Created by raider on 5/11/15.
  */
 public class Projectmodel {
+
+    private Connection conexion;
+
+    public void conexionMysql() throws SQLException, ClassNotFoundException {
+
+        Class.forName("com.mysql.jdbc.Driver");
+        conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/ejercito", "root", "pamaloyo18");
+    }
+
+    public void login(String usuario, String contrasena) {
+
+        System.out.println(usuario + " " + contrasena);
+
+        String sql = "SELECT usuario FROM usuarios WHERE " +
+                "usuario = ? AND password = SHA1(?)";
+
+        try {
+            PreparedStatement sentencia = conexion.prepareStatement(sql);
+            sentencia.setString(1, usuario);
+            sentencia.setString(2, contrasena);
+            ResultSet resultado = sentencia.executeQuery();
+
+            if (!resultado.next()) {
+                Utilities.mensajeError("Usuario y contraseña incorrectos");
+                return;
+            }
+
+        } catch (SQLException sqle) {
+            Utilities.mensajeError("Error Sql");
+        }
+    }
+
+    public void conexionPostgresql() throws ClassNotFoundException, SQLException {
+        Class.forName("org.postgresql.Driver");
+        String url = "jdbc:postgresql://localhost:5432/ejercito";
+        Properties prop = new Properties();
+        prop.setProperty("user","postgres");
+        prop.setProperty("password","pamaloyo18");
+        prop.setProperty("ssl","false");
+        conexion = DriverManager.getConnection(url,prop);
+    }
 
     // Metodos que eliminan el objeto en la posicion seleccionada
 

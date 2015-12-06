@@ -1,5 +1,6 @@
 package com.raider.principal.controller;
 
+import com.raider.principal.Gui.Login;
 import com.raider.principal.Gui.Ventana;
 import com.raider.principal.Util.Values;
 import com.raider.principal.Util.FolderFilter;
@@ -25,6 +26,7 @@ import java.awt.event.KeyListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -34,7 +36,7 @@ import java.util.ArrayList;;
  * Created by raider on 5/11/15.
  * Con colaboracion de Daniel Cano y Diego Ordoñez
  */
-public class Projectcontroller implements ChangeListener, ActionListener, ListSelectionListener, KeyListener {
+public class Projectcontroller implements ChangeListener, ActionListener, KeyListener {
 
     //Objetos para cada clase usada
 
@@ -43,20 +45,6 @@ public class Projectcontroller implements ChangeListener, ActionListener, ListSe
     Cuartel c;
     Unidad u;
     Soldado s;
-
-    //ArrayList, DefaultListModel y DateFormat
-
-    public ArrayList<Cuartel> listaCuarteles;
-    public ArrayList<Unidad> listaUnidades;
-    public ArrayList<Unidad> listaUnidadCuartel;
-    public ArrayList<Soldado> listaSoldadoUnidad;
-    public ArrayList<Soldado> listaSoldado;
-    public ArrayList<Object> datos;
-    public ArrayList<Object> pack;
-
-    public DefaultListModel<Cuartel> modelolistacuartel;
-    public DefaultListModel<Unidad> modelolistaunidades;
-    public DefaultListModel<Soldado> modelolistasoldado;
 
     public DateFormat format;
 
@@ -67,27 +55,22 @@ public class Projectcontroller implements ChangeListener, ActionListener, ListSe
         this.v = ve;
         pm = new Projectmodel();
 
-        // Instanciado de Array List, DefaultListModel y DateFormat
-
-        listaUnidadCuartel = new ArrayList<>();
-        listaSoldadoUnidad = new ArrayList<>();
-        listaSoldado = new ArrayList<>();
-        listaCuarteles = new ArrayList<>();
-        listaUnidades = new ArrayList<>();
-
-        modelolistacuartel = new DefaultListModel<>();
-        modelolistaunidades = new DefaultListModel<>();
-        modelolistasoldado = new DefaultListModel<>();
+        try {
+            pm.conexionMysql();
+            Login log = new Login();
+            log.setVisible(true);
+            pm.login(log.getUsuario(), log.getContrasena());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
 
         format = new SimpleDateFormat("EEE MMM dd hh:mm:ss zzz yyyy");
 
         // Asignación de Listeners
 
         v.tabbedPane1.addChangeListener(this);
-
-        v.ltCuarteles.addListSelectionListener(this);
-        v.ltUnidades.addListSelectionListener(this);
-        v.ltSoldados.addListSelectionListener(this);
 
         v.btGuardarsoldado.addActionListener(this);
         v.btGuardarunidad.addActionListener(this);
@@ -100,56 +83,15 @@ public class Projectcontroller implements ChangeListener, ActionListener, ListSe
         v.btEliminarunidad.addActionListener(this);
 
         v.miGuardar.addActionListener(this);
-        v.miCambiarPath.addActionListener(this);
-        v.miGuardarcomo.addActionListener(this);
-        v.miExportar.addActionListener(this);
-        v.miImportar.addActionListener(this);
 
         v.txtBusquedacuartel.addKeyListener(this);
         v.txtBusquedaunidad.addKeyListener(this);
         v.txtBusquedasoldado.addKeyListener(this);
 
-        // Asignación de modelos
-
-        v.ltCuarteles.setModel(modelolistacuartel);
-        v.ltUnidades.setModel(modelolistaunidades);
-        v.ltSoldados.setModel(modelolistasoldado);
-        v.ltTropasunidad.setModel(modelolistasoldado);
-        v.ltUnidadescuartel.setModel(modelolistaunidades);
-
         //Carga de datos externos usando el path estandar o el path modificado,
         // en caso de haber guardado otro path, siempre y cuando exista el Archivo
         // TODO crear fichero de configuración con el path modificado
 
-        File fichero = new File(Values.PATH);
-
-        if (fichero.exists()) {
-
-            try {
-
-                if(Values.PATHmod.isEmpty()) {
-                    datos = (ArrayList<Object>) pm.cargarArchivo(Values.PATH);
-                } else {
-
-                    if (Values.PATHmod.isEmpty() == false) {
-                        datos = (ArrayList<Object>) pm.cargarArchivo(Values.PATHmod);
-                    }
-                }
-
-                listaCuarteles = (ArrayList<Cuartel>) datos.get(0);
-                listaUnidades = (ArrayList<Unidad>) datos.get(1);
-                listaSoldado = (ArrayList<Soldado>) datos.get(2);
-
-                listarController();
-
-            } catch (FileNotFoundException fnfe) {
-                Utilities.mensajeError("Archivo no encontrado");
-            } catch (ClassNotFoundException cnfe) {
-                Utilities.mensajeError("Clase no encontrada");
-            } catch (IOException ioe) {
-                ioe.printStackTrace();
-            }
-        }
         iniciarComboBox();
     }
 
@@ -206,24 +148,6 @@ public class Projectcontroller implements ChangeListener, ActionListener, ListSe
         }
     }
 
-    // Metodo para guardar en la ruta seleccionada
-
-    public void guardarComo() {
-
-        JFileChooser jfc = new JFileChooser();
-
-        jfc.setFileFilter(new FolderFilter());
-        jfc.setCurrentDirectory(new File(System.getProperty("user.home")));
-        jfc.setDialogTitle("Save as...");
-        int val = jfc.showSaveDialog(null);
-
-        if (val == JFileChooser.APPROVE_OPTION) {
-            File selectedFile = jfc.getSelectedFile();
-            String path = selectedFile.getAbsolutePath() + ".dat";
-            pm.guardarArchivo(path, packInfo());
-        }
-    }
-
     // Metodo que carga los datos de un archivo XML en los ARRAYLIST y posteriormente los lista
 
     public void importar() {
@@ -239,31 +163,8 @@ public class Projectcontroller implements ChangeListener, ActionListener, ListSe
             File selectedFile = jfc.getSelectedFile();
             String path = selectedFile.getAbsolutePath();
 
-            try {
+                //TODO importar base de datos
 
-                datos = pm.importar(path);
-
-                listaCuarteles.clear();
-                listaUnidades.clear();
-                listaSoldado.clear();
-
-                listaCuarteles = (ArrayList<Cuartel>) datos.get(0);
-                listaUnidades = (ArrayList<Unidad>) datos.get(1);
-                listaSoldado = (ArrayList<Soldado>) datos.get(2);
-
-                System.out.println(listaCuarteles.get(0).getnCuartel());
-
-                listarController();
-
-            } catch (ParserConfigurationException pce) {
-                pce.printStackTrace();
-            } catch (SAXException saxe) {
-                saxe.printStackTrace();
-            } catch (IOException ioe) {
-                ioe.printStackTrace();
-            } catch (ParseException pe) {
-                pe.printStackTrace();
-            }
         }
     }
 
@@ -282,15 +183,9 @@ public class Projectcontroller implements ChangeListener, ActionListener, ListSe
             File selectedFile = jfc.getSelectedFile();
             String path = selectedFile.getAbsolutePath() + ".xml";
 
-            try {
 
-                pm.exportar(packInfo(), path);
+                //TODO Exportar a base de datos
 
-            } catch (ParserConfigurationException pce) {
-                pce.printStackTrace();
-            } catch (TransformerException te) {
-                te.printStackTrace();
-            }
         }
     }
 
@@ -304,24 +199,7 @@ public class Projectcontroller implements ChangeListener, ActionListener, ListSe
 
     public void actualizarComboBox(int op) {
 
-        if (op == 0) {
-
-            v.cbCuartel.removeAllItems();
-
-            for (int i = 0; i < listaCuarteles.size(); i++) {
-                v.cbCuartel.addItem(listaCuarteles.get(i).getnCuartel());
-            }
-        } else {
-
-            if (op == 1) {
-
-                v.cbUnidad.removeAllItems();
-
-                for (int i = 0; i < listaUnidades.size(); i++) {
-                    v.cbUnidad.addItem(listaUnidades.get(i).getnUnidad());
-                }
-            }
-        }
+        //TODO actualizar label con base de datos
     }
 
     // Metodo que controla el guardado o modificado del objeto, dependiendo de la pestaña seleccionada
@@ -357,12 +235,11 @@ public class Projectcontroller implements ChangeListener, ActionListener, ListSe
                         c.setActividad(false);
                     }
 
-                    listaCuarteles.add(c);
                 } else {
 
                     // Modificado de la clase Cuartel
-
-                    if (listaCuarteles.isEmpty()) {
+                    //TODO modificar si esta vacia la tabla == true
+                    if (true) {
                         Values.modifyConstant = false;
                         return;
                     }
@@ -380,11 +257,10 @@ public class Projectcontroller implements ChangeListener, ActionListener, ListSe
                         c.setActividad(false);
                     }
 
-                    String cuartel = listaCuarteles.get(Values.posCuarteles).getnCuartel();
 
-                    modunidadCuartel(cuartel, v.txtNombrecuartel.getText());
 
-                    listaCuarteles.set(Values.posCuarteles, c);
+
+
 
                     actualizarComboBox(0);
 
@@ -413,13 +289,13 @@ public class Projectcontroller implements ChangeListener, ActionListener, ListSe
                     u.setCuartel((String) v.cbCuartel.getSelectedItem());
                     u.setNoTropas(Integer.valueOf(v.txtNoTropas.getText()));
 
-                    listaUnidades.add(u);
+
 
                 } else {
 
                     // Modificado de la clase Unidad
 
-                    if (listaUnidades.isEmpty()) {
+                    if (true) {
                         Values.modifyConstant = false;
 
                         return;
@@ -433,11 +309,6 @@ public class Projectcontroller implements ChangeListener, ActionListener, ListSe
                     u.setCuartel((String) v.cbCuartel.getSelectedItem());
                     u.setNoTropas(Integer.valueOf(v.txtNoTropas.getText()));
 
-                    String unidad = listaUnidades.get(Values.posUnidades).getnUnidad();
-
-                    listaUnidades.set(Values.posUnidades, u);
-
-                    modsoldadoUnidad(unidad, v.txtNombreunidad.getText());
 
                     actualizarComboBox(1);
 
@@ -465,13 +336,13 @@ public class Projectcontroller implements ChangeListener, ActionListener, ListSe
                     s.setUnidad((String) v.cbUnidad.getSelectedItem());
                     s.setRango((String) v.cbRango.getSelectedItem());
 
-                    listaSoldado.add(s);
+
 
                 } else {
 
                     // Modificado de la clase Soldado
 
-                    if (listaSoldado.isEmpty()) {
+                    if (true) {
                         Values.modifyConstant = false;
 
                         return;
@@ -485,8 +356,6 @@ public class Projectcontroller implements ChangeListener, ActionListener, ListSe
                     s.setLugarNacimiento(v.txtLugarNacimiento.getText());
                     s.setUnidad((String) v.cbUnidad.getSelectedItem());
                     s.setRango((String) v.cbRango.getSelectedItem());
-
-                    listaSoldado.set(Values.posSoldados, s);
 
                     Values.modifyConstant = false;
                 }
@@ -503,42 +372,19 @@ public class Projectcontroller implements ChangeListener, ActionListener, ListSe
             // Borrado Cuarteles
 
             case 0:
-                if (listaCuarteles.isEmpty()) return;
-                cargarController(pm.borrarCuartel(listaCuarteles, v.ltCuarteles.getSelectedIndex()));
+
                 break;
 
             // Borrado Unidades
 
             case 1:
-                if (listaUnidades.isEmpty()) return;
-                cargarController(pm.borrarUnidad(listaUnidades, v.ltUnidades.getSelectedIndex()));
+
                 break;
 
             // Borrado Soldados
 
             case 2:
-                if (listaSoldado.isEmpty()) return;
-                cargarController(pm.borrarSoldado(listaSoldado, v.ltSoldados.getSelectedIndex()));
-                break;
-        }
-    }
 
-    // Metodo que controla el listado de los objetos, dependiendo de la pestaña seleccionada
-
-    public void listarController() {
-
-        switch (Values.tpConstant) {
-
-            case 0:
-                listarCuartel();
-                actualizarComboBox(0);
-                break;
-            case 1:
-                listarUnidad();
-                actualizarComboBox(1);
-                break;
-            case 2:
-                listarSoldado();
                 break;
         }
     }
@@ -580,118 +426,6 @@ public class Projectcontroller implements ChangeListener, ActionListener, ListSe
         v.cbUnidad.setSelectedItem(soldado.getUnidad());
     }
 
-    // Metodo para listar en JList de Cuarteles
-
-    public void listarCuartel() {
-
-        System.out.println("hola");
-        modelolistacuartel.removeAllElements();
-        for (Cuartel c: listaCuarteles) {
-
-            modelolistacuartel.addElement(c);
-        }
-    }
-
-    // Metodo para listar en JList de Unidades
-
-    public void listarUnidad() {
-
-        modelolistaunidades.removeAllElements();
-        for (Unidad u: listaUnidades) {
-            modelolistaunidades.addElement(u);
-        }
-    }
-
-    // Metodo para listar en JList de Soldado
-
-    public void listarSoldado() {
-
-        modelolistasoldado.removeAllElements();
-        for (Soldado s: listaSoldado) {
-            modelolistasoldado.addElement(s);
-        }
-    }
-
-    // Metodo para listar Unidades por Cuartel en la pestaña de Cuarteles
-
-    public void listarUnidadCuartel() {
-
-        unidadCuartel(Values.posCuarteles);
-
-        modelolistaunidades.removeAllElements();
-        for (Unidad u: listaUnidadCuartel) {
-            modelolistaunidades.addElement(u);
-        }
-    }
-
-    // Metodo que busca las Unidades que tiene cada Cuartel y las añade en el ARRAYLIST listaUnidadCuartel
-
-    public void unidadCuartel(int pos) {
-
-        listaUnidadCuartel.removeAll(listaUnidadCuartel);
-
-        for (int i = 0; i < listaUnidades.size(); i++) {
-
-            if(listaUnidades.get(i).getCuartel().equalsIgnoreCase(listaCuarteles.get(pos).getnCuartel())) {
-                listaUnidadCuartel.add(listaUnidades.get(i));
-            }
-        }
-    }
-
-    // Metodo que cambia el Cuartel de las Unidades en caso de que el Cuartel sea modificado
-
-    public void modunidadCuartel(String cuartel , String cuartelCambiado) {
-
-        listaUnidadCuartel.removeAll(listaUnidadCuartel);
-
-        for (int i = 0; i < listaUnidades.size(); i++) {
-
-            if(listaUnidades.get(i).getCuartel().equalsIgnoreCase(cuartel)) {
-                listaUnidades.get(i).setCuartel(cuartelCambiado);
-            }
-        }
-    }
-
-    // Metodo para listar Soldados por Unidad en la pestaña de Unidades
-
-    public void listarSoldadoUnidad() {
-
-        soldadoUnidad(Values.posUnidades);
-
-        modelolistasoldado.removeAllElements();
-        for (Soldado s: listaSoldadoUnidad) {
-            modelolistasoldado.addElement(s);
-        }
-    }
-
-    // Metodo que busca los Soldados que tiene cada Unidad y los añade en el ARRAYLIST listaSoldadoUnidad
-
-    public void soldadoUnidad(int pos) {
-
-        listaSoldadoUnidad.removeAll(listaSoldadoUnidad);
-
-        for (int i = 0; i < listaSoldado.size(); i++) {
-
-            if (listaSoldado.get(i).getUnidad().equalsIgnoreCase(listaUnidades.get(pos).getnUnidad())) {
-                listaSoldadoUnidad.add(listaSoldado.get(i));
-            }
-        }
-    }
-
-    // Metodo que cambia la Unidad de los Soldados en caso de que la Unidad sea modificada
-
-    public void modsoldadoUnidad(String unidad, String unidadCambiada) {
-
-        listaSoldadoUnidad.removeAll(listaSoldadoUnidad);
-
-        for (int i = 0; i < listaSoldado.size(); i++) {
-
-            if (listaSoldado.get(i).getUnidad().equalsIgnoreCase(unidad)) {
-                listaSoldado.get(i).setUnidad(unidadCambiada);
-            }
-        }
-    }
-
     // Metodos para vaciar/limpiar los campos
 
     public void vaciarCuartel() {
@@ -729,16 +463,7 @@ public class Projectcontroller implements ChangeListener, ActionListener, ListSe
 
         public void controlBuscarCuartel() {
 
-            if (v.txtBusquedacuartel.getText().toString().isEmpty() == false) {
-
-                pm.buscarCuartel(listaCuarteles, v.txtBusquedacuartel.getText().toLowerCase(), modelolistacuartel);
-
-            } else {
-
-                if (v.txtBusquedacuartel.getText().isEmpty()) {
-                    listarController();
-                }
-            }
+            //TODO consulas busqueda cuartel
         }
 
         // Metodo que busca por nombre de unidad y tipo, y posteriormente devuelve los resultados
@@ -746,16 +471,7 @@ public class Projectcontroller implements ChangeListener, ActionListener, ListSe
 
         public void controlBuscarUnidad() {
 
-            if (v.txtBusquedaunidad.getText().toString().isEmpty() == false) {
-
-                pm.buscarUnidad(listaUnidades, v.txtBusquedaunidad.getText().toLowerCase(), modelolistaunidades);
-
-            } else {
-
-                if (v.txtBusquedaunidad.getText().isEmpty()) {
-                    listarController();
-                }
-            }
+            //TODO consultas busqueda unidad
         }
 
         // Metodo que busca por nombre, apellidos, rango, unidad y lugar de nacimiento, y posteriormente devuelve los resultados
@@ -763,30 +479,8 @@ public class Projectcontroller implements ChangeListener, ActionListener, ListSe
 
         public void controlBuscarSoldado() {
 
-            if (v.txtBusquedasoldado.getText().toString().isEmpty() == false) {
-
-                pm.buscarSoldado(listaSoldado, v.txtBusquedasoldado.getText().toLowerCase(), modelolistasoldado);
-
-            } else {
-
-                if (v.txtBusquedasoldado.getText().isEmpty()) {
-                    listarController();
-                }
-            }
+            //TODO consultas busqueda soldado
         }
-
-    // Metodo que empaqueta los ARRAYLIST para su posterior exportado u guardado
-
-    public ArrayList packInfo() {
-
-        pack = new ArrayList();
-
-        pack.add(listaCuarteles);
-        pack.add(listaUnidades);
-        pack.add(listaSoldado);
-
-        return pack;
-    }
 
     // Metodo que recoge los cambios de las pestañas, y ejecuta algunos de los metodos anteriores
 
@@ -798,19 +492,14 @@ public class Projectcontroller implements ChangeListener, ActionListener, ListSe
         switch (Values.tpConstant) {
 
             case 0:
-                listarController();
-                modelolistaunidades.removeAllElements();
                 vaciarCuartel();
                 break;
 
             case 1:
-                listarController();
-                modelolistasoldado.removeAllElements();
                 vaciarUnidad();
                 break;
 
             case 2:
-                listarController();
                 vaciarSoldado();
                 break;
         }
@@ -831,23 +520,16 @@ public class Projectcontroller implements ChangeListener, ActionListener, ListSe
 
                 case "Guardar":
                     guardarController();
-                    if(v.cbGuargarAutomatico.isSelected()) {
-                        pm.guardarArchivo(packInfo());
-                    } else {
-                        System.out.println(listaCuarteles.get(0).toString());
-                    }
-                    listarController();
+
                     break;
                 case "Modificar":
                     if (Utilities.mensajeConfirmacion("¿Esta seguro? \n Asegurese de modificar algun dato") == JOptionPane.NO_OPTION) return;
                     Values.modifyConstant = true;
                     guardarController();
-                    listarController();
                     break;
                 case "Eliminar":
                     if (Utilities.mensajeConfirmacion("¿Esta seguro?") == JOptionPane.NO_OPTION) return;
                     borrarController();
-                    listarController();
                     break;
             }
 
@@ -858,10 +540,8 @@ public class Projectcontroller implements ChangeListener, ActionListener, ListSe
             switch (actionCommand) {
 
                 case "Save":
-                    pm.guardarArchivo(packInfo());
                     break;
                 case "Save as...":
-                    guardarComo();
                     break;
                 case "Export":
                     exportar();
@@ -873,41 +553,6 @@ public class Projectcontroller implements ChangeListener, ActionListener, ListSe
                     cambiarPath();
                     break;
             }
-        }
-    }
-
-    // Metodo que escucha los eventos de selección en los JLIST, recoge la posicion seleccionada en un Value y
-    // ejecuta los metodos correspondientes
-
-    @Override
-    public void valueChanged(ListSelectionEvent e) {
-
-        if (e.getSource() == v.ltCuarteles) {
-
-            Values.posCuarteles = v.ltCuarteles.getSelectedIndex();
-
-            if (Values.posCuarteles == -1) return;
-
-            cargarController(listaCuarteles.get(Values.posCuarteles));
-            listarUnidadCuartel();
-        }
-
-        if (e.getSource() == v.ltUnidades) {
-
-            Values.posUnidades = v.ltUnidades.getSelectedIndex();
-
-            if (Values.posUnidades == -1) return;
-
-            cargarController(listaUnidades.get(Values.posUnidades));
-            listarSoldadoUnidad();
-        }
-
-        if (e.getSource() == v.ltSoldados) {
-            Values.posSoldados = v.ltSoldados.getSelectedIndex();
-
-            if (Values.posSoldados == -1) return;
-
-            cargarController(listaSoldado.get(Values.posSoldados));
         }
     }
 
