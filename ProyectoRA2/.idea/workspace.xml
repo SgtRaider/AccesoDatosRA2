@@ -31,15 +31,18 @@
       <file leaf-file-name="Projectmodel.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/raider/principal/model/Projectmodel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7479675">
-              <caret line="123" column="12" selection-start-line="123" selection-start-column="12" selection-end-line="123" selection-end-column="12" />
+            <state vertical-scroll-proportion="0.8208469">
+              <caret line="203" column="43" selection-start-line="203" selection-start-column="43" selection-end-line="203" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <marker date="1449431326574" expanded="true" signature="1317:1412" placeholder="SELECT usuar..usuarios..." />
-                <marker date="1449431326574" expanded="true" signature="2606:2702" placeholder="INSERT INTO ..." />
-                <marker date="1449431326574" expanded="true" signature="3326:3424" placeholder="INSERT INTO ..." />
-                <marker date="1449431326574" expanded="true" signature="4146:4281" placeholder="INSERT INTO ..." />
-                <marker date="1449431326574" expanded="true" signature="4836:4900" placeholder="SELECT 'miss..." />
+                <marker date="1449441727987" expanded="true" signature="1317:1412" placeholder="SELECT usuar..usuarios..." />
+                <marker date="1449441727987" expanded="true" signature="2606:2702" placeholder="INSERT INTO ..." />
+                <marker date="1449441727987" expanded="true" signature="3326:3424" placeholder="INSERT INTO ..." />
+                <marker date="1449441727987" expanded="true" signature="4185:4320" placeholder="INSERT INTO ..." />
+                <marker date="1449441727987" expanded="true" signature="5006:5070" placeholder="SELECT 'miss..." />
+                <marker date="1449441727987" expanded="true" signature="5738:5803" placeholder="SELECT id FR..cuartel..." />
+                <marker date="1449441727987" expanded="true" signature="6461:6519" placeholder="SELECT id FR..cuartel..." />
+                <marker date="1449441727987" expanded="true" signature="7177:7234" placeholder="SELECT id FR..unidad..." />
               </folding>
             </state>
           </provider>
@@ -109,9 +112,9 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1" />
-    <option name="width" value="1368" />
-    <option name="height" value="744" />
+    <option name="x" value="689" />
+    <option name="width" value="677" />
+    <option name="height" value="743" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -441,7 +444,7 @@
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="ToolWindowManager">
-    <frame x="-1" y="0" width="1368" height="744" extended-state="6" />
+    <frame x="689" y="0" width="677" height="743" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -542,11 +545,14 @@
           <caret line="73" column="63" selection-start-line="73" selection-start-column="31" selection-end-line="73" selection-end-column="63" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1449431326574" expanded="true" signature="1317:1412" placeholder="SELECT usuar..usuarios..." />
-            <marker date="1449431326574" expanded="true" signature="2606:2702" placeholder="INSERT INTO ..." />
-            <marker date="1449431326574" expanded="true" signature="3326:3424" placeholder="INSERT INTO ..." />
-            <marker date="1449431326574" expanded="true" signature="4146:4281" placeholder="INSERT INTO ..." />
-            <marker date="1449431326574" expanded="true" signature="4836:4900" placeholder="SELECT 'miss..." />
+            <marker date="1449441727987" expanded="true" signature="1317:1412" placeholder="SELECT usuar..usuarios..." />
+            <marker date="1449441727987" expanded="true" signature="2606:2702" placeholder="INSERT INTO ..." />
+            <marker date="1449441727987" expanded="true" signature="3326:3424" placeholder="INSERT INTO ..." />
+            <marker date="1449441727987" expanded="true" signature="4185:4320" placeholder="INSERT INTO ..." />
+            <marker date="1449441727987" expanded="true" signature="5006:5070" placeholder="SELECT 'miss..." />
+            <marker date="1449441727987" expanded="true" signature="5738:5803" placeholder="SELECT id FR..cuartel..." />
+            <marker date="1449441727987" expanded="true" signature="6461:6519" placeholder="SELECT id FR..cuartel..." />
+            <marker date="1449441727987" expanded="true" signature="7177:7234" placeholder="SELECT id FR..unidad..." />
           </folding>
         </state>
       </provider>
@@ -588,11 +594,14 @@
           <caret line="219" column="0" selection-start-line="219" selection-start-column="0" selection-end-line="219" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1449431326574" expanded="true" signature="1317:1412" placeholder="SELECT usuar..usuarios..." />
-            <marker date="1449431326574" expanded="true" signature="2606:2702" placeholder="INSERT INTO ..." />
-            <marker date="1449431326574" expanded="true" signature="3326:3424" placeholder="INSERT INTO ..." />
-            <marker date="1449431326574" expanded="true" signature="4146:4281" placeholder="INSERT INTO ..." />
-            <marker date="1449431326574" expanded="true" signature="4836:4900" placeholder="SELECT 'miss..." />
+            <marker date="1449441727987" expanded="true" signature="1317:1412" placeholder="SELECT usuar..usuarios..." />
+            <marker date="1449441727987" expanded="true" signature="2606:2702" placeholder="INSERT INTO ..." />
+            <marker date="1449441727987" expanded="true" signature="3326:3424" placeholder="INSERT INTO ..." />
+            <marker date="1449441727987" expanded="true" signature="4185:4320" placeholder="INSERT INTO ..." />
+            <marker date="1449441727987" expanded="true" signature="5006:5070" placeholder="SELECT 'miss..." />
+            <marker date="1449441727987" expanded="true" signature="5738:5803" placeholder="SELECT id FR..cuartel..." />
+            <marker date="1449441727987" expanded="true" signature="6461:6519" placeholder="SELECT id FR..cuartel..." />
+            <marker date="1449441727987" expanded="true" signature="7177:7234" placeholder="SELECT id FR..unidad..." />
           </folding>
         </state>
       </provider>
@@ -658,11 +667,14 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1449431326574" expanded="true" signature="1317:1412" placeholder="SELECT usuar..usuarios..." />
-            <marker date="1449431326574" expanded="true" signature="2606:2702" placeholder="INSERT INTO ..." />
-            <marker date="1449431326574" expanded="true" signature="3326:3424" placeholder="INSERT INTO ..." />
-            <marker date="1449431326574" expanded="true" signature="4146:4281" placeholder="INSERT INTO ..." />
-            <marker date="1449431326574" expanded="true" signature="4836:4900" placeholder="SELECT 'miss..." />
+            <marker date="1449441727987" expanded="true" signature="1317:1412" placeholder="SELECT usuar..usuarios..." />
+            <marker date="1449441727987" expanded="true" signature="2606:2702" placeholder="INSERT INTO ..." />
+            <marker date="1449441727987" expanded="true" signature="3326:3424" placeholder="INSERT INTO ..." />
+            <marker date="1449441727987" expanded="true" signature="4185:4320" placeholder="INSERT INTO ..." />
+            <marker date="1449441727987" expanded="true" signature="5006:5070" placeholder="SELECT 'miss..." />
+            <marker date="1449441727987" expanded="true" signature="5738:5803" placeholder="SELECT id FR..cuartel..." />
+            <marker date="1449441727987" expanded="true" signature="6461:6519" placeholder="SELECT id FR..cuartel..." />
+            <marker date="1449441727987" expanded="true" signature="7177:7234" placeholder="SELECT id FR..unidad..." />
           </folding>
         </state>
       </provider>
@@ -702,11 +714,14 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1449431326574" expanded="true" signature="1317:1412" placeholder="SELECT usuar..usuarios..." />
-            <marker date="1449431326574" expanded="true" signature="2606:2702" placeholder="INSERT INTO ..." />
-            <marker date="1449431326574" expanded="true" signature="3326:3424" placeholder="INSERT INTO ..." />
-            <marker date="1449431326574" expanded="true" signature="4146:4281" placeholder="INSERT INTO ..." />
-            <marker date="1449431326574" expanded="true" signature="4836:4900" placeholder="SELECT 'miss..." />
+            <marker date="1449441727987" expanded="true" signature="1317:1412" placeholder="SELECT usuar..usuarios..." />
+            <marker date="1449441727987" expanded="true" signature="2606:2702" placeholder="INSERT INTO ..." />
+            <marker date="1449441727987" expanded="true" signature="3326:3424" placeholder="INSERT INTO ..." />
+            <marker date="1449441727987" expanded="true" signature="4185:4320" placeholder="INSERT INTO ..." />
+            <marker date="1449441727987" expanded="true" signature="5006:5070" placeholder="SELECT 'miss..." />
+            <marker date="1449441727987" expanded="true" signature="5738:5803" placeholder="SELECT id FR..cuartel..." />
+            <marker date="1449441727987" expanded="true" signature="6461:6519" placeholder="SELECT id FR..cuartel..." />
+            <marker date="1449441727987" expanded="true" signature="7177:7234" placeholder="SELECT id FR..unidad..." />
           </folding>
         </state>
       </provider>
@@ -748,11 +763,14 @@
           <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1449431326574" expanded="true" signature="1317:1412" placeholder="SELECT usuar..usuarios..." />
-            <marker date="1449431326574" expanded="true" signature="2606:2702" placeholder="INSERT INTO ..." />
-            <marker date="1449431326574" expanded="true" signature="3326:3424" placeholder="INSERT INTO ..." />
-            <marker date="1449431326574" expanded="true" signature="4146:4281" placeholder="INSERT INTO ..." />
-            <marker date="1449431326574" expanded="true" signature="4836:4900" placeholder="SELECT 'miss..." />
+            <marker date="1449441727987" expanded="true" signature="1317:1412" placeholder="SELECT usuar..usuarios..." />
+            <marker date="1449441727987" expanded="true" signature="2606:2702" placeholder="INSERT INTO ..." />
+            <marker date="1449441727987" expanded="true" signature="3326:3424" placeholder="INSERT INTO ..." />
+            <marker date="1449441727987" expanded="true" signature="4185:4320" placeholder="INSERT INTO ..." />
+            <marker date="1449441727987" expanded="true" signature="5006:5070" placeholder="SELECT 'miss..." />
+            <marker date="1449441727987" expanded="true" signature="5738:5803" placeholder="SELECT id FR..cuartel..." />
+            <marker date="1449441727987" expanded="true" signature="6461:6519" placeholder="SELECT id FR..cuartel..." />
+            <marker date="1449441727987" expanded="true" signature="7177:7234" placeholder="SELECT id FR..unidad..." />
           </folding>
         </state>
       </provider>
@@ -936,15 +954,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/raider/principal/model/Projectmodel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7479675">
-          <caret line="123" column="12" selection-start-line="123" selection-start-column="12" selection-end-line="123" selection-end-column="12" />
+        <state vertical-scroll-proportion="0.8208469">
+          <caret line="203" column="43" selection-start-line="203" selection-start-column="43" selection-end-line="203" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1449431326574" expanded="true" signature="1317:1412" placeholder="SELECT usuar..usuarios..." />
-            <marker date="1449431326574" expanded="true" signature="2606:2702" placeholder="INSERT INTO ..." />
-            <marker date="1449431326574" expanded="true" signature="3326:3424" placeholder="INSERT INTO ..." />
-            <marker date="1449431326574" expanded="true" signature="4146:4281" placeholder="INSERT INTO ..." />
-            <marker date="1449431326574" expanded="true" signature="4836:4900" placeholder="SELECT 'miss..." />
+            <marker date="1449441727987" expanded="true" signature="1317:1412" placeholder="SELECT usuar..usuarios..." />
+            <marker date="1449441727987" expanded="true" signature="2606:2702" placeholder="INSERT INTO ..." />
+            <marker date="1449441727987" expanded="true" signature="3326:3424" placeholder="INSERT INTO ..." />
+            <marker date="1449441727987" expanded="true" signature="4185:4320" placeholder="INSERT INTO ..." />
+            <marker date="1449441727987" expanded="true" signature="5006:5070" placeholder="SELECT 'miss..." />
+            <marker date="1449441727987" expanded="true" signature="5738:5803" placeholder="SELECT id FR..cuartel..." />
+            <marker date="1449441727987" expanded="true" signature="6461:6519" placeholder="SELECT id FR..cuartel..." />
+            <marker date="1449441727987" expanded="true" signature="7177:7234" placeholder="SELECT id FR..unidad..." />
           </folding>
         </state>
       </provider>

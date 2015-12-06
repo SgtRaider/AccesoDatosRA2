@@ -104,6 +104,8 @@ public class Projectmodel {
             sentence.setInt(3, no_tropas);
             sentence.setDate(4, fecha_creacion);
             sentence.setInt(5, id_cuartel);
+
+            sentence.executeUpdate();
         } catch (SQLException sqle) {
             Utilities.mensajeError("Error al dar de alta unidad");
         }
@@ -121,10 +123,13 @@ public class Projectmodel {
             sentence.setString(1, nombre);
             sentence.setString(2, apellidos);
             sentence.setDate(3, fecha_nacimiento);
-            
+            sentence.setString(4, rango);
+            sentence.setString(5, lugar_nacimiento);
+            sentence.setInt(6, id_unidad);
 
+            sentence.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+
         }
 
     }
@@ -144,53 +149,73 @@ public class Projectmodel {
             if (resultado.next())id = resultado.getInt(select);
 
         } catch (SQLException e) {
-        e.printStackTrace();}
+            e.printStackTrace();
+            Utilities.mensajeError("Error al cotejar ID");
+        }
 
         return id;
     }
 
     // Metodos que eliminan el objeto en la posicion seleccionada
 
-    public Cuartel borrarCuartel(ArrayList<Cuartel> c,int n) {
+    public void borrarCuartel(String nombre, String localidad) {
 
-        c.remove(n);
-        if( c.size() != 0) {
-            if (n == c.size()) {
-                n--;
-            }
-            Cuartel cuartel = c.get(n);
-            return cuartel;
+        String consulta = "SELECT id FROM cuartel WHERE nombre_cuartel = ? and localidad = ?";
+        String sql = "DELETE * FROM cuartel WHERE id = ?";
+
+        PreparedStatement sentencia = null;
+        try {
+            sentencia = conexion.prepareStatement(consulta);
+            sentencia.setString(1, nombre);
+            sentencia.setString(2, localidad);
+            ResultSet resultado = sentencia.executeQuery();
+
+            sentencia = conexion.prepareStatement(sql);
+            sentencia.setInt(1, resultado.getInt("id"));
+            sentencia.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-
-        return null;
     }
 
-    public Unidad borrarUnidad(ArrayList<Unidad> u,int n) {
+    public void borrarUnidad(String nombre, String tipo) {
 
-        u.remove(n);
-        if( u.size() != 0) {
-            if (n == u.size()) {
-                n--;
-            }
-            Unidad unidad = u.get(n);
-            return unidad;
+        String consulta = "SELECT id FROM unidad WHERE nombre_unidad = ? and tipo = ?";
+        String sql = "DELETE * FROM unidad WHERE id = ?";
+
+        PreparedStatement sentencia = null;
+        try {
+            sentencia = conexion.prepareStatement(consulta);
+            sentencia.setString(1, nombre);
+            sentencia.setString(2, tipo);
+            ResultSet resultado = sentencia.executeQuery();
+
+            sentencia = conexion.prepareStatement(sql);
+            sentencia.setInt(1, resultado.getInt("id"));
+            sentencia.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-
-        return null;
     }
 
-    public Soldado borrarSoldado(ArrayList<Soldado> s,int n) {
+    public void borrarSoldado(String nombre, String apellidos) {
 
-        s.remove(n);
-        if( s.size() != 0) {
-            if (n == s.size()) {
-                n--;
-            }
-            Soldado soldado = s.get(n);
-            return soldado;
+        String consulta = "SELECT id FROM soldado WHERE nombre = ? and apellidos = ?";
+        String sql = "DELETE * FROM soldado WHERE id = ?";
+
+        PreparedStatement sentencia = null;
+        try {
+            sentencia = conexion.prepareStatement(consulta);
+            sentencia.setString(1, nombre);
+            sentencia.setString(2, apellidos);
+            ResultSet resultado = sentencia.executeQuery();
+
+            sentencia = conexion.prepareStatement(sql);
+            sentencia.setInt(1, resultado.getInt("id"));
+            sentencia.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-
-        return null;
     }
 
     public void buscarSoldado(ArrayList<Soldado> listaSoldado, String soldado, DefaultListModel<Soldado> def) {
