@@ -69,10 +69,84 @@ public class Projectmodel {
         Class.forName("org.postgresql.Driver");
         String url = "jdbc:postgresql://localhost:5432/ejercito";
         Properties prop = new Properties();
-        prop.setProperty("user","postgres");
-        prop.setProperty("password","pamaloyo18");
-        prop.setProperty("ssl","false");
+        prop.setProperty("user", "postgres");
+        prop.setProperty("password", "pamaloyo18");
+        prop.setProperty("ssl", "false");
         conexion = DriverManager.getConnection(url,prop);
+    }
+
+    public void guardarCuartel(String nombre_cuartel, String localidad, Double latitud, Double longitud, Boolean actividad) {
+
+        String sql = "INSERT INTO cuartel (nombre_cuartel, latitud, longitud, actividad, localidad) VALUES (?,?,?,?,?)";
+        try {
+            PreparedStatement sentence = conexion.prepareStatement(sql);
+            sentence.setString(1, nombre_cuartel);
+            sentence.setDouble(2, latitud);
+            sentence.setDouble(3, longitud);
+            sentence.setBoolean(4, actividad);
+            sentence.setString(5, localidad);
+
+            sentence.executeUpdate();
+        } catch (SQLException e) {
+            Utilities.mensajeError("Error al dar de alta cuartel");
+        }
+    }
+
+    public void guardarUnidad(String nombre_unidad, String tipo, int no_tropas, Date fecha_creacion, String cuartel) {
+
+        String sql = "INSERT INTO unidad (nombre_unidad, tipo, no_tropas, fecha_creacion, id_cuartel) VALUES (?,?,?,?,?)";
+        int id_cuartel = 0;
+        if ((id_cuartel = consultaID("id", "cuartel", "nombre_cuartel", cuartel)) != 0);
+        try {
+            PreparedStatement sentence = conexion.prepareStatement(sql);
+            sentence.setString(1, nombre_unidad);
+            sentence.setString(2, tipo);
+            sentence.setInt(3, no_tropas);
+            sentence.setDate(4, fecha_creacion);
+            sentence.setInt(5, id_cuartel);
+        } catch (SQLException sqle) {
+            Utilities.mensajeError("Error al dar de alta unidad");
+        }
+    }
+
+    public void guardarSoldado(String nombre, String apellidos, Date fecha_nacimiento, String rango, String lugar_nacimiento, String unidad) {
+
+        String sql = "INSERT INTO soldado (nombre, apellidos, fecha_nacimiento, rango, lugar_nacimiento, id_unidad)" +
+                " VALUES (?,?,?,?,?,?)";
+        int id_unidad = 0;
+        if ((id_unidad = consultaID("id", "unidad", "nombre_unidad", unidad)) != 0);
+
+        try {
+            PreparedStatement sentence = conexion.prepareStatement(sql);
+            sentence.setString(1, nombre);
+            sentence.setString(2, apellidos);
+            sentence.setDate(3, fecha_nacimiento);
+            
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public int consultaID(String select, String table, String campo, String condicion) {
+
+        String sql = "SELECT " + select + " FROM " + table + " WHERE " + campo + " = ?";
+        System.out.println(sql);
+        int id = 0;
+        PreparedStatement sentencia = null;
+        try {
+
+            sentencia = conexion.prepareStatement(sql);
+            sentencia.setString(1, condicion);
+            ResultSet resultado = sentencia.executeQuery();
+
+            if (resultado.next())id = resultado.getInt(select);
+
+        } catch (SQLException e) {
+        e.printStackTrace();}
+
+        return id;
     }
 
     // Metodos que eliminan el objeto en la posicion seleccionada
