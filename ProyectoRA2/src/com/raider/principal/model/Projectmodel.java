@@ -74,7 +74,9 @@ public class Projectmodel {
         conexion = DriverManager.getConnection(url,prop);
     }
 
-    public void guardarCuartel(String nombre_cuartel, String localidad, Double latitud, Double longitud, Boolean actividad) {
+    // Metodos de guardado
+
+    public void guardarCuartelSentencia(String nombre_cuartel, String localidad, Double latitud, Double longitud, Boolean actividad) {
 
         String sql = "INSERT INTO cuartel (nombre_cuartel, latitud, longitud, actividad, localidad) VALUES (?,?,?,?,?)";
         try {
@@ -91,7 +93,7 @@ public class Projectmodel {
         }
     }
 
-    public void guardarUnidad(String nombre_unidad, String tipo, int no_tropas, Date fecha_creacion, String cuartel) {
+    public void guardarUnidadSentencia(String nombre_unidad, String tipo, int no_tropas, Date fecha_creacion, String cuartel) {
 
         String sql = "INSERT INTO unidad (nombre_unidad, tipo, no_tropas, fecha_creacion, id_cuartel) VALUES (?,?,?,?,?)";
         int id_cuartel = 0;
@@ -110,7 +112,7 @@ public class Projectmodel {
         }
     }
 
-    public void guardarSoldado(String nombre, String apellidos, Date fecha_nacimiento, String rango, String lugar_nacimiento, String unidad) {
+    public void guardarSoldadoSentencia(String nombre, String apellidos, Date fecha_nacimiento, String rango, String lugar_nacimiento, String unidad) {
 
         String sql = "INSERT INTO soldado (nombre, apellidos, fecha_nacimiento, rango, lugar_nacimiento, id_unidad)" +
                 " VALUES (?,?,?,?,?,?)";
@@ -131,6 +133,126 @@ public class Projectmodel {
 
         }
 
+    }
+
+    // Metodos que eliminan el objeto en la posicion seleccionada
+
+    public void borrarCuartelSentencia(int id) {
+
+        String sql = "DELETE * FROM cuartel WHERE id = ?";
+
+        PreparedStatement sentencia = null;
+        try {
+            sentencia = conexion.prepareStatement(sql);
+            sentencia.setInt(1, id);
+            sentencia.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void borrarUnidadSentencia(int id) {
+
+        String sql = "DELETE * FROM unidad WHERE id = ?";
+
+        PreparedStatement sentencia = null;
+        try {
+            sentencia = conexion.prepareStatement(sql);
+            sentencia.setInt(1, id);
+            sentencia.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void borrarSoldadoSentencia(int id) {
+
+        String sql = "DELETE * FROM soldado WHERE id = ?";
+
+        PreparedStatement sentencia = null;
+        try {
+            sentencia = conexion.prepareStatement(sql);
+            sentencia.setInt(1, id);
+            sentencia.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    //Metodos de modificado
+
+    public void modificarCuartelSentencia(int id, String nombre_cuartel, Double latitud,
+                                 Double longitud, Boolean actividad, String localidad) {
+        String sql = "UPDATE cuartel SET nombre_cuartel = ?," +
+                " latitud = ?, longitud = ?, actividad = ?, localidad = ? WHERE id = ?";
+
+        PreparedStatement sentence = null;
+
+        try {
+            sentence = conexion.prepareStatement(sql);
+            sentence.setString(1, nombre_cuartel);
+            sentence.setDouble(2, latitud);
+            sentence.setDouble(3, longitud);
+            sentence.setBoolean(4, actividad);
+            sentence.setString(5, localidad);
+            sentence.setInt(6, id);
+            sentence.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void modificarUnidadSentencia(int id, String nombre_unidad,
+                                         String tipo, int no_tropas,
+                                         Date fecha_creacion, String cuartel) {
+
+        String sql = "UPDATE unidad SET nombre_unidad = ?, tipo = ?," +
+                " no_tropas = ?, fecha_creacion = ?, id_cuartel = ? WHERE id = ?";
+
+        PreparedStatement sentence = null;
+
+        int id_cuartel = 0;
+        if ((id_cuartel = consultaID("id", "cuartel", "nombre_cuartel", cuartel)) != 0);
+
+        try {
+            sentence = conexion.prepareStatement(sql);
+            sentence.setString(1, nombre_unidad);
+            sentence.setString(2, tipo);
+            sentence.setInt(3, no_tropas);
+            sentence.setDate(4, fecha_creacion);
+            sentence.setInt(5, id_cuartel);
+            sentence.setInt(6, id);
+            sentence.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void modificarSoldadoSentencia(int id, String nombre, String apellidos,
+                                         String rango, Date fecha_nacimiento,
+                                         String lugar_nacimiento, String unidad) {
+
+        String sql = "UPDATE soldado SET nombre = ?, apellidos = ?," +
+                " rango = ?, fecha_nacimiento = ?, lugar_nacimiento = ?, id_unidad = ? WHERE id = ?";
+
+        PreparedStatement sentence = null;
+
+        int id_unidad = 0;
+        if ((id_unidad = consultaID("id", "unidad", "nombre_unidad", unidad)) != 0);
+
+        try {
+            sentence = conexion.prepareStatement(sql);
+            sentence.setString(1, nombre);
+            sentence.setString(2, apellidos);
+            sentence.setString(3, rango);
+            sentence.setDate(4, fecha_nacimiento);
+            sentence.setString(5, lugar_nacimiento);
+            sentence.setInt(6, id_unidad);
+            sentence.setInt(7, id);
+            sentence.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public int consultaID(String select, String table, String campo, String condicion) {
@@ -199,66 +321,61 @@ public class Projectmodel {
         return null;
     }
 
-    // Metodos que eliminan el objeto en la posicion seleccionada
+    public List<String> consultaActualizarComboBox(int op) {
 
-    public void borrarCuartel(String nombre, String localidad) {
+        List<String> ret;
 
-        String consulta = "SELECT id FROM cuartel WHERE nombre_cuartel = ? and localidad = ?";
-        String sql = "DELETE * FROM cuartel WHERE id = ?";
+        if (op == 0) {
 
-        PreparedStatement sentencia = null;
-        try {
-            sentencia = conexion.prepareStatement(consulta);
-            sentencia.setString(1, nombre);
-            sentencia.setString(2, localidad);
-            ResultSet resultado = sentencia.executeQuery();
+            ret = new ArrayList<>();
 
-            sentencia = conexion.prepareStatement(sql);
-            sentencia.setInt(1, resultado.getInt("id"));
-            sentencia.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
+            String sql = "SELECT nombre_cuartel FROM cuartel";
+
+            PreparedStatement sentence = null;
+
+            try {
+                sentence = conexion.prepareStatement(sql);
+                ResultSet resultado = sentence.executeQuery();
+
+                while (resultado.next()) {
+
+                    ret.add(resultado.getString("nombre_cuartel"));
+                }
+
+                return ret;
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+        } else {
+
+            if (op == 1) {
+
+                ret = new ArrayList<>();
+
+                String sql = "SELECT nombre_unidad FROM unidad";
+
+                PreparedStatement sentence = null;
+
+                try {
+                    sentence = conexion.prepareStatement(sql);
+                    ResultSet resultado = sentence.executeQuery();
+
+                    while (resultado.next()) {
+
+                        ret.add(resultado.getString("nombre_unidad"));
+                    }
+
+                    return ret;
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
         }
-    }
 
-    public void borrarUnidad(String nombre, String tipo) {
-
-        String consulta = "SELECT id FROM unidad WHERE nombre_unidad = ? and tipo = ?";
-        String sql = "DELETE * FROM unidad WHERE id = ?";
-
-        PreparedStatement sentencia = null;
-        try {
-            sentencia = conexion.prepareStatement(consulta);
-            sentencia.setString(1, nombre);
-            sentencia.setString(2, tipo);
-            ResultSet resultado = sentencia.executeQuery();
-
-            sentencia = conexion.prepareStatement(sql);
-            sentencia.setInt(1, resultado.getInt("id"));
-            sentencia.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void borrarSoldado(String nombre, String apellidos) {
-
-        String consulta = "SELECT id FROM soldado WHERE nombre = ? and apellidos = ?";
-        String sql = "DELETE * FROM soldado WHERE id = ?";
-
-        PreparedStatement sentencia = null;
-        try {
-            sentencia = conexion.prepareStatement(consulta);
-            sentencia.setString(1, nombre);
-            sentencia.setString(2, apellidos);
-            ResultSet resultado = sentencia.executeQuery();
-
-            sentencia = conexion.prepareStatement(sql);
-            sentencia.setInt(1, resultado.getInt("id"));
-            sentencia.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        return null;
     }
 
     public Object[] listar(String tabla) {
@@ -341,8 +458,6 @@ public class Projectmodel {
 
                             fila = new Object[]{id, nombre, apellidos, rango, fecha_nacimiento, lugar_nacimiento, consultaNombreCuartel_NombreUnidad("unidad", id_unidad)};
                             return fila;
-
-                            //TODO revisar, ultimo hecho el 7/12/2015
                         }
 
                     } catch (SQLException e) {
@@ -354,6 +469,8 @@ public class Projectmodel {
 
         return null;
     }
+
+
 
     public void buscarSoldado(ArrayList<Soldado> listaSoldado, String soldado, DefaultListModel<Soldado> def) {
 

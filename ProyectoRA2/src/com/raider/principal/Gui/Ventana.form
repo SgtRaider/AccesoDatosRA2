@@ -2,7 +2,7 @@
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.raider.principal.Gui.Ventana">
   <grid id="27dc6" binding="p1" layout-manager="FormLayout">
     <rowspec value="center:3px:noGrow"/>
-    <rowspec value="top:4dlu:noGrow"/>
+     <rowspec value="top:4dlu:noGrow"/>
     <rowspec value="fill:d:noGrow"/>
     <rowspec value="fill:23px:noGrow"/>
     <rowspec value="fill:10px:noGrow"/>

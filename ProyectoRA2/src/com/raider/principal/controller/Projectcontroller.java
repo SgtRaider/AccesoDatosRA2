@@ -31,7 +31,8 @@ import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;;
+import java.util.ArrayList;
+import java.util.List;;
 
 /**
  * Created by raider on 5/11/15.
@@ -92,7 +93,7 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
             @Override
             public void valueChanged(ListSelectionEvent e) {
 
-                v.tCuartel.getValueAt(v.tCuartel.getSelectedRow(), 0);
+                Values.idCuartel = Integer.valueOf(v.tCuartel.getValueAt(v.tCuartel.getSelectedRow(), 0).toString());
             }
         });
 
@@ -100,6 +101,7 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
             @Override
             public void valueChanged(ListSelectionEvent e) {
 
+                Values.idUnidad = Integer.valueOf(v.tUnidad.getValueAt(v.tUnidad.getSelectedRow(), 0).toString());
             }
         });
 
@@ -107,6 +109,7 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
             @Override
             public void valueChanged(ListSelectionEvent e) {
 
+                Values.idSoldado = Integer.valueOf(v.tSoldado.getValueAt(v.tSoldado.getSelectedRow(), 0).toString());
             }
         });
 
@@ -171,6 +174,21 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
         defmodelsoldado.addColumn("Fecha Nacimiento");
         defmodelsoldado.addColumn("Lugar Nacimiento");
         defmodelsoldado.addColumn("Unidad");
+    }
+
+    public void listarCuartel() {
+
+        defmodelcuartel.addRow(pm.listar("cuartel"));
+    }
+
+    public void listarUnidad() {
+
+        defmodelunidad.addRow(pm.listar("unidad"));
+    }
+
+    public void listarSoldado() {
+
+        defmodelsoldado.addRow(pm.listar("soldado"));
     }
 
     public void visibilidadUsuario() {
@@ -344,13 +362,27 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
         }
     }
 
-    // Metodo que actualiza la label con la ruta actual de guardado
-
     // Metodo que actualiza las ComboBox que tienen datos variables
 
     public void actualizarComboBox(int op) {
 
-        //TODO actualizar label con base de datos
+        List<String> cb = pm.consultaActualizarComboBox(op);
+
+        if (op == 0) {
+
+            for (int i = 0;i < cb.size(); i++) {
+                v.cbCuartel.addItem(cb.get(i));
+            }
+
+        } else {
+
+            if (op == 1) {
+
+                for (int i = 0;i < cb.size(); i++) {
+                    v.cbUnidad.addItem(cb.get(i));
+                }
+            }
+        }
     }
 
     // Metodo que controla el guardado o modificado del objeto, dependiendo de la pestaña seleccionada
