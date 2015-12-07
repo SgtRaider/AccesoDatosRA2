@@ -2,7 +2,7 @@
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.raider.principal.Gui.Ventana">
   <grid id="27dc6" binding="p1" layout-manager="FormLayout">
     <rowspec value="center:3px:noGrow"/>
-     <rowspec value="top:4dlu:noGrow"/>
+    <rowspec value="top:4dlu:noGrow"/>
     <rowspec value="fill:d:noGrow"/>
     <rowspec value="fill:23px:noGrow"/>
     <rowspec value="fill:10px:noGrow"/>
@@ -26,7 +26,9 @@
           </grid>
           <forms defaultalign-vert="false"/>
         </constraints>
-        <properties/>
+        <properties>
+          <enabled value="true"/>
+        </properties>
         <border type="none"/>
         <children>
           <grid id="6b26b" layout-manager="FormLayout">
@@ -201,7 +203,9 @@
                 <children>
                   <component id="689a7" class="javax.swing.JTable" binding="tCuartel">
                     <constraints/>
-                    <properties/>
+                    <properties>
+                      <enabled value="true"/>
+                    </properties>
                   </component>
                 </children>
               </scrollpane>
@@ -389,7 +393,9 @@
                 <children>
                   <component id="68395" class="javax.swing.JTable" binding="tUnidad">
                     <constraints/>
-                    <properties/>
+                    <properties>
+                      <enabled value="true"/>
+                    </properties>
                   </component>
                 </children>
               </scrollpane>
@@ -601,7 +607,9 @@
                 <children>
                   <component id="11b3" class="javax.swing.JTable" binding="tSoldado">
                     <constraints/>
-                    <properties/>
+                    <properties>
+                      <enabled value="true"/>
+                    </properties>
                   </component>
                 </children>
               </scrollpane>

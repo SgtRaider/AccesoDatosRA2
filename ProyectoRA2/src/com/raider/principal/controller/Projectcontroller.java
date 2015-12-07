@@ -4,6 +4,7 @@ import com.raider.principal.Gui.Login;
 import com.raider.principal.Gui.Ventana;
 import com.raider.principal.Util.Values;
 import com.raider.principal.Util.FolderFilter;
+import com.raider.principal.procesos.Listado;
 import raider.Util.Utilities;
 import com.raider.principal.base.Cuartel;
 import com.raider.principal.base.Soldado;
@@ -27,6 +28,7 @@ import java.awt.event.KeyListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -76,6 +78,10 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
         DefaultTableModel defmodelunidad;
         DefaultTableModel defmodelsoldado;
 
+        v.tCuartel.setRowSelectionAllowed(true);
+        v.tUnidad.setRowSelectionAllowed(true);
+        v.tSoldado.setRowSelectionAllowed(true);
+
         // Asignación de Listeners
 
         v.tabbedPane1.addChangeListener(this);
@@ -93,7 +99,11 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
             @Override
             public void valueChanged(ListSelectionEvent e) {
 
-                Values.idCuartel = Integer.valueOf(v.tCuartel.getValueAt(v.tCuartel.getSelectedRow(), 0).toString());
+                if (v.tCuartel.isRowSelected(v.tCuartel.getSelectedRow())) {
+                    Values.idCuartel = Integer.valueOf(v.tCuartel.getValueAt(v.tCuartel.getSelectedRow(), 0).toString());
+                    cargarController(pm.cargarCuartelSeleccionado(Values.idCuartel));
+                }
+
             }
         });
 
@@ -101,7 +111,11 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
             @Override
             public void valueChanged(ListSelectionEvent e) {
 
-                Values.idUnidad = Integer.valueOf(v.tUnidad.getValueAt(v.tUnidad.getSelectedRow(), 0).toString());
+                if (v.tUnidad.isRowSelected(v.tUnidad.getSelectedRow())) {
+                    Values.idUnidad = Integer.valueOf(v.tUnidad.getValueAt(v.tUnidad.getSelectedRow(), 0).toString());
+                    cargarController(pm.cargarUnidadSeleccionada(Values.idUnidad));
+                }
+
             }
         });
 
@@ -109,7 +123,11 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
             @Override
             public void valueChanged(ListSelectionEvent e) {
 
-                Values.idSoldado = Integer.valueOf(v.tSoldado.getValueAt(v.tSoldado.getSelectedRow(), 0).toString());
+                if (v.tSoldado.isRowSelected(v.tSoldado.getSelectedRow())) {
+                    Values.idSoldado = Integer.valueOf(v.tSoldado.getValueAt(v.tSoldado.getSelectedRow(), 0).toString());
+                    cargarController(pm.cargarSoldadoSeleccionada(Values.idSoldado));
+                }
+
             }
         });
 
@@ -124,6 +142,9 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
         // TODO crear fichero de configuración con el path modificado
 
         iniciarComboBox();
+        listarCuartel();
+        Listado proceso = new Listado(Projectcontroller.this);
+        proceso.start();
     }
 
     // Agregamos datos fijos a las combo box (Fijos, que no varian con la introducción de datos)
@@ -178,17 +199,43 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
 
     public void listarCuartel() {
 
-        defmodelcuartel.addRow(pm.listar("cuartel"));
+        List<Object[]> list = pm.listar("cuartel");
+
+        if (list != null) {
+
+            defmodelcuartel.setNumRows(0);
+            for (int i = 0;i < list.size(); i++) {
+
+                defmodelcuartel.addRow(list.get(i));
+            }
+        }
     }
 
     public void listarUnidad() {
 
-        defmodelunidad.addRow(pm.listar("unidad"));
+        List<Object[]> list = pm.listar("unidad");
+
+        if (list != null) {
+            defmodelunidad.setNumRows(0);
+            for (int i = 0;i < list.size(); i++) {
+
+                defmodelunidad.addRow(list.get(i));
+            }
+        }
     }
 
     public void listarSoldado() {
 
-        defmodelsoldado.addRow(pm.listar("soldado"));
+        List<Object[]> list = pm.listar("soldado");
+
+        if (list != null) {
+
+            defmodelsoldado.setNumRows(0);
+            for (int i = 0;i < list.size(); i++) {
+
+                defmodelsoldado.addRow(list.get(i));
+            }
+        }
     }
 
     public void visibilidadUsuario() {
@@ -370,6 +417,7 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
 
         if (op == 0) {
 
+            v.cbCuartel.removeAllItems();
             for (int i = 0;i < cb.size(); i++) {
                 v.cbCuartel.addItem(cb.get(i));
             }
@@ -378,6 +426,7 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
 
             if (op == 1) {
 
+                v.cbUnidad.removeAllItems();
                 for (int i = 0;i < cb.size(); i++) {
                     v.cbUnidad.addItem(cb.get(i));
                 }
@@ -405,45 +454,23 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
 
                 if(Values.modifyConstant == false) {
 
-                    c = new Cuartel();
-
-                    c.setnCuartel(v.txtNombrecuartel.getText());
-                    c.setLocalidad(v.txtLocalidad.getText());
-                    c.setLatitud(Double.valueOf(v.txtLatitud.getText()));
-                    c.setLongitud(Double.valueOf(v.txtLongitud.getText()));
-
                     if(v.cbActividad.getSelectedItem() == "true") {
-                        c.setActividad(true);
+                        pm.guardarCuartelSentencia(v.txtNombrecuartel.getText(), v.txtLocalidad.getText(), Double.valueOf(v.txtLatitud.getText()), Double.valueOf(v.txtLongitud.getText()), true);
                     } else {
-                        c.setActividad(false);
+                        pm.guardarCuartelSentencia(v.txtNombrecuartel.getText(), v.txtLocalidad.getText(), Double.valueOf(v.txtLatitud.getText()), Double.valueOf(v.txtLongitud.getText()), false);
                     }
+
+                    actualizarComboBox(0);
 
                 } else {
 
                     // Modificado de la clase Cuartel
-                    //TODO modificar si esta vacia la tabla == true
-                    if (true) {
-                        Values.modifyConstant = false;
-                        return;
-                    }
-
-                    c = new Cuartel();
-
-                    c.setnCuartel(v.txtNombrecuartel.getText());
-                    c.setLocalidad(v.txtLocalidad.getText());
-                    c.setLatitud(Double.valueOf(v.txtLatitud.getText()));
-                    c.setLongitud(Double.valueOf(v.txtLongitud.getText()));
 
                     if(v.cbActividad.getSelectedItem() == "true") {
-                        c.setActividad(true);
+                        pm.modificarCuartelSentencia(Values.idCuartel, v.txtNombrecuartel.getText(), Double.valueOf(v.txtLatitud.getText()), Double.valueOf(v.txtLongitud.getText()), true, v.txtLocalidad.getText());
                     } else {
-                        c.setActividad(false);
+                        pm.modificarCuartelSentencia(Values.idCuartel, v.txtNombrecuartel.getText(), Double.valueOf(v.txtLatitud.getText()), Double.valueOf(v.txtLongitud.getText()), false, v.txtLocalidad.getText());
                     }
-
-
-
-
-
 
                     actualizarComboBox(0);
 
@@ -464,34 +491,15 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
 
                 if(Values.modifyConstant == false) {
 
-                    u = new Unidad();
-
-                    u.setnUnidad(v.txtNombreunidad.getText());
-                    u.setTipo((String) v.cbTipo.getSelectedItem());
-                    u.setFechaCreacion(v.dcFechaUnidad.getDate());
-                    u.setCuartel((String) v.cbCuartel.getSelectedItem());
-                    u.setNoTropas(Integer.valueOf(v.txtNoTropas.getText()));
-
-
+                    pm.guardarUnidadSentencia(v.txtNombreunidad.getText(), (String) v.cbTipo.getSelectedItem(),
+                            Integer.valueOf(v.txtNoTropas.getText()), new Date(v.dcFechaUnidad.getDate().getTime()), (String) v.cbCuartel.getSelectedItem());
 
                 } else {
 
                     // Modificado de la clase Unidad
 
-                    if (true) {
-                        Values.modifyConstant = false;
-
-                        return;
-                    }
-
-                    u = new Unidad();
-
-                    u.setnUnidad(v.txtNombreunidad.getText());
-                    u.setTipo((String) v.cbTipo.getSelectedItem());
-                    u.setFechaCreacion(v.dcFechaUnidad.getDate());
-                    u.setCuartel((String) v.cbCuartel.getSelectedItem());
-                    u.setNoTropas(Integer.valueOf(v.txtNoTropas.getText()));
-
+                    pm.modificarUnidadSentencia(Values.idUnidad, v.txtNombreunidad.getText(), (String) v.cbTipo.getSelectedItem(),
+                            Integer.valueOf(v.txtNoTropas.getText()), new Date(v.dcFechaUnidad.getDate().getTime()), (String) v.cbCuartel.getSelectedItem());
 
                     actualizarComboBox(1);
 
@@ -510,35 +518,13 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
 
                 if(Values.modifyConstant == false) {
 
-                    s = new Soldado();
-
-                    s.setNombre(v.txtNombre.getText());
-                    s.setApellidos(v.txtApellidos.getText());
-                    s.setFechaNacimiento(v.dcFechanacimiento.getDate());
-                    s.setLugarNacimiento(v.txtLugarNacimiento.getText());
-                    s.setUnidad((String) v.cbUnidad.getSelectedItem());
-                    s.setRango((String) v.cbRango.getSelectedItem());
-
-
+                    pm.guardarSoldadoSentencia(v.txtNombre.getText(), v.txtApellidos.getText(), new Date(v.dcFechanacimiento.getDate().getTime()), (String) v.cbRango.getSelectedItem(), v.txtLugarNacimiento.getText(), (String) v.cbUnidad.getSelectedItem());
 
                 } else {
 
                     // Modificado de la clase Soldado
 
-                    if (true) {
-                        Values.modifyConstant = false;
-
-                        return;
-                    }
-
-                    s = new Soldado();
-
-                    s.setNombre(v.txtNombre.getText());
-                    s.setApellidos(v.txtApellidos.getText());
-                    s.setFechaNacimiento(v.dcFechanacimiento.getDate());
-                    s.setLugarNacimiento(v.txtLugarNacimiento.getText());
-                    s.setUnidad((String) v.cbUnidad.getSelectedItem());
-                    s.setRango((String) v.cbRango.getSelectedItem());
+                    pm.modificarSoldadoSentencia(Values.idSoldado, v.txtNombre.getText(), v.txtApellidos.getText(), (String) v.cbRango.getSelectedItem(), new Date(v.dcFechanacimiento.getDate().getTime()), v.txtLugarNacimiento.getText(), (String) v.cbUnidad.getSelectedItem());
 
                     Values.modifyConstant = false;
                 }
@@ -555,19 +541,19 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
             // Borrado Cuarteles
 
             case 0:
-
+                pm.borrarCuartelSentencia(Values.idCuartel);
                 break;
 
             // Borrado Unidades
 
             case 1:
-
+                pm.borrarUnidadSentencia(Values.idUnidad);
                 break;
 
             // Borrado Soldados
 
             case 2:
-
+                pm.borrarSoldadoSentencia(Values.idSoldado);
                 break;
         }
     }
@@ -676,14 +662,19 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
 
             case 0:
                 vaciarCuartel();
+                listarCuartel();
                 break;
 
             case 1:
                 vaciarUnidad();
+                listarUnidad();
+                actualizarComboBox(0);
                 break;
 
             case 2:
                 vaciarSoldado();
+                listarSoldado();
+                actualizarComboBox(1);
                 break;
         }
     }
