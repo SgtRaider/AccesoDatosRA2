@@ -19,6 +19,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 import org.w3c.dom.*;
@@ -39,8 +40,6 @@ public class Projectmodel {
     }
 
     public String login(String usuario, String contrasena) {
-
-        System.out.println(usuario + " " + contrasena);
 
         String sql = "SELECT usuario, rol FROM usuarios WHERE " +
                 "usuario = ? AND password = SHA1(?)";
@@ -137,7 +136,6 @@ public class Projectmodel {
     public int consultaID(String select, String table, String campo, String condicion) {
 
         String sql = "SELECT " + select + " FROM " + table + " WHERE " + campo + " = ?";
-        System.out.println(sql);
         int id = 0;
         PreparedStatement sentencia = null;
         try {
@@ -154,6 +152,51 @@ public class Projectmodel {
         }
 
         return id;
+    }
+
+    public String consultaNombreCuartel_NombreUnidad(String tabla, int id) {
+
+        if (tabla.equalsIgnoreCase("cuartel")) {
+
+            String sql = "SELECT nombre_cuartel FROM cuartel WHERE id = ?";
+            String nombre = "";
+            PreparedStatement sentencia = null;
+            try {
+
+                sentencia = conexion.prepareStatement(sql);
+                sentencia.setInt(1, id);
+                ResultSet resultado = sentencia.executeQuery();
+
+                if (resultado.next())nombre = resultado.getString("nombre_cuartel");
+                return nombre;
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+        } else {
+
+            if (tabla.equalsIgnoreCase("unidad")) {
+
+                String sql = "SELECT nombre_unidad FROM unidad WHERE id = ?";
+                String nombre = "";
+                PreparedStatement sentencia = null;
+                try {
+
+                    sentencia = conexion.prepareStatement(sql);
+                    sentencia.setInt(1, id);
+                    ResultSet resultado = sentencia.executeQuery();
+
+                    if (resultado.next())nombre = resultado.getString("nombre_unidad");
+                    return nombre;
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return null;
     }
 
     // Metodos que eliminan el objeto en la posicion seleccionada
@@ -218,19 +261,103 @@ public class Projectmodel {
         }
     }
 
-    public void buscarSoldado(ArrayList<Soldado> listaSoldado, String soldado, DefaultListModel<Soldado> def) {
+    public Object[] listar(String tabla) {
 
-        def.removeAllElements();
-        for (int i = 0; i < listaSoldado.size(); i++) {
+        Object[] fila;
 
-            if((listaSoldado.get(i).getNombre().toLowerCase()).contains(soldado)
-                    || (listaSoldado.get(i).getRango().toLowerCase()).contains(soldado)
-                    || (listaSoldado.get(i).getApellidos().toLowerCase()).contains(soldado)
-                    || (listaSoldado.get(i).getUnidad().toLowerCase()).contains(soldado)
-                    || (listaSoldado.get(i).getLugarNacimiento().toLowerCase()).contains(soldado)) {
-                def.addElement(listaSoldado.get(i));
+        if (tabla.equalsIgnoreCase("cuartel")) {
+
+            String sql = "SELECT * FROM cuartel";
+            try {
+                PreparedStatement sentencia = null;
+
+                sentencia = conexion.prepareStatement(sql);
+                ResultSet resultado = sentencia.executeQuery();
+                while (resultado.next()) {
+
+                    int id = resultado.getInt("id");
+                    String nombre_cuartel = resultado.getString("nombre_cuartel");
+                    Double latitud = resultado.getDouble("latitud");
+                    Double longitud = resultado.getDouble("longitud");
+                    String localidad = resultado.getString("localidad");
+                    Boolean actividad = resultado.getBoolean("actividad");
+
+                    fila = new Object[]{id, nombre_cuartel, localidad, latitud,
+                            longitud, actividad};
+                    return fila;
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+
+        } else {
+
+            if (tabla.equalsIgnoreCase("unidad")) {
+
+                String sql = "SELECT * FROM unidad";
+                try {
+                    PreparedStatement sentencia = null;
+
+                    sentencia = conexion.prepareStatement(sql);
+                    ResultSet resultado = sentencia.executeQuery();
+                    while (resultado.next()) {
+
+                        int id = resultado.getInt("id");
+                        String nombre_unidad = resultado.getString("nombre_unidad");
+                        String tipo = resultado.getString("tipo");
+                        int no_tropas = resultado.getInt("no_tropas");
+                        Date fecha_creacion = resultado.getDate("fecha_creacion");
+                        int id_cuartel = resultado.getInt("id_cuartel");
+
+                        fila = new Object[]{id, nombre_unidad, tipo, no_tropas, fecha_creacion, consultaNombreCuartel_NombreUnidad("cuartel", id_cuartel)};
+                        return fila;
+                    }
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+
+            } else {
+
+                if (tabla.equalsIgnoreCase("soldado")) {
+
+                    String sql = "SELECT * FROM soldado";
+                    try {
+                        PreparedStatement sentencia = null;
+
+                        sentencia = conexion.prepareStatement(sql);
+                        ResultSet resultado = sentencia.executeQuery();
+                        while (resultado.next()) {
+
+                            int id = resultado.getInt("id");
+                            String nombre = resultado.getString("nombre");
+                            String apellidos = resultado.getString("apellidos");
+                            String rango = resultado.getString("rango");
+                            String lugar_nacimiento = resultado.getString("lugar_nacimiento");
+                            Date fecha_nacimiento = resultado.getDate("fecha_nacimiento");
+                            int id_unidad = resultado.getInt("id_unidad");
+
+                            fila = new Object[]{id, nombre, apellidos, rango, fecha_nacimiento, lugar_nacimiento, consultaNombreCuartel_NombreUnidad("unidad", id_unidad)};
+                            return fila;
+
+                            //TODO revisar, ultimo hecho el 7/12/2015
+                        }
+
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
             }
         }
+
+        return null;
+    }
+
+    public void buscarSoldado(ArrayList<Soldado> listaSoldado, String soldado, DefaultListModel<Soldado> def) {
+
+        //TODO
     }
 
     public void buscarUnidad(ArrayList<Unidad> listaUnidades, String unidad, DefaultListModel<Unidad> def) {

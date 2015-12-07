@@ -12,7 +12,7 @@
     <colspec value="left:5px:noGrow"/>
     <colspec value="fill:5px:noGrow"/>
     <constraints>
-      <xy x="20" y="20" width="456" height="450"/>
+      <xy x="20" y="20" width="506" height="477"/>
     </constraints>
     <properties>
       <opaque value="true"/>
@@ -44,6 +44,8 @@
             <rowspec value="top:4dlu:noGrow"/>
             <rowspec value="center:20px:noGrow"/>
             <rowspec value="top:4dlu:noGrow"/>
+            <rowspec value="top:20px:noGrow"/>
+            <rowspec value="center:4dlu:noGrow"/>
             <rowspec value="center:200px:noGrow"/>
             <rowspec value="top:4dlu:noGrow"/>
             <rowspec value="center:max(d;4px):noGrow"/>
@@ -54,7 +56,7 @@
             <colspec value="fill:80px:noGrow"/>
             <colspec value="fill:80px:noGrow"/>
             <colspec value="left:5px:noGrow"/>
-            <colspec value="fill:100px:noGrow"/>
+            <colspec value="fill:150px:noGrow"/>
             <colspec value="left:5dlu:noGrow"/>
             <colspec value="fill:max(d;4px):noGrow"/>
             <constraints>
@@ -182,26 +184,6 @@
                   <text value="Eliminar"/>
                 </properties>
               </component>
-              <component id="e9d57" class="javax.swing.JLabel">
-                <constraints>
-                  <grid row="10" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                  <forms/>
-                </constraints>
-                <properties>
-                  <text value="Busqueda"/>
-                </properties>
-              </component>
-              <component id="ab18b" class="javax.swing.JTextField" binding="txtBusquedacuartel">
-                <constraints>
-                  <grid row="12" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                    <preferred-size width="150" height="-1"/>
-                  </grid>
-                  <forms defaultalign-horz="false"/>
-                </constraints>
-                <properties>
-                  <text value=""/>
-                </properties>
-              </component>
               <component id="b956d" class="javax.swing.JComboBox" binding="cbActividad">
                 <constraints>
                   <grid row="12" column="4" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
@@ -211,7 +193,7 @@
               </component>
               <scrollpane id="a2797">
                 <constraints>
-                  <grid row="14" column="2" row-span="1" col-span="6" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                  <grid row="16" column="2" row-span="1" col-span="6" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                   <forms defaultalign-horz="false" defaultalign-vert="false"/>
                 </constraints>
                 <properties/>
@@ -223,6 +205,33 @@
                   </component>
                 </children>
               </scrollpane>
+              <component id="e9d57" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="14" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <forms/>
+                </constraints>
+                <properties>
+                  <text value="Busqueda:"/>
+                </properties>
+              </component>
+              <component id="ab18b" class="javax.swing.JTextField" binding="txtBusquedacuartel">
+                <constraints>
+                  <grid row="14" column="4" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="-1"/>
+                  </grid>
+                  <forms defaultalign-horz="false"/>
+                </constraints>
+                <properties>
+                  <text value=""/>
+                </properties>
+              </component>
+              <component id="f86fa" class="javax.swing.JComboBox" binding="cbTablaCuartel">
+                <constraints>
+                  <grid row="14" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                  <forms/>
+                </constraints>
+                <properties/>
+              </component>
             </children>
           </grid>
           <grid id="4fde3" layout-manager="FormLayout">
@@ -240,6 +249,8 @@
             <rowspec value="top:4dlu:noGrow"/>
             <rowspec value="center:20px:noGrow"/>
             <rowspec value="top:4dlu:noGrow"/>
+            <rowspec value="top:20px:noGrow"/>
+            <rowspec value="center:4dlu:noGrow"/>
             <rowspec value="center:200px:noGrow"/>
             <rowspec value="top:4dlu:noGrow"/>
             <rowspec value="center:max(d;4px):noGrow"/>
@@ -249,7 +260,7 @@
             <colspec value="left:5px:noGrow"/>
             <colspec value="fill:160px:noGrow"/>
             <colspec value="left:5px:noGrow"/>
-            <colspec value="fill:100px:noGrow"/>
+            <colspec value="fill:150px:noGrow"/>
             <colspec value="left:4dlu:noGrow"/>
             <colspec value="fill:max(d;4px):noGrow"/>
             <constraints>
@@ -341,26 +352,6 @@
                   <forms/>
                 </constraints>
               </component>
-              <component id="17f75" class="javax.swing.JTextField" binding="txtBusquedaunidad">
-                <constraints>
-                  <grid row="12" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                    <preferred-size width="150" height="-1"/>
-                  </grid>
-                  <forms defaultalign-horz="false"/>
-                </constraints>
-                <properties>
-                  <text value=""/>
-                </properties>
-              </component>
-              <component id="b2a25" class="javax.swing.JLabel">
-                <constraints>
-                  <grid row="10" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                  <forms/>
-                </constraints>
-                <properties>
-                  <text value="Busqueda"/>
-                </properties>
-              </component>
               <component id="4ad58" class="javax.swing.JButton" binding="btEliminarunidad">
                 <constraints>
                   <grid row="7" column="6" row-span="2" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
@@ -390,7 +381,7 @@
               </component>
               <scrollpane id="8ed99">
                 <constraints>
-                  <grid row="14" column="2" row-span="1" col-span="5" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                  <grid row="16" column="2" row-span="1" col-span="5" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                   <forms defaultalign-horz="false" defaultalign-vert="false"/>
                 </constraints>
                 <properties/>
@@ -402,6 +393,39 @@
                   </component>
                 </children>
               </scrollpane>
+              <component id="b2a25" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="14" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <forms/>
+                </constraints>
+                <properties>
+                  <text value="Busqueda:"/>
+                </properties>
+              </component>
+              <hspacer id="c0bcd">
+                <constraints>
+                  <grid row="12" column="2" row-span="1" col-span="5" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <forms defaultalign-horz="false"/>
+                </constraints>
+              </hspacer>
+              <component id="17f75" class="javax.swing.JTextField" binding="txtBusquedaunidad">
+                <constraints>
+                  <grid row="14" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="-1"/>
+                  </grid>
+                  <forms defaultalign-horz="false"/>
+                </constraints>
+                <properties>
+                  <text value=""/>
+                </properties>
+              </component>
+              <component id="5f9a3" class="javax.swing.JComboBox" binding="cbTablaUnidad">
+                <constraints>
+                  <grid row="14" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                  <forms/>
+                </constraints>
+                <properties/>
+              </component>
             </children>
           </grid>
           <grid id="6a40e" layout-manager="FormLayout">
@@ -419,6 +443,8 @@
             <rowspec value="top:4dlu:noGrow"/>
             <rowspec value="center:20px:noGrow"/>
             <rowspec value="top:4dlu:noGrow"/>
+            <rowspec value="top:20px:noGrow"/>
+            <rowspec value="center:4dlu:noGrow"/>
             <rowspec value="center:200px:grow"/>
             <rowspec value="top:4dlu:noGrow"/>
             <rowspec value="center:max(d;4px):noGrow"/>
@@ -428,7 +454,7 @@
             <colspec value="left:5px:noGrow"/>
             <colspec value="fill:160px:noGrow"/>
             <colspec value="left:5px:noGrow"/>
-            <colspec value="fill:100px:noGrow"/>
+            <colspec value="fill:150px:noGrow"/>
             <colspec value="left:4dlu:noGrow"/>
             <colspec value="fill:max(d;4px):noGrow"/>
             <constraints>
@@ -565,9 +591,23 @@
                   <text value="Eliminar"/>
                 </properties>
               </component>
+              <scrollpane id="a7010">
+                <constraints>
+                  <grid row="16" column="2" row-span="1" col-span="5" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                  <forms defaultalign-horz="false" defaultalign-vert="false"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="11b3" class="javax.swing.JTable" binding="tSoldado">
+                    <constraints/>
+                    <properties/>
+                  </component>
+                </children>
+              </scrollpane>
               <component id="8cbcf" class="javax.swing.JLabel">
                 <constraints>
-                  <grid row="10" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="14" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                   <forms/>
                 </constraints>
                 <properties>
@@ -576,27 +616,20 @@
               </component>
               <component id="d2eda" class="javax.swing.JTextField" binding="txtBusquedasoldado">
                 <constraints>
-                  <grid row="12" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                  <grid row="14" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
                   </grid>
                   <forms defaultalign-horz="false"/>
                 </constraints>
                 <properties/>
               </component>
-              <scrollpane id="a7010" binding="tSoldado">
+              <component id="d4e1f" class="javax.swing.JComboBox" binding="cbTablaSoldado">
                 <constraints>
-                  <grid row="14" column="2" row-span="1" col-span="5" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                  <forms defaultalign-horz="false" defaultalign-vert="false"/>
+                  <grid row="14" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                  <forms/>
                 </constraints>
                 <properties/>
-                <border type="none"/>
-                <children>
-                  <component id="11b3" class="javax.swing.JTable" binding="table3" default-binding="true">
-                    <constraints/>
-                    <properties/>
-                  </component>
-                </children>
-              </scrollpane>
+              </component>
             </children>
           </grid>
         </children>

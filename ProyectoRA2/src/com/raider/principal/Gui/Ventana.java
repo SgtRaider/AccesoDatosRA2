@@ -46,11 +46,12 @@ public class Ventana {
     public JTextField txtBusquedacuartel;
     public JDateChooser dcFechanacimiento;
     public JComboBox cbActividad;
-    private JTable tablaCuartel;
-    private JTable tCuartel;
-    private JTable tUnidad;
-    private JTable table3;
-    private JScrollPane tSoldado;
+    public JTable tCuartel;
+    public JTable tUnidad;
+    public JTable tSoldado;
+    public JComboBox cbTablaSoldado;
+    public JComboBox cbTablaUnidad;
+    public JComboBox cbTablaCuartel;
 
     public static JMenuBar mbVentana;
     public static JMenu mArchivo;

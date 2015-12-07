@@ -17,6 +17,7 @@ import javax.swing.event.ChangeListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.awt.event.ActionEvent;
@@ -36,7 +37,7 @@ import java.util.ArrayList;;
  * Created by raider on 5/11/15.
  * Con colaboracion de Daniel Cano y Diego Ordoñez
  */
-public class Projectcontroller implements ChangeListener, ActionListener, KeyListener {
+public class Projectcontroller implements ListSelectionListener, ChangeListener, ActionListener, KeyListener {
 
     //Objetos para cada clase usada
 
@@ -45,6 +46,10 @@ public class Projectcontroller implements ChangeListener, ActionListener, KeyLis
     Cuartel c;
     Unidad u;
     Soldado s;
+
+    private DefaultTableModel defmodelcuartel;
+    private DefaultTableModel defmodelunidad;
+    private DefaultTableModel defmodelsoldado;
 
     public DateFormat format;
     // Constructor
@@ -64,13 +69,15 @@ public class Projectcontroller implements ChangeListener, ActionListener, KeyLis
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-
+        generarTablas();
         format = new SimpleDateFormat("EEE MMM dd hh:mm:ss zzz yyyy");
+        DefaultTableModel defmodelcuartel;
+        DefaultTableModel defmodelunidad;
+        DefaultTableModel defmodelsoldado;
 
         // Asignación de Listeners
 
         v.tabbedPane1.addChangeListener(this);
-
         v.btGuardarsoldado.addActionListener(this);
         v.btGuardarunidad.addActionListener(this);
         v.btGuardarcuartel.addActionListener(this);
@@ -80,6 +87,28 @@ public class Projectcontroller implements ChangeListener, ActionListener, KeyLis
         v.btEliminarcuartel.addActionListener(this);
         v.btEliminarsoldado.addActionListener(this);
         v.btEliminarunidad.addActionListener(this);
+
+        v.tCuartel.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+
+                v.tCuartel.getValueAt(v.tCuartel.getSelectedRow(), 0);
+            }
+        });
+
+        v.tUnidad.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+
+            }
+        });
+
+        v.tSoldado.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+
+            }
+        });
 
         v.miGuardar.addActionListener(this);
 
@@ -111,6 +140,37 @@ public class Projectcontroller implements ChangeListener, ActionListener, KeyLis
                 }
             }
         }
+    }
+
+    public void generarTablas() {
+
+        defmodelcuartel = new DefaultTableModel();
+        v.tCuartel.setModel(defmodelcuartel);
+        defmodelcuartel.addColumn("ID");
+        defmodelcuartel.addColumn("Nombre Cuartel");
+        defmodelcuartel.addColumn("Localidad");
+        defmodelcuartel.addColumn("Latitud");
+        defmodelcuartel.addColumn("Longitud");
+        defmodelcuartel.addColumn("Actividad");
+
+        defmodelunidad = new DefaultTableModel();
+        v.tUnidad.setModel(defmodelunidad);
+        defmodelunidad.addColumn("ID");
+        defmodelunidad.addColumn("Nombre Unidad");
+        defmodelunidad.addColumn("Tipo");
+        defmodelunidad.addColumn("No Tropas");
+        defmodelunidad.addColumn("Fecha Creacion");
+        defmodelunidad.addColumn("Cuartel");
+
+        defmodelsoldado = new DefaultTableModel();
+        v.tSoldado.setModel(defmodelsoldado);
+        defmodelsoldado.addColumn("ID");
+        defmodelsoldado.addColumn("Nombre");
+        defmodelsoldado.addColumn("Apellidos");
+        defmodelsoldado.addColumn("Rango");
+        defmodelsoldado.addColumn("Fecha Nacimiento");
+        defmodelsoldado.addColumn("Lugar Nacimiento");
+        defmodelsoldado.addColumn("Unidad");
     }
 
     public void visibilidadUsuario() {
@@ -227,6 +287,20 @@ public class Projectcontroller implements ChangeListener, ActionListener, KeyLis
         v.cbRango.addItem("General de Division");
         v.cbRango.addItem("Teniente General");
         v.cbRango.addItem("General de Ejército");
+
+        v.cbTablaCuartel.addItem("nombre_cuartel");
+        v.cbTablaCuartel.addItem("localidad");
+        v.cbTablaCuartel.addItem("longitud");
+        v.cbTablaCuartel.addItem("latitud");
+
+        v.cbTablaUnidad.addItem("nombre_unidad");
+        v.cbTablaUnidad.addItem("tipo");
+        v.cbTablaUnidad.addItem("no_tropas");
+
+        v.cbTablaSoldado.addItem("nombre");
+        v.cbTablaSoldado.addItem("apellidos");
+        v.cbTablaSoldado.addItem("rango");
+        v.cbTablaSoldado.addItem("lugar_nacimiento");
     }
 
     // Metodo que carga los datos de un archivo XML en los ARRAYLIST y posteriormente los lista
@@ -658,5 +732,10 @@ public class Projectcontroller implements ChangeListener, ActionListener, KeyLis
                 controlBuscarSoldado();
                 break;
         }
+    }
+
+    @Override
+    public void valueChanged(ListSelectionEvent e) {
+
     }
 }

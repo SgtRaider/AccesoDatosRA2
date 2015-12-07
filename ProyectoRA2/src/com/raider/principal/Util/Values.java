@@ -14,7 +14,7 @@ public class Values {
     public static boolean modifyConstant = false;
     public static String PATHmod = "";
     public static String PATH = System.getProperty("user.home") + File.separator + "ArchivoEjercito.dat";
-    public static int posCuarteles;
-    public static int posUnidades;
-    public static int posSoldados;
+    public static int idCuartel;
+    public static int idUnidad;
+    public static int idSoldado;
 }

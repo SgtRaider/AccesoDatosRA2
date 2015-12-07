@@ -22,6 +22,26 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
+  <component name="DockManager">
+    <window id="2">
+      <content type="file-editors">
+        <state>
+          <leaf>
+            <file leaf-file-name="Projectcontroller.java" pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/src/com/raider/principal/controller/Projectcontroller.java">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state vertical-scroll-proportion="0.04731861">
+                    <caret line="138" column="41" selection-start-line="138" selection-start-column="41" selection-end-line="138" selection-end-column="41" />
+                    <folding />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
+  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="ProyectoRA1" />
@@ -31,30 +51,44 @@
       <file leaf-file-name="Projectmodel.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/raider/principal/model/Projectmodel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8208469">
-              <caret line="203" column="43" selection-start-line="203" selection-start-column="43" selection-end-line="203" selection-end-column="43" />
+            <state vertical-scroll-proportion="0.75641024">
+              <caret line="344" column="59" selection-start-line="344" selection-start-column="59" selection-end-line="344" selection-end-column="59" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <marker date="1449441727987" expanded="true" signature="1317:1412" placeholder="SELECT usuar..usuarios..." />
-                <marker date="1449441727987" expanded="true" signature="2606:2702" placeholder="INSERT INTO ..." />
-                <marker date="1449441727987" expanded="true" signature="3326:3424" placeholder="INSERT INTO ..." />
-                <marker date="1449441727987" expanded="true" signature="4185:4320" placeholder="INSERT INTO ..." />
-                <marker date="1449441727987" expanded="true" signature="5006:5070" placeholder="SELECT 'miss..." />
-                <marker date="1449441727987" expanded="true" signature="5738:5803" placeholder="SELECT id FR..cuartel..." />
-                <marker date="1449441727987" expanded="true" signature="6461:6519" placeholder="SELECT id FR..cuartel..." />
-                <marker date="1449441727987" expanded="true" signature="7177:7234" placeholder="SELECT id FR..unidad..." />
+                <marker date="1449453633927" expanded="true" signature="1283:1378" placeholder="SELECT usuar..usuarios..." />
+                <marker date="1449453633927" expanded="true" signature="2572:2668" placeholder="INSERT INTO ..." />
+                <marker date="1449453633927" expanded="true" signature="3292:3390" placeholder="INSERT INTO ..." />
+                <marker date="1449453633927" expanded="true" signature="4151:4286" placeholder="INSERT INTO ..." />
+                <marker date="1449453633927" expanded="true" signature="4972:5036" placeholder="SELECT missi..missingValue..." />
+                <marker date="1449453633927" expanded="true" signature="5665:5712" placeholder="SELECT missi..missingValue..." />
+                <marker date="1449453633927" expanded="true" signature="6289:6334" placeholder="SELECT nombr..cuartel..." />
+                <marker date="1449453633927" expanded="true" signature="7065:7130" placeholder="SELECT id FR..cuartel..." />
+                <marker date="1449453633927" expanded="true" signature="7788:7846" placeholder="SELECT id FR..unidad..." />
+                <marker date="1449453633927" expanded="true" signature="8504:8561" placeholder="SELECT id FR..soldado..." />
+                <marker date="1449453633927" expanded="true" signature="9276:9297" placeholder="SELECT * FRO..cuartel..." />
+                <marker date="1449453633927" expanded="true" signature="10339:10353" placeholder="SELECT * FRO..cuartel..." />
+                <marker date="1449453633927" expanded="true" signature="10339:10359" placeholder="SELECT * FRO..unidad..." />
+                <marker date="1449453633927" expanded="true" signature="11491:11505" placeholder="SELECT * FRO..unidad..." />
+                <marker date="1449453633927" expanded="true" signature="11491:11512" placeholder="SELECT * FRO..soldado..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Projectcontroller.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/raider/principal/controller/Projectcontroller.java">
+      <file leaf-file-name="Values.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/raider/principal/Util/Values.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="60" column="65" selection-start-line="60" selection-start-column="65" selection-end-line="60" selection-end-column="65" />
+              <caret line="18" column="31" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
               <folding />
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Ventana.form" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/raider/principal/Gui/Ventana.form">
+          <provider selected="true" editor-type-id="ui-designer">
+            <state />
           </provider>
         </entry>
       </file>
@@ -62,7 +96,7 @@
         <entry file="file://$PROJECT_DIR$/src/com/raider/principal/Gui/Ventana.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="67" column="18" selection-start-line="67" selection-start-column="18" selection-end-line="67" selection-end-column="18" />
+              <caret line="53" column="10" selection-start-line="53" selection-start-column="10" selection-end-line="53" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -94,12 +128,12 @@
         <option value="$PROJECT_DIR$/src/com/raider/principal/base/Cuartel.java" />
         <option value="$PROJECT_DIR$/src/com/raider/principal/Util/Constant.java" />
         <option value="$PROJECT_DIR$/src/com/raider/principal/Util/FolderFilter.java" />
-        <option value="$PROJECT_DIR$/src/com/raider/principal/Util/Values.java" />
         <option value="$PROJECT_DIR$/src/com/raider/principal/Gui/Login.form" />
         <option value="$PROJECT_DIR$/src/com/raider/principal/Gui/Login.java" />
         <option value="$PROJECT_DIR$/src/com/raider/principal/Gui/Ventana.java" />
-        <option value="$PROJECT_DIR$/src/com/raider/principal/Gui/Ventana.form" />
+        <option value="$PROJECT_DIR$/src/com/raider/principal/Util/Values.java" />
         <option value="$PROJECT_DIR$/src/com/raider/principal/controller/Projectcontroller.java" />
+        <option value="$PROJECT_DIR$/src/com/raider/principal/Gui/Ventana.form" />
         <option value="$PROJECT_DIR$/src/com/raider/principal/model/Projectmodel.java" />
       </list>
     </option>
@@ -112,9 +146,9 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="689" />
-    <option name="width" value="677" />
-    <option name="height" value="743" />
+    <option name="x" value="683" />
+    <option name="width" value="684" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -139,6 +173,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -187,6 +223,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="principal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Util" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -296,14 +336,30 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="principal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProyectoRA2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProyectoRA2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="out" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -312,12 +368,13 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="503" />
+    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="230" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
     <property name="recentsLimit" value="5" />
     <property name="dynamic.classpath" value="false" />
-    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW" value="false" />
+    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW" value="true" />
+    <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -444,7 +501,7 @@
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="ToolWindowManager">
-    <frame x="689" y="0" width="677" height="743" extended-state="0" />
+    <frame x="683" y="0" width="684" height="744" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -454,12 +511,11 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3504673" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3504673" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38269794" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.7653959" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32917318" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -469,6 +525,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32917318" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -545,14 +602,21 @@
           <caret line="73" column="63" selection-start-line="73" selection-start-column="31" selection-end-line="73" selection-end-column="63" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1449441727987" expanded="true" signature="1317:1412" placeholder="SELECT usuar..usuarios..." />
-            <marker date="1449441727987" expanded="true" signature="2606:2702" placeholder="INSERT INTO ..." />
-            <marker date="1449441727987" expanded="true" signature="3326:3424" placeholder="INSERT INTO ..." />
-            <marker date="1449441727987" expanded="true" signature="4185:4320" placeholder="INSERT INTO ..." />
-            <marker date="1449441727987" expanded="true" signature="5006:5070" placeholder="SELECT 'miss..." />
-            <marker date="1449441727987" expanded="true" signature="5738:5803" placeholder="SELECT id FR..cuartel..." />
-            <marker date="1449441727987" expanded="true" signature="6461:6519" placeholder="SELECT id FR..cuartel..." />
-            <marker date="1449441727987" expanded="true" signature="7177:7234" placeholder="SELECT id FR..unidad..." />
+            <marker date="1449453633927" expanded="true" signature="1283:1378" placeholder="SELECT usuar..usuarios..." />
+            <marker date="1449453633927" expanded="true" signature="2572:2668" placeholder="INSERT INTO ..." />
+            <marker date="1449453633927" expanded="true" signature="3292:3390" placeholder="INSERT INTO ..." />
+            <marker date="1449453633927" expanded="true" signature="4151:4286" placeholder="INSERT INTO ..." />
+            <marker date="1449453633927" expanded="true" signature="4972:5036" placeholder="SELECT missi..missingValue..." />
+            <marker date="1449453633927" expanded="true" signature="5665:5712" placeholder="SELECT missi..missingValue..." />
+            <marker date="1449453633927" expanded="true" signature="6289:6334" placeholder="SELECT nombr..cuartel..." />
+            <marker date="1449453633927" expanded="true" signature="7065:7130" placeholder="SELECT id FR..cuartel..." />
+            <marker date="1449453633927" expanded="true" signature="7788:7846" placeholder="SELECT id FR..unidad..." />
+            <marker date="1449453633927" expanded="true" signature="8504:8561" placeholder="SELECT id FR..soldado..." />
+            <marker date="1449453633927" expanded="true" signature="9276:9297" placeholder="SELECT * FRO..cuartel..." />
+            <marker date="1449453633927" expanded="true" signature="10339:10353" placeholder="SELECT * FRO..cuartel..." />
+            <marker date="1449453633927" expanded="true" signature="10339:10359" placeholder="SELECT * FRO..unidad..." />
+            <marker date="1449453633927" expanded="true" signature="11491:11505" placeholder="SELECT * FRO..unidad..." />
+            <marker date="1449453633927" expanded="true" signature="11491:11512" placeholder="SELECT * FRO..soldado..." />
           </folding>
         </state>
       </provider>
@@ -594,14 +658,21 @@
           <caret line="219" column="0" selection-start-line="219" selection-start-column="0" selection-end-line="219" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1449441727987" expanded="true" signature="1317:1412" placeholder="SELECT usuar..usuarios..." />
-            <marker date="1449441727987" expanded="true" signature="2606:2702" placeholder="INSERT INTO ..." />
-            <marker date="1449441727987" expanded="true" signature="3326:3424" placeholder="INSERT INTO ..." />
-            <marker date="1449441727987" expanded="true" signature="4185:4320" placeholder="INSERT INTO ..." />
-            <marker date="1449441727987" expanded="true" signature="5006:5070" placeholder="SELECT 'miss..." />
-            <marker date="1449441727987" expanded="true" signature="5738:5803" placeholder="SELECT id FR..cuartel..." />
-            <marker date="1449441727987" expanded="true" signature="6461:6519" placeholder="SELECT id FR..cuartel..." />
-            <marker date="1449441727987" expanded="true" signature="7177:7234" placeholder="SELECT id FR..unidad..." />
+            <marker date="1449453633927" expanded="true" signature="1283:1378" placeholder="SELECT usuar..usuarios..." />
+            <marker date="1449453633927" expanded="true" signature="2572:2668" placeholder="INSERT INTO ..." />
+            <marker date="1449453633927" expanded="true" signature="3292:3390" placeholder="INSERT INTO ..." />
+            <marker date="1449453633927" expanded="true" signature="4151:4286" placeholder="INSERT INTO ..." />
+            <marker date="1449453633927" expanded="true" signature="4972:5036" placeholder="SELECT missi..missingValue..." />
+            <marker date="1449453633927" expanded="true" signature="5665:5712" placeholder="SELECT missi..missingValue..." />
+            <marker date="1449453633927" expanded="true" signature="6289:6334" placeholder="SELECT nombr..cuartel..." />
+            <marker date="1449453633927" expanded="true" signature="7065:7130" placeholder="SELECT id FR..cuartel..." />
+            <marker date="1449453633927" expanded="true" signature="7788:7846" placeholder="SELECT id FR..unidad..." />
+            <marker date="1449453633927" expanded="true" signature="8504:8561" placeholder="SELECT id FR..soldado..." />
+            <marker date="1449453633927" expanded="true" signature="9276:9297" placeholder="SELECT * FRO..cuartel..." />
+            <marker date="1449453633927" expanded="true" signature="10339:10353" placeholder="SELECT * FRO..cuartel..." />
+            <marker date="1449453633927" expanded="true" signature="10339:10359" placeholder="SELECT * FRO..unidad..." />
+            <marker date="1449453633927" expanded="true" signature="11491:11505" placeholder="SELECT * FRO..unidad..." />
+            <marker date="1449453633927" expanded="true" signature="11491:11512" placeholder="SELECT * FRO..soldado..." />
           </folding>
         </state>
       </provider>
@@ -667,14 +738,21 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1449441727987" expanded="true" signature="1317:1412" placeholder="SELECT usuar..usuarios..." />
-            <marker date="1449441727987" expanded="true" signature="2606:2702" placeholder="INSERT INTO ..." />
-            <marker date="1449441727987" expanded="true" signature="3326:3424" placeholder="INSERT INTO ..." />
-            <marker date="1449441727987" expanded="true" signature="4185:4320" placeholder="INSERT INTO ..." />
-            <marker date="1449441727987" expanded="true" signature="5006:5070" placeholder="SELECT 'miss..." />
-            <marker date="1449441727987" expanded="true" signature="5738:5803" placeholder="SELECT id FR..cuartel..." />
-            <marker date="1449441727987" expanded="true" signature="6461:6519" placeholder="SELECT id FR..cuartel..." />
-            <marker date="1449441727987" expanded="true" signature="7177:7234" placeholder="SELECT id FR..unidad..." />
+            <marker date="1449453633927" expanded="true" signature="1283:1378" placeholder="SELECT usuar..usuarios..." />
+            <marker date="1449453633927" expanded="true" signature="2572:2668" placeholder="INSERT INTO ..." />
+            <marker date="1449453633927" expanded="true" signature="3292:3390" placeholder="INSERT INTO ..." />
+            <marker date="1449453633927" expanded="true" signature="4151:4286" placeholder="INSERT INTO ..." />
+            <marker date="1449453633927" expanded="true" signature="4972:5036" placeholder="SELECT missi..missingValue..." />
+            <marker date="1449453633927" expanded="true" signature="5665:5712" placeholder="SELECT missi..missingValue..." />
+            <marker date="1449453633927" expanded="true" signature="6289:6334" placeholder="SELECT nombr..cuartel..." />
+            <marker date="1449453633927" expanded="true" signature="7065:7130" placeholder="SELECT id FR..cuartel..." />
+            <marker date="1449453633927" expanded="true" signature="7788:7846" placeholder="SELECT id FR..unidad..." />
+            <marker date="1449453633927" expanded="true" signature="8504:8561" placeholder="SELECT id FR..soldado..." />
+            <marker date="1449453633927" expanded="true" signature="9276:9297" placeholder="SELECT * FRO..cuartel..." />
+            <marker date="1449453633927" expanded="true" signature="10339:10353" placeholder="SELECT * FRO..cuartel..." />
+            <marker date="1449453633927" expanded="true" signature="10339:10359" placeholder="SELECT * FRO..unidad..." />
+            <marker date="1449453633927" expanded="true" signature="11491:11505" placeholder="SELECT * FRO..unidad..." />
+            <marker date="1449453633927" expanded="true" signature="11491:11512" placeholder="SELECT * FRO..soldado..." />
           </folding>
         </state>
       </provider>
@@ -714,14 +792,21 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1449441727987" expanded="true" signature="1317:1412" placeholder="SELECT usuar..usuarios..." />
-            <marker date="1449441727987" expanded="true" signature="2606:2702" placeholder="INSERT INTO ..." />
-            <marker date="1449441727987" expanded="true" signature="3326:3424" placeholder="INSERT INTO ..." />
-            <marker date="1449441727987" expanded="true" signature="4185:4320" placeholder="INSERT INTO ..." />
-            <marker date="1449441727987" expanded="true" signature="5006:5070" placeholder="SELECT 'miss..." />
-            <marker date="1449441727987" expanded="true" signature="5738:5803" placeholder="SELECT id FR..cuartel..." />
-            <marker date="1449441727987" expanded="true" signature="6461:6519" placeholder="SELECT id FR..cuartel..." />
-            <marker date="1449441727987" expanded="true" signature="7177:7234" placeholder="SELECT id FR..unidad..." />
+            <marker date="1449453633927" expanded="true" signature="1283:1378" placeholder="SELECT usuar..usuarios..." />
+            <marker date="1449453633927" expanded="true" signature="2572:2668" placeholder="INSERT INTO ..." />
+            <marker date="1449453633927" expanded="true" signature="3292:3390" placeholder="INSERT INTO ..." />
+            <marker date="1449453633927" expanded="true" signature="4151:4286" placeholder="INSERT INTO ..." />
+            <marker date="1449453633927" expanded="true" signature="4972:5036" placeholder="SELECT missi..missingValue..." />
+            <marker date="1449453633927" expanded="true" signature="5665:5712" placeholder="SELECT missi..missingValue..." />
+            <marker date="1449453633927" expanded="true" signature="6289:6334" placeholder="SELECT nombr..cuartel..." />
+            <marker date="1449453633927" expanded="true" signature="7065:7130" placeholder="SELECT id FR..cuartel..." />
+            <marker date="1449453633927" expanded="true" signature="7788:7846" placeholder="SELECT id FR..unidad..." />
+            <marker date="1449453633927" expanded="true" signature="8504:8561" placeholder="SELECT id FR..soldado..." />
+            <marker date="1449453633927" expanded="true" signature="9276:9297" placeholder="SELECT * FRO..cuartel..." />
+            <marker date="1449453633927" expanded="true" signature="10339:10353" placeholder="SELECT * FRO..cuartel..." />
+            <marker date="1449453633927" expanded="true" signature="10339:10359" placeholder="SELECT * FRO..unidad..." />
+            <marker date="1449453633927" expanded="true" signature="11491:11505" placeholder="SELECT * FRO..unidad..." />
+            <marker date="1449453633927" expanded="true" signature="11491:11512" placeholder="SELECT * FRO..soldado..." />
           </folding>
         </state>
       </provider>
@@ -763,14 +848,21 @@
           <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1449441727987" expanded="true" signature="1317:1412" placeholder="SELECT usuar..usuarios..." />
-            <marker date="1449441727987" expanded="true" signature="2606:2702" placeholder="INSERT INTO ..." />
-            <marker date="1449441727987" expanded="true" signature="3326:3424" placeholder="INSERT INTO ..." />
-            <marker date="1449441727987" expanded="true" signature="4185:4320" placeholder="INSERT INTO ..." />
-            <marker date="1449441727987" expanded="true" signature="5006:5070" placeholder="SELECT 'miss..." />
-            <marker date="1449441727987" expanded="true" signature="5738:5803" placeholder="SELECT id FR..cuartel..." />
-            <marker date="1449441727987" expanded="true" signature="6461:6519" placeholder="SELECT id FR..cuartel..." />
-            <marker date="1449441727987" expanded="true" signature="7177:7234" placeholder="SELECT id FR..unidad..." />
+            <marker date="1449453633927" expanded="true" signature="1283:1378" placeholder="SELECT usuar..usuarios..." />
+            <marker date="1449453633927" expanded="true" signature="2572:2668" placeholder="INSERT INTO ..." />
+            <marker date="1449453633927" expanded="true" signature="3292:3390" placeholder="INSERT INTO ..." />
+            <marker date="1449453633927" expanded="true" signature="4151:4286" placeholder="INSERT INTO ..." />
+            <marker date="1449453633927" expanded="true" signature="4972:5036" placeholder="SELECT missi..missingValue..." />
+            <marker date="1449453633927" expanded="true" signature="5665:5712" placeholder="SELECT missi..missingValue..." />
+            <marker date="1449453633927" expanded="true" signature="6289:6334" placeholder="SELECT nombr..cuartel..." />
+            <marker date="1449453633927" expanded="true" signature="7065:7130" placeholder="SELECT id FR..cuartel..." />
+            <marker date="1449453633927" expanded="true" signature="7788:7846" placeholder="SELECT id FR..unidad..." />
+            <marker date="1449453633927" expanded="true" signature="8504:8561" placeholder="SELECT id FR..soldado..." />
+            <marker date="1449453633927" expanded="true" signature="9276:9297" placeholder="SELECT * FRO..cuartel..." />
+            <marker date="1449453633927" expanded="true" signature="10339:10353" placeholder="SELECT * FRO..cuartel..." />
+            <marker date="1449453633927" expanded="true" signature="10339:10359" placeholder="SELECT * FRO..unidad..." />
+            <marker date="1449453633927" expanded="true" signature="11491:11505" placeholder="SELECT * FRO..unidad..." />
+            <marker date="1449453633927" expanded="true" signature="11491:11512" placeholder="SELECT * FRO..soldado..." />
           </folding>
         </state>
       </provider>
@@ -874,14 +966,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/raider/principal/Util/Values.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="80" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="80" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/raider/principal/Util/FolderFilter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -926,6 +1010,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/raider/principal/Util/Values.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="31" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/raider/principal/Gui/Ventana.form">
       <provider selected="true" editor-type-id="ui-designer">
         <state />
@@ -939,34 +1031,41 @@
     <entry file="file://$PROJECT_DIR$/src/com/raider/principal/Gui/Ventana.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="67" column="18" selection-start-line="67" selection-start-column="18" selection-end-line="67" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/raider/principal/controller/Projectcontroller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="60" column="65" selection-start-line="60" selection-start-column="65" selection-end-line="60" selection-end-column="65" />
+          <caret line="53" column="10" selection-start-line="53" selection-start-column="10" selection-end-line="53" selection-end-column="10" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/raider/principal/model/Projectmodel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8208469">
-          <caret line="203" column="43" selection-start-line="203" selection-start-column="43" selection-end-line="203" selection-end-column="43" />
+        <state vertical-scroll-proportion="0.75641024">
+          <caret line="344" column="59" selection-start-line="344" selection-start-column="59" selection-end-line="344" selection-end-column="59" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1449441727987" expanded="true" signature="1317:1412" placeholder="SELECT usuar..usuarios..." />
-            <marker date="1449441727987" expanded="true" signature="2606:2702" placeholder="INSERT INTO ..." />
-            <marker date="1449441727987" expanded="true" signature="3326:3424" placeholder="INSERT INTO ..." />
-            <marker date="1449441727987" expanded="true" signature="4185:4320" placeholder="INSERT INTO ..." />
-            <marker date="1449441727987" expanded="true" signature="5006:5070" placeholder="SELECT 'miss..." />
-            <marker date="1449441727987" expanded="true" signature="5738:5803" placeholder="SELECT id FR..cuartel..." />
-            <marker date="1449441727987" expanded="true" signature="6461:6519" placeholder="SELECT id FR..cuartel..." />
-            <marker date="1449441727987" expanded="true" signature="7177:7234" placeholder="SELECT id FR..unidad..." />
+            <marker date="1449453633927" expanded="true" signature="1283:1378" placeholder="SELECT usuar..usuarios..." />
+            <marker date="1449453633927" expanded="true" signature="2572:2668" placeholder="INSERT INTO ..." />
+            <marker date="1449453633927" expanded="true" signature="3292:3390" placeholder="INSERT INTO ..." />
+            <marker date="1449453633927" expanded="true" signature="4151:4286" placeholder="INSERT INTO ..." />
+            <marker date="1449453633927" expanded="true" signature="4972:5036" placeholder="SELECT missi..missingValue..." />
+            <marker date="1449453633927" expanded="true" signature="5665:5712" placeholder="SELECT missi..missingValue..." />
+            <marker date="1449453633927" expanded="true" signature="6289:6334" placeholder="SELECT nombr..cuartel..." />
+            <marker date="1449453633927" expanded="true" signature="7065:7130" placeholder="SELECT id FR..cuartel..." />
+            <marker date="1449453633927" expanded="true" signature="7788:7846" placeholder="SELECT id FR..unidad..." />
+            <marker date="1449453633927" expanded="true" signature="8504:8561" placeholder="SELECT id FR..soldado..." />
+            <marker date="1449453633927" expanded="true" signature="9276:9297" placeholder="SELECT * FRO..cuartel..." />
+            <marker date="1449453633927" expanded="true" signature="10339:10353" placeholder="SELECT * FRO..cuartel..." />
+            <marker date="1449453633927" expanded="true" signature="10339:10359" placeholder="SELECT * FRO..unidad..." />
+            <marker date="1449453633927" expanded="true" signature="11491:11505" placeholder="SELECT * FRO..unidad..." />
+            <marker date="1449453633927" expanded="true" signature="11491:11512" placeholder="SELECT * FRO..soldado..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/raider/principal/controller/Projectcontroller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.04731861">
+          <caret line="138" column="41" selection-start-line="138" selection-start-column="41" selection-end-line="138" selection-end-column="41" />
+          <folding />
         </state>
       </provider>
     </entry>
