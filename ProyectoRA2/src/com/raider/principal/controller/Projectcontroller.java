@@ -143,7 +143,7 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
 
         iniciarComboBox();
         listarCuartel();
-        Listado proceso = new Listado(Projectcontroller.this);
+        Listado proceso = new Listado(Projectcontroller.this, v);
         proceso.start();
     }
 
@@ -630,25 +630,52 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
         // Metodo que busca por nombre de cuartel y localidad, y posteriormente devuelve los resultados
         // en caso de vaciarse el campo de busqueda se vuelven a listar todos los datos
 
-        public void controlBuscarCuartel() {
+        public void controlBuscarCuartel(String busqueda) {
 
-            //TODO consulas busqueda cuartel
+            List<Object[]> list = pm.buscarCuartel(busqueda, (String) v.cbTablaCuartel.getSelectedItem());
+
+            if (list != null) {
+
+                defmodelcuartel.setNumRows(0);
+                for (int i = 0; i < list.size(); i++) {
+
+                    defmodelcuartel.addRow(list.get(i));
+                }
+            }
         }
 
         // Metodo que busca por nombre de unidad y tipo, y posteriormente devuelve los resultados
         // en caso de vaciarse el campo de busqueda se vuelven a listar todos los datos
 
-        public void controlBuscarUnidad() {
+        public void controlBuscarUnidad(String busqueda) {
 
-            //TODO consultas busqueda unidad
+            List<Object[]> list = pm.buscarUnidad(busqueda, (String) v.cbTablaUnidad.getSelectedItem());
+
+            if (list != null) {
+
+                defmodelunidad.setNumRows(0);
+                for (int i = 0; i < list.size(); i++) {
+
+                    defmodelunidad.addRow(list.get(i));
+                }
+            }
         }
 
         // Metodo que busca por nombre, apellidos, rango, unidad y lugar de nacimiento, y posteriormente devuelve los resultados
         // en caso de vaciarse el campo de busqueda se vuelven a listar todos los datos
 
-        public void controlBuscarSoldado() {
+        public void controlBuscarSoldado(String busqueda) {
 
-            //TODO consultas busqueda soldado
+            List<Object[]> list = pm.buscarSoldado(busqueda, (String) v.cbTablaSoldado.getSelectedItem());
+
+            if (list != null) {
+
+                defmodelsoldado.setNumRows(0);
+                for (int i = 0; i < list.size(); i++) {
+
+                    defmodelsoldado.addRow(list.get(i));
+                }
+            }
         }
 
     // Metodo que recoge los cambios de las pestañas, y ejecuta algunos de los metodos anteriores
@@ -744,15 +771,15 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
         switch (Values.tpConstant) {
 
             case 0:
-                controlBuscarCuartel();
+                controlBuscarCuartel(v.txtBusquedacuartel.getText());
                 break;
 
             case 1:
-                controlBuscarUnidad();
+                controlBuscarUnidad(v.txtBusquedaunidad.getText());
                 break;
 
             case 2:
-                controlBuscarSoldado();
+                controlBuscarSoldado(v.txtBusquedasoldado.getText());
                 break;
         }
     }

@@ -1,5 +1,6 @@
 package com.raider.principal.procesos;
 
+import com.raider.principal.Gui.Ventana;
 import com.raider.principal.Util.Values;
 import com.raider.principal.controller.Projectcontroller;
 import com.raider.principal.model.Projectmodel;
@@ -11,26 +12,37 @@ import java.sql.PreparedStatement;
  */
 public class Listado extends Thread {
 
-    Projectcontroller pc;
+    private Projectcontroller pc;
+    private Ventana v;
 
-    public Listado(Projectcontroller pc) {
+    public Listado(Projectcontroller pc, Ventana v) {
         this.pc = pc;
+        this.v = v;
     }
 
     public void run() {
 
         while (isAlive()) {
 
-            if(Values.tpConstant == 0) {
-                pc.listarCuartel();
+            if (v.txtBusquedacuartel.getText().isEmpty()) {
+
+                if (Values.tpConstant == 0) {
+                    pc.listarCuartel();
+                }
             }
 
-            if(Values.tpConstant == 1) {
-                pc.listarUnidad();
+            if (v.txtBusquedaunidad.getText().isEmpty()) {
+
+                if (Values.tpConstant == 1) {
+                    pc.listarUnidad();
+                }
             }
 
-            if(Values.tpConstant == 2) {
-                pc.listarSoldado();
+            if (v.txtBusquedasoldado.getText().isEmpty()) {
+
+                if(Values.tpConstant == 2) {
+                    pc.listarSoldado();
+                }
             }
 
             try {

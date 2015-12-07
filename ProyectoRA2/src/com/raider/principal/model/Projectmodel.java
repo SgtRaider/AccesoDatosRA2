@@ -569,116 +569,99 @@ public class Projectmodel {
         return soldado;
     }
 
-    public void buscarSoldado(ArrayList<Soldado> listaSoldado, String soldado, DefaultListModel<Soldado> def) {
+    public List<Object[]> buscarSoldado(String busqueda, String campo) {
 
-        //TODO
-    }
-
-    public void buscarUnidad(ArrayList<Unidad> listaUnidades, String unidad, DefaultListModel<Unidad> def) {
-
-        def.removeAllElements();
-        for (int i = 0; i < listaUnidades.size(); i++) {
-
-            if((listaUnidades.get(i).getCuartel().toLowerCase()).contains(unidad) || (listaUnidades.get(i).getTipo().toLowerCase()).contains(unidad)) {
-                def.addElement(listaUnidades.get(i));
-            }
-        }
-    }
-
-    public void buscarCuartel(ArrayList<Cuartel> listaCuarteles, String cuartel, DefaultListModel<Cuartel> def) {
-
-        def.removeAllElements();
-        for (int i = 0; i < listaCuarteles.size(); i++) {
-
-            if((listaCuarteles.get(i).getnCuartel().toLowerCase()).contains(cuartel) || (listaCuarteles.get(i).getLocalidad().toLowerCase()).contains(cuartel)) {
-                def.addElement(listaCuarteles.get(i));
-            }
-        }
-    }
-
-    // Metodo para guardar Archivo en una ruta fija
-
-    public void guardarArchivo(Object objeto) {
-
-        ObjectOutputStream serializador = null;
-
-        String ruta = "";
-
-        if(Values.PATHmod.isEmpty()) {
-            ruta = Values.PATH;
-        } else {
-
-            if (Values.PATHmod.isEmpty() == false) {
-                ruta = Values.PATHmod;
-            }
-        }
-
-
+        List<Object[]> list;
+        Object[] fila;
+        String sql = "SELECT * FROM soldado WHERE " + campo + " LIKE '%" + busqueda + "%'";
+        list = new ArrayList<>();
         try {
+            PreparedStatement sentencia = null;
 
-            serializador = new ObjectOutputStream(new FileOutputStream(ruta));
-            serializador.writeObject(objeto);
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
-        }
+            sentencia = conexion.prepareStatement(sql);
+            ResultSet resultado = sentencia.executeQuery();
+            while (resultado.next()) {
 
-        finally {
+                int id = resultado.getInt("id");
+                String nombre = resultado.getString("nombre");
+                String apellidos = resultado.getString("apellidos");
+                String rango = resultado.getString("rango");
+                String lugar_nacimiento = resultado.getString("lugar_nacimiento");
+                Date fecha_nacimiento = resultado.getDate("fecha_nacimiento");
+                int id_unidad = resultado.getInt("id_unidad");
 
-            if (serializador != null) {
-
-                try {
-
-                    serializador.close();
-                } catch (IOException ioe) {
-                    ioe.printStackTrace();
-                }
+                fila = new Object[]{id, nombre, apellidos, rango, fecha_nacimiento, lugar_nacimiento, consultaNombreCuartel_NombreUnidad("unidad", id_unidad)};
+                list.add(fila);
             }
+            return list;
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+
+        return list;
     }
 
-    // Metodo para guardar Archivo en una ruta seleccionada
+    public List<Object[]> buscarUnidad(String busqueda, String campo) {
 
-    public void guardarArchivo(String path, Object objeto) {
-
-
-        ObjectOutputStream serializador = null;
-
+        List<Object[]> list;
+        Object[] fila;
+        String sql = "SELECT * FROM unidad WHERE " + campo + " LIKE '%" + busqueda + "%'";
+        list = new ArrayList<>();
         try {
+            PreparedStatement sentencia = null;
 
-            serializador = new ObjectOutputStream(new FileOutputStream(path));
-            serializador.writeObject(objeto);
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
-        }
+            sentencia = conexion.prepareStatement(sql);
+            ResultSet resultado = sentencia.executeQuery();
+            while (resultado.next()) {
 
-        finally {
+                int id = resultado.getInt("id");
+                String nombre_unidad = resultado.getString("nombre_unidad");
+                String tipo = resultado.getString("tipo");
+                int no_tropas = resultado.getInt("no_tropas");
+                Date fecha_creacion = resultado.getDate("fecha_creacion");
+                int id_cuartel = resultado.getInt("id_cuartel");
 
-            if (serializador != null) {
-
-                try {
-
-                    serializador.close();
-                } catch (IOException ioe) {
-                    ioe.printStackTrace();
-                }
+                fila = new Object[]{id, nombre_unidad, tipo, no_tropas, fecha_creacion, consultaNombreCuartel_NombreUnidad("cuartel", id_cuartel)};
+                list.add(fila);
             }
+            return list;
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+
+        return list;
     }
 
-    // Metodo que carga el Archivo de la ruta por defecto
+    public List<Object[]> buscarCuartel(String busqueda, String campo) {
 
-    public Object cargarArchivo(String path) throws FileNotFoundException,
-            ClassNotFoundException, IOException {
+        List<Object[]> list;
+        Object[] fila;
+        String sql = "SELECT * FROM cuartel WHERE " + campo + " LIKE '%" + busqueda + "%'";
+        list = new ArrayList<>();
+        try {
+            PreparedStatement sentencia = null;
 
-        ArrayList lista = null;
+            sentencia = conexion.prepareStatement(sql);
+            ResultSet resultado = sentencia.executeQuery();
+            while (resultado.next()) {
 
-        ObjectInputStream open = new ObjectInputStream(new FileInputStream(path));
+                int id = resultado.getInt("id");
+                String nombre_cuartel = resultado.getString("nombre_cuartel");
+                Double latitud = resultado.getDouble("latitud");
+                Double longitud = resultado.getDouble("longitud");
+                String localidad = resultado.getString("localidad");
+                Boolean actividad = resultado.getBoolean("actividad");
 
-        lista = (ArrayList) open.readObject();
+                fila = new Object[]{id, nombre_cuartel, localidad, latitud,
+                        longitud, actividad};
+                list.add(fila);
+            }
+            return list;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
-        open.close();
-
-        return lista;
+        return list;
     }
 
     // Metodo que exporta a XML los objetos, en una ruta determinada
