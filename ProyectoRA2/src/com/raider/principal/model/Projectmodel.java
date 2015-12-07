@@ -470,7 +470,89 @@ public class Projectmodel {
         return null;
     }
 
+    public Cuartel cargarCuartelSeleccionado(int id) {
 
+        Cuartel cuartel = null;
+
+        String sql = "SELECT * FROM cuartel WHERE id = ?";
+        PreparedStatement sentence;
+
+        try {
+            sentence = conexion.prepareStatement(sql);
+            sentence.setInt(1, id);
+            ResultSet resultado = sentence.executeQuery();
+
+            cuartel = new Cuartel();
+
+            cuartel.setnCuartel(resultado.getString("nombre_cuartel"));
+            cuartel.setLocalidad(resultado.getString("localidad"));
+            cuartel.setActividad(resultado.getBoolean("actividad"));
+            cuartel.setLatitud(resultado.getDouble("latitud"));
+            cuartel.setLongitud(resultado.getDouble("longitud"));
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return cuartel;
+    }
+
+    public Unidad cargarUnidadSeleccionada(int id) {
+
+        Unidad unidad = null;
+
+        String sql = "SELECT * FROM unidad WHERE id = ?";
+        PreparedStatement sentence;
+
+        try {
+            sentence = conexion.prepareStatement(sql);
+            sentence.setInt(1, id);
+            ResultSet resultado = sentence.executeQuery();
+
+            unidad = new Unidad();
+
+            unidad.setnUnidad(resultado.getString("nombre_unidad"));
+            unidad.setNoTropas(resultado.getInt("no_tropas"));
+            unidad.setFechaCreacion(resultado.getDate("fecha_creacion"));
+            unidad.setTipo(resultado.getString("tipo"));
+            unidad.setCuartel(consultaNombreCuartel_NombreUnidad("cuartel", resultado.getInt("id_cuartel")));
+
+            return unidad;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return unidad;
+    }
+
+    public Soldado cargarSoldadoSeleccionada(int id) {
+
+        Soldado soldado = null;
+
+        String sql = "SELECT * FROM soldado WHERE id = ?";
+        PreparedStatement sentence;
+
+        try {
+            sentence = conexion.prepareStatement(sql);
+            sentence.setInt(1, id);
+            ResultSet resultado = sentence.executeQuery();
+
+            soldado = new Soldado();
+
+            soldado.setNombre(resultado.getString("nombre"));
+            soldado.setApellidos(resultado.getString("apellidos"));
+            soldado.setRango(resultado.getString("rango"));
+            soldado.setFechaNacimiento(resultado.getDate("fecha_nacimiento"));
+            soldado.setLugarNacimiento(resultado.getString("lugar_nacimiento"));
+            soldado.setUnidad(consultaNombreCuartel_NombreUnidad("unidad", resultado.getInt("id_unidad")));
+
+            return soldado;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return soldado;
+    }
 
     public void buscarSoldado(ArrayList<Soldado> listaSoldado, String soldado, DefaultListModel<Soldado> def) {
 
