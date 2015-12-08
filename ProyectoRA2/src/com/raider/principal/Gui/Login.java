@@ -19,6 +19,7 @@ public class Login extends JDialog implements ActionListener {
         super();
         setTitle("Login");
         getContentPane().add(contentPane);
+        getRootPane().setDefaultButton(btOk);
         pack();
         setLocationRelativeTo(null);
         setModal(true);

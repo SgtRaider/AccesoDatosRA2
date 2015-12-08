@@ -52,10 +52,9 @@ public class Ventana {
     public static JMenuBar mbVentana;
     public static JMenu mOpciones;
     public static JMenuItem miPreferencias;
-    public static JMenuItem miGuardarcomo;
+    public static JMenuItem miLogin;
     public static JMenuItem miExportar;
     public static JMenuItem miImportar;
-    public static JMenuItem miCambiarPath;
 
     // Constructor de la ventana
 
@@ -88,8 +87,10 @@ public class Ventana {
         miPreferencias = new JMenuItem("Preferencias");
         miExportar = new JMenuItem("Exportar");
         miImportar = new JMenuItem("Importar");
+        miLogin = new JMenuItem("Login");
 
         mbVentana.add(mOpciones);
+        mOpciones.add(miLogin);
         mOpciones.add(miPreferencias);
         mOpciones.add(miExportar);
         mOpciones.add(miImportar);

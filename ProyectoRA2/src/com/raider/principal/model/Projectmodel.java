@@ -6,6 +6,7 @@ import com.raider.principal.base.Soldado;
 import com.raider.principal.base.Unidad;
 import com.raider.principal.controller.Projectcontroller;
 
+import javax.lang.model.util.SimpleElementVisitor7;
 import javax.swing.*;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -121,127 +122,176 @@ public class Projectmodel {
 
     public void guardarCuartelSentencia(String nombre_cuartel, String localidad, Double latitud, Double longitud, Boolean actividad) {
 
-        String sql = "INSERT INTO cuartel (nombre_cuartel, latitud, longitud, actividad, localidad) VALUES (?,?,?,?,?)";
-        try {
-            PreparedStatement sentence = conexion.prepareStatement(sql);
-            sentence.setString(1, nombre_cuartel);
-            sentence.setDouble(2, latitud);
-            sentence.setDouble(3, longitud);
-            sentence.setBoolean(4, actividad);
-            sentence.setString(5, localidad);
+        if (usoCuartel(nombre_cuartel) == 0) {
+            cambiarUsoCuartel(1, nombre_cuartel);
+            String sql = "INSERT INTO cuartel (nombre_cuartel, latitud, longitud, actividad, localidad) VALUES (?,?,?,?,?)";
+            try {
+                PreparedStatement sentence = conexion.prepareStatement(sql);
+                sentence.setString(1, nombre_cuartel);
+                sentence.setDouble(2, latitud);
+                sentence.setDouble(3, longitud);
+                sentence.setBoolean(4, actividad);
+                sentence.setString(5, localidad);
 
-            sentence.executeUpdate();
-        } catch (SQLException e) {
-            Utilities.mensajeError("Error al dar de alta cuartel");
+                sentence.executeUpdate();
+            } catch (SQLException e) {
+                Utilities.mensajeError("Error al dar de alta cuartel");
+            }
+            cambiarUsoCuartel(0, nombre_cuartel);
+        } else {
+            Utilities.mensajeInformacion("No se puede guardar, campo siendo usado por otra persona");
         }
     }
 
     public void guardarUnidadSentencia(String nombre_unidad, String tipo, int no_tropas, Date fecha_creacion, String cuartel) {
 
-        String sql = "INSERT INTO unidad (nombre_unidad, tipo, no_tropas, fecha_creacion, id_cuartel) VALUES (?,?,?,?,?)";
-        int id_cuartel = 0;
-        if ((id_cuartel = consultaID("id", "cuartel", "nombre_cuartel", cuartel)) != 0);
-        try {
-            PreparedStatement sentence = conexion.prepareStatement(sql);
-            sentence.setString(1, nombre_unidad);
-            sentence.setString(2, tipo);
-            sentence.setInt(3, no_tropas);
-            sentence.setDate(4, fecha_creacion);
-            sentence.setInt(5, id_cuartel);
+        if (usoUnidad(nombre_unidad) == 0) {
+            cambiarUsoUnidad(1, nombre_unidad);
+            try {
+                conexion.setAutoCommit(false);
+                String sql = "INSERT INTO unidad (nombre_unidad, tipo, no_tropas, fecha_creacion, id_cuartel) VALUES (?,?,?,?,?)";
+                int id_cuartel = 0;
+                if ((id_cuartel = consultaID("id", "cuartel", "nombre_cuartel", cuartel)) != 0) ;
 
-            sentence.executeUpdate();
-        } catch (SQLException sqle) {
-            Utilities.mensajeError("Error al dar de alta unidad");
+                PreparedStatement sentence = conexion.prepareStatement(sql);
+                sentence.setString(1, nombre_unidad);
+                sentence.setString(2, tipo);
+                sentence.setInt(3, no_tropas);
+                sentence.setDate(4, fecha_creacion);
+                sentence.setInt(5, id_cuartel);
+
+                sentence.executeUpdate();
+                conexion.commit();
+            } catch (SQLException sqle) {
+                Utilities.mensajeError("Error al dar de alta unidad");
+            }
+            cambiarUsoUnidad(0, nombre_unidad);
+        } else {
+            Utilities.mensajeInformacion("No se puede guardar, campo siendo usado por otra persona");
         }
     }
 
     public void guardarSoldadoSentencia(String nombre, String apellidos, Date fecha_nacimiento, String rango, String lugar_nacimiento, String unidad) {
 
-        String sql = "INSERT INTO soldado (nombre, apellidos, fecha_nacimiento, rango, lugar_nacimiento, id_unidad)" +
-                " VALUES (?,?,?,?,?,?)";
-        int id_unidad = 0;
-        if ((id_unidad = consultaID("id", "unidad", "nombre_unidad", unidad)) != 0);
+        if (usoSoldado(nombre, apellidos) == 0) {
+            cambiarUsoSoldado(1, nombre, apellidos);
+            try {
+                conexion.setAutoCommit(false);
+                String sql = "INSERT INTO soldado (nombre, apellidos, fecha_nacimiento, rango, lugar_nacimiento, id_unidad)" +
+                        " VALUES (?,?,?,?,?,?)";
+                int id_unidad = 0;
+                if ((id_unidad = consultaID("id", "unidad", "nombre_unidad", unidad)) != 0) ;
 
-        try {
-            PreparedStatement sentence = conexion.prepareStatement(sql);
-            sentence.setString(1, nombre);
-            sentence.setString(2, apellidos);
-            sentence.setDate(3, fecha_nacimiento);
-            sentence.setString(4, rango);
-            sentence.setString(5, lugar_nacimiento);
-            sentence.setInt(6, id_unidad);
+                PreparedStatement sentence = conexion.prepareStatement(sql);
+                sentence.setString(1, nombre);
+                sentence.setString(2, apellidos);
+                sentence.setDate(3, fecha_nacimiento);
+                sentence.setString(4, rango);
+                sentence.setString(5, lugar_nacimiento);
+                sentence.setInt(6, id_unidad);
 
-            sentence.executeUpdate();
-        } catch (SQLException e) {
-
+                sentence.executeUpdate();
+                conexion.commit();
+            } catch (SQLException e) {
+                Utilities.mensajeError("Error al dar de alta soldado");
+            }
+            cambiarUsoSoldado(0, nombre, apellidos);
+        } else {
+            Utilities.mensajeInformacion("No se puede guardar, campo siendo usado por otra persona");
         }
-
     }
 
     // Metodos que eliminan el objeto en la posicion seleccionada
 
     public void borrarCuartelSentencia(int id) {
 
-        String sql = "DELETE FROM cuartel WHERE id = ?";
+        if (usoCuartel(id) == 0) {
+            cambiarUsoCuartel(1, id);
+            String sql = "DELETE FROM cuartel WHERE id = ?";
 
-        PreparedStatement sentencia = null;
-        try {
-            sentencia = conexion.prepareStatement(sql);
-            sentencia.setInt(1, id);
-            sentencia.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
+            PreparedStatement sentencia = null;
+            try {
+                sentencia = conexion.prepareStatement(sql);
+                sentencia.setInt(1, id);
+                sentencia.executeUpdate();
+            } catch (SQLException e) {
+                Utilities.mensajeError("Error al borrar cuartel");
+            }
+            cambiarUsoCuartel(0, id);
+        } else {
+            Utilities.mensajeInformacion("No se puede borrar, campo siendo usado por otra persona");
         }
     }
 
     public void borrarUnidadSentencia(int id) {
 
-        String sql = "DELETE FROM unidad WHERE id = ?";
+        if (usoUnidad(id) == 0) {
+            cambiarUsoUnidad(1, id);
+            String sql = "DELETE FROM unidad WHERE id = ?";
 
-        PreparedStatement sentencia = null;
-        try {
-            sentencia = conexion.prepareStatement(sql);
-            sentencia.setInt(1, id);
-            sentencia.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
+            PreparedStatement sentencia = null;
+            try {
+                sentencia = conexion.prepareStatement(sql);
+                sentencia.setInt(1, id);
+                sentencia.executeUpdate();
+            } catch (SQLException e) {
+                Utilities.mensajeError("Error al borrar unidad");
+            }
+            cambiarUsoUnidad(0, id);
+        } else {
+            Utilities.mensajeInformacion("No se puede borrar, campo siendo usado por otra persona");
         }
+
     }
 
     public void borrarSoldadoSentencia(int id) {
 
-        String sql = "DELETE FROM soldado WHERE id = ?";
+        if (usoSoldado(id) == 0) {
+            cambiarUsoSoldado(1, id);
+            String sql = "DELETE FROM soldado WHERE id = ?";
 
-        PreparedStatement sentencia = null;
-        try {
-            sentencia = conexion.prepareStatement(sql);
-            sentencia.setInt(1, id);
-            sentencia.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
+            PreparedStatement sentencia = null;
+            try {
+                sentencia = conexion.prepareStatement(sql);
+                sentencia.setInt(1, id);
+                sentencia.executeUpdate();
+            } catch (SQLException e) {
+                Utilities.mensajeError("Error al borrar soldado");
+            }
+            cambiarUsoSoldado(0, id);
+        } else {
+            Utilities.mensajeInformacion("No se puede borrar, campo siendo usado por otra persona");
         }
+
     }
 
     //Metodos de modificado
 
     public void modificarCuartelSentencia(int id, String nombre_cuartel, Double latitud,
                                  Double longitud, Boolean actividad, String localidad) {
-        String sql = "UPDATE cuartel SET nombre_cuartel = ?," +
-                " latitud = ?, longitud = ?, actividad = ?, localidad = ? WHERE id = ?";
 
-        PreparedStatement sentence = null;
+        if (usoCuartel(id) == 0) {
+            cambiarUsoSoldado(1, id);
+            String sql = "UPDATE cuartel SET nombre_cuartel = ?," +
+                    " latitud = ?, longitud = ?, actividad = ?, localidad = ? WHERE id = ?";
 
-        try {
-            sentence = conexion.prepareStatement(sql);
-            sentence.setString(1, nombre_cuartel);
-            sentence.setDouble(2, latitud);
-            sentence.setDouble(3, longitud);
-            sentence.setBoolean(4, actividad);
-            sentence.setString(5, localidad);
-            sentence.setInt(6, id);
-            sentence.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
+            PreparedStatement sentence = null;
+
+            try {
+                sentence = conexion.prepareStatement(sql);
+                sentence.setString(1, nombre_cuartel);
+                sentence.setDouble(2, latitud);
+                sentence.setDouble(3, longitud);
+                sentence.setBoolean(4, actividad);
+                sentence.setString(5, localidad);
+                sentence.setInt(6, id);
+                sentence.executeUpdate();
+            } catch (SQLException e) {
+                Utilities.mensajeError("Error al modificar cuartel");
+            }
+            cambiarUsoSoldado(0, id);
+        } else {
+            Utilities.mensajeInformacion("No se puede modificar, campo siendo usado por otra persona");
         }
     }
 
@@ -249,25 +299,34 @@ public class Projectmodel {
                                          String tipo, int no_tropas,
                                          Date fecha_creacion, String cuartel) {
 
-        String sql = "UPDATE unidad SET nombre_unidad = ?, tipo = ?," +
-                " no_tropas = ?, fecha_creacion = ?, id_cuartel = ? WHERE id = ?";
+        if (usoUnidad(id) == 0) {
+            cambiarUsoUnidad(1, id);
+            try {
+                conexion.setAutoCommit(false);
+                String sql = "UPDATE unidad SET nombre_unidad = ?, tipo = ?," +
+                        " no_tropas = ?, fecha_creacion = ?, id_cuartel = ? WHERE id = ?";
 
-        PreparedStatement sentence = null;
+                PreparedStatement sentence = null;
 
-        int id_cuartel = 0;
-        if ((id_cuartel = consultaID("id", "cuartel", "nombre_cuartel", cuartel)) != 0);
+                int id_cuartel = 0;
+                if ((id_cuartel = consultaID("id", "cuartel", "nombre_cuartel", cuartel)) != 0);
 
-        try {
-            sentence = conexion.prepareStatement(sql);
-            sentence.setString(1, nombre_unidad);
-            sentence.setString(2, tipo);
-            sentence.setInt(3, no_tropas);
-            sentence.setDate(4, fecha_creacion);
-            sentence.setInt(5, id_cuartel);
-            sentence.setInt(6, id);
-            sentence.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
+
+                sentence = conexion.prepareStatement(sql);
+                sentence.setString(1, nombre_unidad);
+                sentence.setString(2, tipo);
+                sentence.setInt(3, no_tropas);
+                sentence.setDate(4, fecha_creacion);
+                sentence.setInt(5, id_cuartel);
+                sentence.setInt(6, id);
+                sentence.executeUpdate();
+                conexion.commit();
+            } catch (SQLException e) {
+                Utilities.mensajeError("Error al modificar unidad");
+            }
+            cambiarUsoUnidad(0, id);
+        } else {
+            Utilities.mensajeInformacion("No se puede modificar, campo siendo usado por otra persona");
         }
     }
 
@@ -275,26 +334,35 @@ public class Projectmodel {
                                          String rango, Date fecha_nacimiento,
                                          String lugar_nacimiento, String unidad) {
 
-        String sql = "UPDATE soldado SET nombre = ?, apellidos = ?," +
-                " rango = ?, fecha_nacimiento = ?, lugar_nacimiento = ?, id_unidad = ? WHERE id = ?";
+        if (usoSoldado(id) == 0) {
+            cambiarUsoSoldado(1, id);
+            try {
+                conexion.setAutoCommit(false);
+                String sql = "UPDATE soldado SET nombre = ?, apellidos = ?," +
+                        " rango = ?, fecha_nacimiento = ?, lugar_nacimiento = ?, id_unidad = ? WHERE id = ?";
 
-        PreparedStatement sentence = null;
+                PreparedStatement sentence = null;
 
-        int id_unidad = 0;
-        if ((id_unidad = consultaID("id", "unidad", "nombre_unidad", unidad)) != 0);
+                int id_unidad = 0;
+                if ((id_unidad = consultaID("id", "unidad", "nombre_unidad", unidad)) != 0) ;
 
-        try {
-            sentence = conexion.prepareStatement(sql);
-            sentence.setString(1, nombre);
-            sentence.setString(2, apellidos);
-            sentence.setString(3, rango);
-            sentence.setDate(4, fecha_nacimiento);
-            sentence.setString(5, lugar_nacimiento);
-            sentence.setInt(6, id_unidad);
-            sentence.setInt(7, id);
-            sentence.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
+
+                sentence = conexion.prepareStatement(sql);
+                sentence.setString(1, nombre);
+                sentence.setString(2, apellidos);
+                sentence.setString(3, rango);
+                sentence.setDate(4, fecha_nacimiento);
+                sentence.setString(5, lugar_nacimiento);
+                sentence.setInt(6, id_unidad);
+                sentence.setInt(7, id);
+                sentence.executeUpdate();
+                conexion.commit();
+            } catch (SQLException e) {
+                Utilities.mensajeError("Error al modificar soldado");
+            }
+            cambiarUsoSoldado(0, id);
+        } else {
+            Utilities.mensajeInformacion("No se puede modificar, campo siendo usado por otra persona");
         }
     }
 
@@ -461,6 +529,7 @@ public class Projectmodel {
                 String sql = "SELECT * FROM unidad";
                 list = new ArrayList<>();
                 try {
+                    conexion.setAutoCommit(false);
                     PreparedStatement sentencia = null;
 
                     sentencia = conexion.prepareStatement(sql);
@@ -477,6 +546,7 @@ public class Projectmodel {
                         fila = new Object[]{id, nombre_unidad, tipo, no_tropas, fecha_creacion, consultaNombreCuartel_NombreUnidad("cuartel", id_cuartel)};
                         list.add(fila);
                     }
+                    conexion.commit();
                     return list;
                 } catch (SQLException e) {
                     e.printStackTrace();
@@ -490,7 +560,7 @@ public class Projectmodel {
                     list = new ArrayList<>();
                     try {
                         PreparedStatement sentencia = null;
-
+                        conexion.setAutoCommit(false);
                         sentencia = conexion.prepareStatement(sql);
                         ResultSet resultado = sentencia.executeQuery();
                         while (resultado.next()) {
@@ -506,6 +576,7 @@ public class Projectmodel {
                             fila = new Object[]{id, nombre, apellidos, rango, fecha_nacimiento, lugar_nacimiento, consultaNombreCuartel_NombreUnidad("unidad", id_unidad)};
                             list.add(fila);
                         }
+                        conexion.commit();
                         return list;
                     } catch (SQLException e) {
                         e.printStackTrace();
@@ -705,6 +776,211 @@ public class Projectmodel {
         }
 
         return list;
+    }
+
+    public int usoCuartel(int id) {
+        int i = 0;
+        String sql = "SELECT uso FROM cuartel WHERE id = ?";
+        PreparedStatement sentencia = null;
+
+        try {
+            sentencia = conexion.prepareStatement(sql);
+            sentencia.setInt(1, id);
+            ResultSet resultado = sentencia.executeQuery();
+            if (resultado.next()) i = resultado.getInt("uso");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return i;
+    }
+
+    public int usoCuartel(String nombre_cuartel) {
+        int i = 0;
+        String sql = "SELECT uso FROM cuartel WHERE nombre_cuartel = ?";
+
+        PreparedStatement sentencia = null;
+
+        try {
+            sentencia = conexion.prepareStatement(sql);
+            sentencia.setString(1, nombre_cuartel);
+            ResultSet resultado = sentencia.executeQuery();
+            if (resultado.next()) i = resultado.getInt("uso");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return i;
+    }
+
+    public int usoUnidad(String nombre_unidad) {
+        int i = 0;
+        String sql = "SELECT uso FROM unidad WHERE nombre_unidad = ?";
+
+        PreparedStatement sentencia = null;
+
+        try {
+            sentencia = conexion.prepareStatement(sql);
+            sentencia.setString(1, nombre_unidad);
+            ResultSet resultado = sentencia.executeQuery();
+            if (resultado.next()) i = resultado.getInt("uso");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return i;
+    }
+
+    public int usoUnidad(int id) {
+        int i = 0;
+        String sql = "SELECT uso FROM unidad WHERE id = ?";
+
+        PreparedStatement sentencia = null;
+
+        try {
+            sentencia = conexion.prepareStatement(sql);
+            sentencia.setInt(1, id);
+            ResultSet resultado = sentencia.executeQuery();
+            if (resultado.next()) i = resultado.getInt("uso");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return i;
+    }
+
+    public int usoSoldado(int id) {
+        int i = 0;
+        String sql = "SELECT uso FROM soldado WHERE id = ?";
+
+        PreparedStatement sentencia = null;
+
+        try {
+            sentencia = conexion.prepareStatement(sql);
+            sentencia.setInt(1, id);
+            ResultSet resultado = sentencia.executeQuery();
+            if (resultado.next()) i = resultado.getInt("uso");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return i;
+    }
+
+    public int usoSoldado(String nombre, String apellidos) {
+        int i = 0;
+        String sql = "SELECT uso FROM soldado WHERE nombre = ? and apellidos = ?";
+
+        PreparedStatement sentencia = null;
+
+        try {
+            sentencia = conexion.prepareStatement(sql);
+            sentencia.setString(1, nombre);
+            sentencia.setString(1, apellidos);
+            ResultSet resultado = sentencia.executeQuery();
+            if (resultado.next()) i = resultado.getInt("uso");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return i;
+    }
+
+    public void cambiarUsoCuartel(int i, int id) {
+
+        String sql = "UPDATE cuartel SET uso = ? WHERE id = ?";
+
+        PreparedStatement sentencia = null;
+
+        try {
+            sentencia = conexion.prepareStatement(sql);
+            sentencia.setInt(1, i);
+            sentencia.setInt(2, id);
+            sentencia.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void cambiarUsoCuartel(int i, String nombre_cuartel) {
+
+        String sql = "UPDATE cuartel SET uso = ? WHERE nombre_cuartel = ?";
+
+        PreparedStatement sentencia = null;
+
+        try {
+            sentencia = conexion.prepareStatement(sql);
+            sentencia.setInt(1, i);
+            sentencia.setString(2, nombre_cuartel);
+            sentencia.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void cambiarUsoUnidad(int i, int id) {
+
+        String sql = "UPDATE unidad SET uso = ? WHERE id = ?";
+
+        PreparedStatement sentencia = null;
+
+        try {
+            sentencia = conexion.prepareStatement(sql);
+            sentencia.setInt(1, i);
+            sentencia.setInt(2, id);
+            sentencia.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void cambiarUsoUnidad(int i, String nombre_unidad) {
+
+        String sql = "UPDATE unidad SET uso = ? WHERE nombre_unidad = ?";
+
+        PreparedStatement sentencia = null;
+
+        try {
+            sentencia = conexion.prepareStatement(sql);
+            sentencia.setInt(1, i);
+            sentencia.setString(2, nombre_unidad);
+            sentencia.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void cambiarUsoSoldado(int i, int id) {
+
+        String sql = "UPDATE soldado SET uso = ? WHERE id = ?";
+
+        PreparedStatement sentencia = null;
+
+        try {
+            sentencia = conexion.prepareStatement(sql);
+            sentencia.setInt(1, i);
+            sentencia.setInt(2, id);
+            sentencia.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void cambiarUsoSoldado(int i, String nombre, String apellidos) {
+
+        String sql = "UPDATE soldado SET uso = ? WHERE nombre = ? and apellidos = ?";
+
+        PreparedStatement sentencia = null;
+
+        try {
+            sentencia = conexion.prepareStatement(sql);
+            sentencia.setInt(1, i);
+            sentencia.setString(2, nombre);
+            sentencia.setString(3, apellidos);
+            sentencia.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     // Metodo que exporta a XML los objetos, en una ruta determinada

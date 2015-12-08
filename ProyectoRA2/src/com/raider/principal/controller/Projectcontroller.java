@@ -56,6 +56,7 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
     private DefaultTableModel defmodelsoldado;
 
     private Preferencias pref;
+    private Login log;
 
     public DateFormat format;
     // Constructor
@@ -70,7 +71,7 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
 
         try {
             pm.conexion();
-            Login log = new Login();
+            log = new Login();
             log.setVisible(true);
             rol(pm.login(log.getUsuario(), log.getContrasena()));
         } catch (SQLException e) {
@@ -140,6 +141,7 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
         v.miPreferencias.addActionListener(this);
         v.miExportar.addActionListener(this);
         v.miImportar.addActionListener(this);
+        v.miLogin.addActionListener(this);
 
         v.txtBusquedacuartel.addKeyListener(this);
         v.txtBusquedaunidad.addKeyListener(this);
@@ -288,6 +290,9 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
         v.cbTablaCuartel.setEnabled(false);
         v.cbTablaUnidad.setEnabled(false);
         v.cbTablaSoldado.setEnabled(false);
+        v.miPreferencias.setEnabled(false);
+        v.miExportar.setEnabled(false);
+        v.miImportar.setEnabled(false);
     }
 
     public void visibilidadUsuario() {
@@ -326,6 +331,9 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
         v.cbTablaCuartel.setEnabled(true);
         v.cbTablaUnidad.setEnabled(true);
         v.cbTablaSoldado.setEnabled(true);
+        v.miPreferencias.setEnabled(false);
+        v.miExportar.setEnabled(false);
+        v.miImportar.setEnabled(false);
     }
 
     public void visibilidadTecnico() {
@@ -362,6 +370,9 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
         v.cbTablaCuartel.setEnabled(true);
         v.cbTablaUnidad.setEnabled(true);
         v.cbTablaSoldado.setEnabled(true);
+        v.miPreferencias.setEnabled(false);
+        v.miExportar.setEnabled(true);
+        v.miImportar.setEnabled(false);
     }
 
     public void visibilidadAdministrador() {
@@ -398,6 +409,9 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
         v.cbTablaCuartel.setEnabled(true);
         v.cbTablaUnidad.setEnabled(true);
         v.cbTablaSoldado.setEnabled(true);
+        v.miPreferencias.setEnabled(true);
+        v.miExportar.setEnabled(true);
+        v.miImportar.setEnabled(true);
     }
 
     public void iniciarComboBox() {
@@ -828,6 +842,11 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
                     break;
                 case "Importar":
                     importar();
+                    break;
+                case "Login":
+                    log = new Login();
+                    log.setVisible(true);
+                    rol(pm.login(log.getUsuario(), log.getContrasena()));
                     break;
             }
         }
