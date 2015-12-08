@@ -13,6 +13,7 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/../ProyectoRA2.zip" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProyectoRA2/com/raider/principal/controller/Projectcontroller.class" afterPath="$PROJECT_DIR$/out/production/ProyectoRA2/com/raider/principal/controller/Projectcontroller.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProyectoRA2/com/raider/principal/model/Projectmodel.class" afterPath="$PROJECT_DIR$/out/production/ProyectoRA2/com/raider/principal/model/Projectmodel.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProyectoRA2/com/raider/principal/Util/Values.class" afterPath="$PROJECT_DIR$/out/production/ProyectoRA2/com/raider/principal/Util/Values.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/raider/principal/controller/Projectcontroller.java" afterPath="$PROJECT_DIR$/src/com/raider/principal/controller/Projectcontroller.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/raider/principal/model/Projectmodel.java" afterPath="$PROJECT_DIR$/src/com/raider/principal/model/Projectmodel.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/raider/principal/Util/Values.java" afterPath="$PROJECT_DIR$/src/com/raider/principal/Util/Values.java" />
@@ -43,7 +44,7 @@
       <file leaf-file-name="Projectmodel.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/raider/principal/model/Projectmodel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.68292683">
+            <state vertical-scroll-proportion="25.268293">
               <caret line="1048" column="5" selection-start-line="1048" selection-start-column="5" selection-end-line="1048" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -609,7 +610,7 @@
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="ToolWindowManager">
-    <frame x="-1" y="0" width="1368" height="744" extended-state="6" />
+    <frame x="-1" y="0" width="1368" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1297,7 +1298,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/raider/principal/model/Projectmodel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.68292683">
+        <state vertical-scroll-proportion="25.268293">
           <caret line="1048" column="5" selection-start-line="1048" selection-start-column="5" selection-end-line="1048" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
