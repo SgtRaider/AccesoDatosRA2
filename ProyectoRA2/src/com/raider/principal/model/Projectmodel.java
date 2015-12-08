@@ -1,11 +1,11 @@
 package com.raider.principal.model;
 
-import com.raider.principal.Util.Values;
+import com.raider.principal.controller.Projectcontroller;
+import com.raider.principal.util.Values;
 import com.raider.principal.base.Cuartel;
 import com.raider.principal.base.Soldado;
 import com.raider.principal.base.Unidad;
 
-import javax.swing.*;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -21,7 +21,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-import jdk.internal.org.objectweb.asm.tree.analysis.Value;
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 import raider.Util.Utilities;
@@ -56,7 +55,6 @@ public class Projectmodel {
 
 
         } catch (FileNotFoundException fnfe) {
-
             Utilities.mensajeInformacion("Preferencias de conexion no encontradas.\n " +
                     "Base de datos cargada con preferencias por defecto.");
                 Properties con = new Properties();
@@ -69,6 +67,7 @@ public class Projectmodel {
                 con.setProperty("protocolo", "jdbc:mysql://");
                 con.setProperty("driver", "com.mysql.jdbc.Driver");
 
+                Values.driver = "com.mysql.jdbc.Driver";
                 try {
                     con.store(new FileOutputStream("configuracion.props"), "|--- PREFERENCIAS ---|");
                 } catch (FileNotFoundException fn) {
@@ -77,8 +76,15 @@ public class Projectmodel {
                     io.printStackTrace();
                 }
 
-            Class.forName("com.mysql.jdbc.Driver");
+            try {
+                Class.forName("com.mysql.jdbc.Driver").newInstance();
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
             conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/ejercito", "root", "pamaloyo18");
+            Utilities.mensajeInformacion("Conexion realizada con exito");
 
         } catch (IOException ioe) {
             Utilities.mensajeError("Error al leer fichero de configuracion");
@@ -96,8 +102,16 @@ public class Projectmodel {
 
     public String login(String usuario, String contrasena) {
 
-        String sql = "SELECT usuario, rol FROM usuarios WHERE " +
-                "usuario = ? AND password = SHA1(?)";
+        String sql;
+
+        if (Values.driver.equalsIgnoreCase("org.postgresql.Driver")) {
+            sql = "SELECT usuario, rol FROM usuarios WHERE " +
+                    "usuario = ? AND password = ?";
+        } else {
+            sql = "SELECT usuario, rol FROM usuarios WHERE " +
+                    "usuario = ? AND password = SHA1(?)";
+        }
+
 
         String rol = "";
 
@@ -114,6 +128,7 @@ public class Projectmodel {
             rol = resultado.getString("rol");
         } catch (SQLException sqle) {
             Utilities.mensajeError("Error al hacer login");
+            return null;
         }
 
         return rol;

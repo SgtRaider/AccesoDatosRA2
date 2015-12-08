@@ -1,0 +1,19 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ProyectoRA2:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ProyectoRA2_jar</output-path>
+    <root id="archive" name="ProyectoRA2.jar">
+      <element id="module-output" name="ProyectoRA2" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/src/libs/Util.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/src/libs/jcalendar-1.4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/src/libs/jcommon-1.0.23.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/src/libs/jgoodies-forms-1.9.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/src/libs/jgoodies-looks-2.4.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/src/libs/jgoodies-common-1.8.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/src/libs/postgresql-9.4-1206-jdbc42.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/src/libs/mysql-connector-java-5.0.8-bin.jar" path-in-jar="/" />
+      <element id="directory" name="libs">
+        <element id="dir-copy" path="$PROJECT_DIR$/src/libs" />
+      </element>
+    </root>
+  </artifact>
+</component>

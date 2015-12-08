@@ -1,9 +1,9 @@
 #|--- PREFERENCIAS ---|
-#Tue Dec 08 16:51:33 CET 2015
+#Tue Dec 08 20:32:48 CET 2015
 contrasena=pamaloyo18
 usuario=root
 driver=com.mysql.jdbc.Driver
 puerto=3306
 basedatos=ejercito
-servidor=localhost
 protocolo=jdbc\:mysql\://
+servidor=localhost

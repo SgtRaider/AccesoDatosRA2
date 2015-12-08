@@ -3,8 +3,8 @@ package com.raider.principal.controller;
 import com.raider.principal.Gui.Login;
 import com.raider.principal.Gui.Preferencias;
 import com.raider.principal.Gui.Ventana;
-import com.raider.principal.Util.Values;
-import com.raider.principal.Util.FolderFilter;
+import com.raider.principal.util.Values;
+import com.raider.principal.util.FolderFilter;
 import com.raider.principal.procesos.Listado;
 import raider.Util.Utilities;
 import com.raider.principal.base.Cuartel;
@@ -27,14 +27,12 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.List;;
 
 /**
@@ -80,6 +78,8 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
             e.printStackTrace();
         }
         generarTablas();
+        iniciarComboBox();
+
         format = new SimpleDateFormat("EEE MMM dd hh:mm:ss zzz yyyy");
         DefaultTableModel defmodelcuartel;
         DefaultTableModel defmodelunidad;
@@ -151,7 +151,7 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
         // en caso de haber guardado otro path, siempre y cuando exista el Archivo
         // TODO crear fichero de configuración con el path modificado
 
-        iniciarComboBox();
+
         listarCuartel();
         Listado proceso = new Listado(Projectcontroller.this, v);
         proceso.start();
@@ -290,9 +290,9 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
         v.cbTablaCuartel.setEnabled(false);
         v.cbTablaUnidad.setEnabled(false);
         v.cbTablaSoldado.setEnabled(false);
-        v.miPreferencias.setEnabled(false);
         v.miExportar.setEnabled(false);
         v.miImportar.setEnabled(false);
+        pref.setEditable(false);
     }
 
     public void visibilidadUsuario() {
@@ -331,9 +331,9 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
         v.cbTablaCuartel.setEnabled(true);
         v.cbTablaUnidad.setEnabled(true);
         v.cbTablaSoldado.setEnabled(true);
-        v.miPreferencias.setEnabled(false);
         v.miExportar.setEnabled(false);
         v.miImportar.setEnabled(false);
+        pref.setEditable(false);
     }
 
     public void visibilidadTecnico() {
@@ -370,9 +370,9 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
         v.cbTablaCuartel.setEnabled(true);
         v.cbTablaUnidad.setEnabled(true);
         v.cbTablaSoldado.setEnabled(true);
-        v.miPreferencias.setEnabled(false);
         v.miExportar.setEnabled(true);
         v.miImportar.setEnabled(false);
+        pref.setEditable(false);
     }
 
     public void visibilidadAdministrador() {
@@ -409,9 +409,11 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
         v.cbTablaCuartel.setEnabled(true);
         v.cbTablaUnidad.setEnabled(true);
         v.cbTablaSoldado.setEnabled(true);
-        v.miPreferencias.setEnabled(true);
         v.miExportar.setEnabled(true);
         v.miImportar.setEnabled(true);
+        v.dcFechanacimiento.setEnabled(true);
+        v.dcFechaUnidad.setEnabled(true);
+        pref.setEditable(true);
     }
 
     public void iniciarComboBox() {
@@ -448,6 +450,7 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
 
         v.cbTablaCuartel.addItem("nombre_cuartel");
         v.cbTablaCuartel.addItem("localidad");
+
         if (!Values.driver.equalsIgnoreCase("org.postgresql.Driver")) {
             v.cbTablaCuartel.addItem("longitud");
             v.cbTablaCuartel.addItem("latitud");
@@ -595,6 +598,7 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
                     Values.modifyConstant = false;
                 }
                 vaciarCuartel();
+                listarCuartel();
                 break;
 
             // Guardado de la clase Unidad
@@ -628,6 +632,7 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
                     Values.modifyConstant = false;
                 }
                 vaciarUnidad();
+                listarUnidad();
                 break;
 
             // Guardado de la clase Soldado
@@ -657,6 +662,7 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
                     Values.modifyConstant = false;
                 }
                 vaciarSoldado();
+                listarSoldado();
                 break;
         }
     }
@@ -672,6 +678,7 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
             case 0:
                 pm.borrarCuartelSentencia(Values.idCuartel);
                 vaciarCuartel();
+                listarCuartel();
                 break;
 
             // Borrado Unidades
@@ -679,6 +686,7 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
             case 1:
                 pm.borrarUnidadSentencia(Values.idUnidad);
                 vaciarUnidad();
+                listarUnidad();
                 break;
 
             // Borrado Soldados
@@ -686,6 +694,7 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
             case 2:
                 pm.borrarSoldadoSentencia(Values.idSoldado);
                 vaciarSoldado();
+                listarSoldado();
                 break;
         }
     }

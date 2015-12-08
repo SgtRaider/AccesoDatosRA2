@@ -27,6 +27,7 @@ public class Preferencias extends JDialog implements ActionListener {
         getContentPane().add(contentPane);
         setResizable(false);
         pack();
+        cargarPreferencias();
         setLocationRelativeTo(null);
         setModal(true);
 
@@ -34,8 +35,6 @@ public class Preferencias extends JDialog implements ActionListener {
         btCancel.addActionListener(this);
         rbPostgre.addActionListener(this);
         rbMysql.addActionListener(this);
-
-        cargarPreferencias();
     }
 
     @Override
@@ -105,6 +104,27 @@ public class Preferencias extends JDialog implements ActionListener {
             // TODO Mostrar mensaje de error
         } catch (IOException e) {
             // TODO Mostrar mensaje de error
+        }
+    }
+
+    public void setEditable(boolean op) {
+
+        if (op == true) {
+
+            rbMysql.setEnabled(true);
+            rbPostgre.setEnabled(true);
+            txtContraseña.setEnabled(true);
+            txtUsuario.setEnabled(true);
+            txtPuerto.setEnabled(true);
+            txtServidor.setEnabled(true);
+        } else if (op == false) {
+
+            rbMysql.setEnabled(false);
+            rbPostgre.setEnabled(false);
+            txtContraseña.setEnabled(false);
+            txtUsuario.setEnabled(false);
+            txtPuerto.setEnabled(false);
+            txtServidor.setEnabled(false);
         }
     }
 

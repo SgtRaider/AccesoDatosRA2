@@ -1,11 +1,8 @@
 package com.raider.principal.procesos;
 
 import com.raider.principal.Gui.Ventana;
-import com.raider.principal.Util.Values;
+import com.raider.principal.util.Values;
 import com.raider.principal.controller.Projectcontroller;
-import com.raider.principal.model.Projectmodel;
-
-import java.sql.PreparedStatement;
 
 /**
  * Created by raider on 7/12/15.
@@ -46,7 +43,7 @@ public class Listado extends Thread {
             }
 
             try {
-                Thread.sleep(3000);
+                Thread.sleep(5000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

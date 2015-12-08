@@ -71,9 +71,10 @@ public class Ventana {
         JFrame frame = new JFrame("Ventana");
         frame.setContentPane(new Ventana().p1);
         frame.setDefaultCloseOperation(3);
+        frame.setResizable(false);
         frame.pack();
         frame.setVisible(true);
-        frame.setResizable(false);
+
         frame.setJMenuBar(getMenuBar());
     }
 
