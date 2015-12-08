@@ -496,8 +496,13 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
             File selectedFile = jfc.getSelectedFile();
             String path = selectedFile.getAbsolutePath() + ".xml";
 
-
-                //TODO Exportar a base de datos
+            try {
+                pm.exportar(path);
+            } catch (ParserConfigurationException e) {
+                e.printStackTrace();
+            } catch (TransformerException e) {
+                e.printStackTrace();
+            }
 
         }
     }

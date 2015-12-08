@@ -983,11 +983,79 @@ public class Projectmodel {
         }
     }
 
+    public ArrayList<Object> prepararExportar() {
+        String sql1 = "SELECT * FROM cuartel";
+        String sql2 = "SELECT * FROM unidad";
+        String sql3 = "SELECT * FROM soldado";
+        ArrayList<Object> lo = new ArrayList<>();
+        ArrayList<Cuartel> lc;
+        ArrayList<Unidad> lu;
+        ArrayList<Soldado> ls;
+        PreparedStatement sentence = null;
+
+        try {
+            lc = new ArrayList<>();
+            sentence = conexion.prepareStatement(sql1);
+            ResultSet resultado = sentence.executeQuery();
+
+            while (resultado.next()) {
+                Cuartel cuartel = new Cuartel();
+                    cuartel.setnCuartel(resultado.getString("nombre_cuartel"));
+                    cuartel.setLocalidad(resultado.getString("localidad"));
+                    cuartel.setActividad(resultado.getBoolean("actividad"));
+                    cuartel.setLatitud(resultado.getDouble("latitud"));
+                    cuartel.setLongitud(resultado.getDouble("longitud"));
+                lc.add(cuartel);
+            }
+            lo.add(lc);
+
+            lu = new ArrayList<>();
+            sentence = conexion.prepareStatement(sql2);
+            resultado = sentence.executeQuery();
+
+            while (resultado.next()) {
+                Unidad unidad = new Unidad();
+
+                unidad.setnUnidad(resultado.getString("nombre_unidad"));
+                unidad.setNoTropas(resultado.getInt("no_tropas"));
+                unidad.setFechaCreacion(resultado.getDate("fecha_creacion"));
+                unidad.setTipo(resultado.getString("tipo"));
+                unidad.setCuartel(consultaNombreCuartel_NombreUnidad("cuartel", resultado.getInt("id_cuartel")));
+
+                lu.add(unidad);
+            }
+            lo.add(lu);
+
+            ls = new ArrayList<>();
+            sentence = conexion.prepareStatement(sql3);
+            resultado = sentence.executeQuery();
+
+            while (resultado.next()) {
+                Soldado soldado = new Soldado();
+
+                soldado.setNombre(resultado.getString("nombre"));
+                soldado.setApellidos(resultado.getString("apellidos"));
+                soldado.setRango(resultado.getString("rango"));
+                soldado.setFechaNacimiento(resultado.getDate("fecha_nacimiento"));
+                soldado.setLugarNacimiento(resultado.getString("lugar_nacimiento"));
+                soldado.setUnidad(consultaNombreCuartel_NombreUnidad("unidad", resultado.getInt("id_unidad")));
+
+                ls.add(soldado);
+            }
+            lo.add(ls);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return lo;
+    }
+
     // Metodo que exporta a XML los objetos, en una ruta determinada
 
-    public void exportar(ArrayList<Object> pack, String path) throws ParserConfigurationException,
+    public void exportar(String path) throws ParserConfigurationException,
             TransformerConfigurationException, TransformerException{
-
+        ArrayList<Object> pack = prepararExportar();
         ArrayList<Cuartel> lc = (ArrayList<Cuartel>) pack.get(0);
         ArrayList<Unidad> lu = (ArrayList<Unidad>) pack.get(1);
         ArrayList<Soldado> ls = (ArrayList<Soldado>) pack.get(2);
@@ -1123,7 +1191,7 @@ public class Projectmodel {
     // Metodo que importa un XML de una ruta determinada, y lo transforma a en un paquete
     // para poder cargarlo mas tarde
 
-    public ArrayList importar(String path) throws ParserConfigurationException,
+    public ArrayList<Object> importar(String path) throws ParserConfigurationException,
             SAXException, IOException, ParseException {
 
         ArrayList<Object> pack = new ArrayList();
