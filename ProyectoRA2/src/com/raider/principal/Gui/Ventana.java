@@ -1,9 +1,5 @@
 package com.raider.principal.Gui;
 
-import com.raider.principal.Util.Values;
-import com.raider.principal.base.Cuartel;
-import com.raider.principal.base.Soldado;
-import com.raider.principal.base.Unidad;
 import com.raider.principal.controller.Projectcontroller;
 import com.toedter.calendar.JDateChooser;
 
@@ -54,10 +50,9 @@ public class Ventana {
     public JComboBox cbTablaCuartel;
 
     public static JMenuBar mbVentana;
-    public static JMenu mArchivo;
-    public static JMenuItem miGuardar;
-    public static JMenuItem miGuardarcomo;
     public static JMenu mOpciones;
+    public static JMenuItem miPreferencias;
+    public static JMenuItem miGuardarcomo;
     public static JMenuItem miExportar;
     public static JMenuItem miImportar;
     public static JMenuItem miCambiarPath;
@@ -89,12 +84,15 @@ public class Ventana {
 
         mbVentana = new JMenuBar();
 
-        mArchivo = new JMenu("File");
+        mOpciones = new JMenu("Opciones");
+        miPreferencias = new JMenuItem("Preferencias");
+        miExportar = new JMenuItem("Exportar");
+        miImportar = new JMenuItem("Importar");
 
-        miGuardar = new JMenuItem("Save");
-
-        mbVentana.add(mArchivo);
-        mArchivo.add(miGuardar);
+        mbVentana.add(mOpciones);
+        mOpciones.add(miPreferencias);
+        mOpciones.add(miExportar);
+        mOpciones.add(miImportar);
     }
 
     // Getter del JMenuBar

@@ -1,6 +1,7 @@
 package com.raider.principal.controller;
 
 import com.raider.principal.Gui.Login;
+import com.raider.principal.Gui.Preferencias;
 import com.raider.principal.Gui.Ventana;
 import com.raider.principal.Util.Values;
 import com.raider.principal.Util.FolderFilter;
@@ -44,15 +45,17 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
 
     //Objetos para cada clase usada
 
-    Ventana v;
-    Projectmodel pm;
-    Cuartel c;
-    Unidad u;
-    Soldado s;
+    private Ventana v;
+    private Projectmodel pm;
+    private Cuartel c;
+    private Unidad u;
+    private Soldado s;
 
     private DefaultTableModel defmodelcuartel;
     private DefaultTableModel defmodelunidad;
     private DefaultTableModel defmodelsoldado;
+
+    private Preferencias pref;
 
     public DateFormat format;
     // Constructor
@@ -62,8 +65,11 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
         this.v = ve;
         pm = new Projectmodel();
 
+        pref = new Preferencias();
+        pref.setVisible(false);
+
         try {
-            pm.conexionMysql();
+            pm.conexion();
             Login log = new Login();
             log.setVisible(true);
             rol(pm.login(log.getUsuario(), log.getContrasena()));
@@ -131,7 +137,9 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
             }
         });
 
-        v.miGuardar.addActionListener(this);
+        v.miPreferencias.addActionListener(this);
+        v.miExportar.addActionListener(this);
+        v.miImportar.addActionListener(this);
 
         v.txtBusquedacuartel.addKeyListener(this);
         v.txtBusquedaunidad.addKeyListener(this);
@@ -151,18 +159,24 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
 
     public void rol(String rol) {
 
-        if (rol.equalsIgnoreCase("administrador")) {
-            visibilidadAdministrador();
-        } else {
+        if (rol != null) {
 
-            if (rol.equalsIgnoreCase("tecnico")) {
-                visibilidadTecnico();
+            if (rol.equalsIgnoreCase("administrador")) {
+                visibilidadAdministrador();
             } else {
 
-                if (rol.equalsIgnoreCase("usuario")) {
-                    visibilidadUsuario();
+                if (rol.equalsIgnoreCase("tecnico")) {
+                    visibilidadTecnico();
+                } else {
+
+                    if (rol.equalsIgnoreCase("usuario")) {
+                        visibilidadUsuario();
+                    }
                 }
             }
+        } else {
+
+            sinVisibilidad();
         }
     }
 
@@ -238,6 +252,44 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
         }
     }
 
+    public void sinVisibilidad() {
+
+        v.btEliminarcuartel.setEnabled(false);
+        v.btEliminarsoldado.setEnabled(false);
+        v.btEliminarunidad.setEnabled(false);
+        v.btGuardarcuartel.setEnabled(false);
+        v.btGuardarunidad.setEnabled(false);
+        v.btGuardarsoldado.setEnabled(false);
+        v.btModificarcuartel.setEnabled(false);
+        v.btModificarunidad.setEnabled(false);
+        v.btModificarsoldado.setEnabled(false);
+        v.cbTipo.setEnabled(false);
+        v.cbActividad.setEnabled(false);
+        v.cbCuartel.setEnabled(false);
+        v.cbRango.setEnabled(false);
+        v.cbUnidad.setEnabled(false);
+        v.txtApellidos.setEnabled(false);
+        v.txtLatitud.setEnabled(false);
+        v.txtLocalidad.setEnabled(false);
+        v.txtLongitud.setEnabled(false);
+        v.txtLugarNacimiento.setEnabled(false);
+        v.txtNombre.setEnabled(false);
+        v.txtNombrecuartel.setEnabled(false);
+        v.txtNombreunidad.setEnabled(false);
+        v.txtNoTropas.setEnabled(false);
+        v.dcFechanacimiento.setEnabled(false);
+        v.dcFechaUnidad.setEnabled(false);
+        v.txtBusquedasoldado.setEnabled(false);
+        v.txtBusquedaunidad.setEnabled(false);
+        v.txtBusquedacuartel.setEnabled(false);
+        v.tCuartel.setEnabled(false);
+        v.tUnidad.setEnabled(false);
+        v.tSoldado.setEnabled(false);
+        v.cbTablaCuartel.setEnabled(false);
+        v.cbTablaUnidad.setEnabled(false);
+        v.cbTablaSoldado.setEnabled(false);
+    }
+
     public void visibilidadUsuario() {
 
         v.btEliminarcuartel.setEnabled(false);
@@ -265,6 +317,15 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
         v.txtNoTropas.setEnabled(false);
         v.dcFechanacimiento.setEnabled(false);
         v.dcFechaUnidad.setEnabled(false);
+        v.txtBusquedasoldado.setEnabled(true);
+        v.txtBusquedaunidad.setEnabled(true);
+        v.txtBusquedacuartel.setEnabled(true);
+        v.tCuartel.setEnabled(true);
+        v.tUnidad.setEnabled(true);
+        v.tSoldado.setEnabled(true);
+        v.cbTablaCuartel.setEnabled(true);
+        v.cbTablaUnidad.setEnabled(true);
+        v.cbTablaSoldado.setEnabled(true);
     }
 
     public void visibilidadTecnico() {
@@ -292,6 +353,15 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
         v.txtNombrecuartel.setEnabled(true);
         v.txtNombreunidad.setEnabled(true);
         v.txtNoTropas.setEnabled(true);
+        v.txtBusquedasoldado.setEnabled(true);
+        v.txtBusquedaunidad.setEnabled(true);
+        v.txtBusquedacuartel.setEnabled(true);
+        v.tCuartel.setEnabled(true);
+        v.tUnidad.setEnabled(true);
+        v.tSoldado.setEnabled(true);
+        v.cbTablaCuartel.setEnabled(true);
+        v.cbTablaUnidad.setEnabled(true);
+        v.cbTablaSoldado.setEnabled(true);
     }
 
     public void visibilidadAdministrador() {
@@ -319,6 +389,15 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
         v.txtNombrecuartel.setEnabled(true);
         v.txtNombreunidad.setEnabled(true);
         v.txtNoTropas.setEnabled(true);
+        v.txtBusquedasoldado.setEnabled(true);
+        v.txtBusquedaunidad.setEnabled(true);
+        v.txtBusquedacuartel.setEnabled(true);
+        v.tCuartel.setEnabled(true);
+        v.tUnidad.setEnabled(true);
+        v.tSoldado.setEnabled(true);
+        v.cbTablaCuartel.setEnabled(true);
+        v.cbTablaUnidad.setEnabled(true);
+        v.cbTablaSoldado.setEnabled(true);
     }
 
     public void iniciarComboBox() {
@@ -740,17 +819,15 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
 
             switch (actionCommand) {
 
-                case "Save":
+                case "Preferencias":
+                    pref.setVisible(true);
+                    pref.cargarPreferencias();
                     break;
-                case "Save as...":
-                    break;
-                case "Export":
+                case "Exportar":
                     exportar();
                     break;
-                case "Import":
+                case "Importar":
                     importar();
-                    break;
-                case "Change PATH":
                     break;
             }
         }

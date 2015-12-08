@@ -33,10 +33,63 @@ public class Projectmodel {
 
     private Connection conexion;
 
-    public void conexionMysql() throws SQLException, ClassNotFoundException {
+    public void conexion() throws SQLException, ClassNotFoundException {
 
-        Class.forName("com.mysql.jdbc.Driver");
-        conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/ejercito", "root", "pamaloyo18");
+        Properties configuracion = new Properties();
+
+        try {
+            configuracion.load(new FileInputStream("configuracion.props"));
+
+            String driver = configuracion.getProperty("driver");
+            String protocolo = configuracion.getProperty("protocolo");
+            String servidor = configuracion.getProperty("servidor");
+            String puerto = configuracion.getProperty("puerto");
+            String baseDatos = configuracion.getProperty("basedatos");
+            String usuario = configuracion.getProperty("usuario");
+            String contrasena = configuracion.getProperty("contrasena");
+
+            Class.forName(driver).newInstance();
+            conexion = DriverManager.getConnection(protocolo + servidor + ":" + puerto + "/" + baseDatos, usuario, contrasena);
+            Utilities.mensajeInformacion("Conexion realizada con exito");
+
+
+        } catch (FileNotFoundException fnfe) {
+
+            Utilities.mensajeInformacion("Preferencias de conexion no encontradas.\n " +
+                    "Base de datos cargada con preferencias por defecto.");
+                Properties con = new Properties();
+
+                con.setProperty("basedatos", "ejercito");
+                con.setProperty("puerto", "3306");
+                con.setProperty("servidor", "localhost");
+                con.setProperty("contrasena", "pamaloyo18");
+                con.setProperty("usuario", "root");
+                con.setProperty("protocolo", "jdbc:mysql://");
+                con.setProperty("driver", "com.mysql.jdbc.Driver");
+
+                try {
+                    con.store(new FileOutputStream("configuracion.props"), "|--- PREFERENCIAS ---|");
+                } catch (FileNotFoundException fn) {
+                    Utilities.mensajeError("Ruta de configuracion no encontrada");
+                } catch (IOException io) {
+                    io.printStackTrace();
+                }
+
+            Class.forName("com.mysql.jdbc.Driver");
+            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/ejercito", "root", "pamaloyo18");
+
+        } catch (IOException ioe) {
+            JOptionPane.showMessageDialog(null, "Error al leer el fichero de configuraci�n");
+        } catch (ClassNotFoundException cnfe) {
+            JOptionPane.showMessageDialog(null, "No se ha podido cargar el driver de la Base de Datos");
+        } catch (SQLException sqle) {
+            JOptionPane.showMessageDialog(null, "No se ha podido conectar con la Base de Datos");
+            sqle.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
     }
 
     public String login(String usuario, String contrasena) {
@@ -62,16 +115,6 @@ public class Projectmodel {
         }
 
         return rol;
-    }
-
-    public void conexionPostgresql() throws ClassNotFoundException, SQLException {
-        Class.forName("org.postgresql.Driver");
-        String url = "jdbc:postgresql://localhost:5432/ejercito";
-        Properties prop = new Properties();
-        prop.setProperty("user", "postgres");
-        prop.setProperty("password", "pamaloyo18");
-        prop.setProperty("ssl", "false");
-        conexion = DriverManager.getConnection(url,prop);
     }
 
     // Metodos de guardado
