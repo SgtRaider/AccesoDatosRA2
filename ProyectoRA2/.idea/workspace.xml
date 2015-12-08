@@ -7,16 +7,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5b207667-c473-4f44-9fb7-b88e0c9c5b43" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/raider/principal/Gui/Preferencias.form" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/raider/principal/Gui/Preferencias.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProyectoRA2/com/raider/principal/controller/Projectcontroller$1.class" afterPath="$PROJECT_DIR$/out/production/ProyectoRA2/com/raider/principal/controller/Projectcontroller$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProyectoRA2/com/raider/principal/controller/Projectcontroller$2.class" afterPath="$PROJECT_DIR$/out/production/ProyectoRA2/com/raider/principal/controller/Projectcontroller$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProyectoRA2/com/raider/principal/controller/Projectcontroller$3.class" afterPath="$PROJECT_DIR$/out/production/ProyectoRA2/com/raider/principal/controller/Projectcontroller$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProyectoRA2/com/raider/principal/controller/Projectcontroller.class" afterPath="$PROJECT_DIR$/out/production/ProyectoRA2/com/raider/principal/controller/Projectcontroller.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProyectoRA2/com/raider/principal/model/Projectmodel.class" afterPath="$PROJECT_DIR$/out/production/ProyectoRA2/com/raider/principal/model/Projectmodel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/raider/principal/controller/Projectcontroller.java" afterPath="$PROJECT_DIR$/src/com/raider/principal/controller/Projectcontroller.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/raider/principal/model/Projectmodel.java" afterPath="$PROJECT_DIR$/src/com/raider/principal/model/Projectmodel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/raider/principal/Gui/Ventana.java" afterPath="$PROJECT_DIR$/src/com/raider/principal/Gui/Ventana.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/libs/Util.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/libs/jcalendar-1.4.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/libs/jcommon-1.0.23.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/libs/jgoodies-common-1.8.1.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/libs/jgoodies-forms-1.9.0.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/libs/jgoodies-looks-2.4.1.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/libs/mysql-connector-java-5.0.8-bin.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/libs/postgresql-9.4-1206-jdbc42.jar" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Librerias.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Util.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/jcalendar_1_4.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/jgoodies_common_1_8_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/jgoodies_forms_1_9_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_5_0_8_bin.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ProyectoRA2.iml" afterPath="$PROJECT_DIR$/ProyectoRA2.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ProyectoRA1.iws" />
@@ -244,6 +249,10 @@
               <option name="myItemId" value="ProyectoRA2" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -266,6 +275,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProyectoRA2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProyectoRA2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libs" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -405,32 +432,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Gui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Login" />
-              <option name="myItemType" value="com.intellij.uiDesigner.projectView.FormNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ProyectoRA2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ProyectoRA2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="principal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="controller" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -476,8 +477,8 @@
   </component>
   <component name="PropertiesComponent">
     <property name="FullScreen" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/libs" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="230" />
@@ -490,6 +491,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/libs" />
       <recent name="$PROJECT_DIR$/.." />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -614,7 +616,7 @@
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="ToolWindowManager">
     <frame x="-1" y="0" width="1368" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -626,7 +628,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34423676" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.215959" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.215959" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32866043" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1331,7 +1333,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>ProyectoRA1</last-edited>
+          <last-edited>ProyectoRA2</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1356,7 +1358,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>Librerias</last-edited>
+          <last-edited>libs</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
