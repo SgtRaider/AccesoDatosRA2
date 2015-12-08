@@ -448,8 +448,10 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
 
         v.cbTablaCuartel.addItem("nombre_cuartel");
         v.cbTablaCuartel.addItem("localidad");
-        v.cbTablaCuartel.addItem("longitud");
-        v.cbTablaCuartel.addItem("latitud");
+        if (!Values.driver.equalsIgnoreCase("org.postgresql.Driver")) {
+            v.cbTablaCuartel.addItem("longitud");
+            v.cbTablaCuartel.addItem("latitud");
+        }
 
         v.cbTablaUnidad.addItem("nombre_unidad");
         v.cbTablaUnidad.addItem("tipo");
@@ -476,7 +478,17 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
             File selectedFile = jfc.getSelectedFile();
             String path = selectedFile.getAbsolutePath();
 
-                //TODO importar base de datos
+            try {
+                pm.cargarImport(pm.importar(path));
+            } catch (ParserConfigurationException e) {
+                e.printStackTrace();
+            } catch (SAXException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
 
         }
     }
@@ -516,6 +528,7 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
         if (op == 0) {
 
             v.cbCuartel.removeAllItems();
+            v.cbCuartel.addItem("");
             for (int i = 0;i < cb.size(); i++) {
                 v.cbCuartel.addItem(cb.get(i));
             }
@@ -525,6 +538,7 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
             if (op == 1) {
 
                 v.cbUnidad.removeAllItems();
+                v.cbUnidad.addItem("");
                 for (int i = 0;i < cb.size(); i++) {
                     v.cbUnidad.addItem(cb.get(i));
                 }
@@ -553,9 +567,11 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
                 if(Values.modifyConstant == false) {
 
                     if(v.cbActividad.getSelectedItem() == "true") {
-                        pm.guardarCuartelSentencia(v.txtNombrecuartel.getText(), v.txtLocalidad.getText(), Double.valueOf(v.txtLatitud.getText()), Double.valueOf(v.txtLongitud.getText()), true);
+                        pm.guardarCuartelSentencia(v.txtNombrecuartel.getText(), v.txtLocalidad.getText(),
+                                Double.valueOf(v.txtLatitud.getText()), Double.valueOf(v.txtLongitud.getText()), true);
                     } else {
-                        pm.guardarCuartelSentencia(v.txtNombrecuartel.getText(), v.txtLocalidad.getText(), Double.valueOf(v.txtLatitud.getText()), Double.valueOf(v.txtLongitud.getText()), false);
+                        pm.guardarCuartelSentencia(v.txtNombrecuartel.getText(), v.txtLocalidad.getText(),
+                                Double.valueOf(v.txtLatitud.getText()), Double.valueOf(v.txtLongitud.getText()), false);
                     }
 
                     actualizarComboBox(0);
@@ -565,15 +581,20 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
                     // Modificado de la clase Cuartel
 
                     if(v.cbActividad.getSelectedItem() == "true") {
-                        pm.modificarCuartelSentencia(Values.idCuartel, v.txtNombrecuartel.getText(), Double.valueOf(v.txtLatitud.getText()), Double.valueOf(v.txtLongitud.getText()), true, v.txtLocalidad.getText());
+                        pm.modificarCuartelSentencia(Values.idCuartel, v.txtNombrecuartel.getText(),
+                                Double.valueOf(v.txtLatitud.getText()), Double.valueOf(v.txtLongitud.getText()),
+                                true, v.txtLocalidad.getText());
                     } else {
-                        pm.modificarCuartelSentencia(Values.idCuartel, v.txtNombrecuartel.getText(), Double.valueOf(v.txtLatitud.getText()), Double.valueOf(v.txtLongitud.getText()), false, v.txtLocalidad.getText());
+                        pm.modificarCuartelSentencia(Values.idCuartel, v.txtNombrecuartel.getText(),
+                                Double.valueOf(v.txtLatitud.getText()), Double.valueOf(v.txtLongitud.getText()),
+                                false, v.txtLocalidad.getText());
                     }
 
                     actualizarComboBox(0);
 
                     Values.modifyConstant = false;
                 }
+                vaciarCuartel();
                 break;
 
             // Guardado de la clase Unidad
@@ -590,19 +611,23 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
                 if(Values.modifyConstant == false) {
 
                     pm.guardarUnidadSentencia(v.txtNombreunidad.getText(), (String) v.cbTipo.getSelectedItem(),
-                            Integer.valueOf(v.txtNoTropas.getText()), new Date(v.dcFechaUnidad.getDate().getTime()), (String) v.cbCuartel.getSelectedItem());
+                            Integer.valueOf(v.txtNoTropas.getText()), new Date(v.dcFechaUnidad.getDate().getTime()),
+                            (String) v.cbCuartel.getSelectedItem());
 
                 } else {
 
                     // Modificado de la clase Unidad
 
-                    pm.modificarUnidadSentencia(Values.idUnidad, v.txtNombreunidad.getText(), (String) v.cbTipo.getSelectedItem(),
-                            Integer.valueOf(v.txtNoTropas.getText()), new Date(v.dcFechaUnidad.getDate().getTime()), (String) v.cbCuartel.getSelectedItem());
+                    pm.modificarUnidadSentencia(Values.idUnidad, v.txtNombreunidad.getText(),
+                            (String) v.cbTipo.getSelectedItem(), Integer.valueOf(v.txtNoTropas.getText()),
+                            new Date(v.dcFechaUnidad.getDate().getTime()),
+                            (String) v.cbCuartel.getSelectedItem());
 
                     actualizarComboBox(1);
 
                     Values.modifyConstant = false;
                 }
+                vaciarUnidad();
                 break;
 
             // Guardado de la clase Soldado
@@ -616,16 +641,22 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
 
                 if(Values.modifyConstant == false) {
 
-                    pm.guardarSoldadoSentencia(v.txtNombre.getText(), v.txtApellidos.getText(), new Date(v.dcFechanacimiento.getDate().getTime()), (String) v.cbRango.getSelectedItem(), v.txtLugarNacimiento.getText(), (String) v.cbUnidad.getSelectedItem());
+                    pm.guardarSoldadoSentencia(v.txtNombre.getText(), v.txtApellidos.getText(),
+                            new Date(v.dcFechanacimiento.getDate().getTime()), (String) v.cbRango.getSelectedItem(),
+                            v.txtLugarNacimiento.getText(), (String) v.cbUnidad.getSelectedItem());
 
                 } else {
 
                     // Modificado de la clase Soldado
 
-                    pm.modificarSoldadoSentencia(Values.idSoldado, v.txtNombre.getText(), v.txtApellidos.getText(), (String) v.cbRango.getSelectedItem(), new Date(v.dcFechanacimiento.getDate().getTime()), v.txtLugarNacimiento.getText(), (String) v.cbUnidad.getSelectedItem());
+                    pm.modificarSoldadoSentencia(Values.idSoldado, v.txtNombre.getText(),
+                            v.txtApellidos.getText(), (String) v.cbRango.getSelectedItem(),
+                            new Date(v.dcFechanacimiento.getDate().getTime()), v.txtLugarNacimiento.getText(),
+                            (String) v.cbUnidad.getSelectedItem());
 
                     Values.modifyConstant = false;
                 }
+                vaciarSoldado();
                 break;
         }
     }
@@ -640,18 +671,21 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
 
             case 0:
                 pm.borrarCuartelSentencia(Values.idCuartel);
+                vaciarCuartel();
                 break;
 
             // Borrado Unidades
 
             case 1:
                 pm.borrarUnidadSentencia(Values.idUnidad);
+                vaciarUnidad();
                 break;
 
             // Borrado Soldados
 
             case 2:
                 pm.borrarSoldadoSentencia(Values.idSoldado);
+                vaciarSoldado();
                 break;
         }
     }
@@ -822,7 +856,8 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
 
                     break;
                 case "Modificar":
-                    if (Utilities.mensajeConfirmacion("¿Esta seguro? \n Asegurese de modificar algun dato") == JOptionPane.NO_OPTION) return;
+                    if (Utilities.mensajeConfirmacion("¿Esta seguro? \n Asegurese de modificar algun dato")
+                            == JOptionPane.NO_OPTION) return;
                     Values.modifyConstant = true;
                     guardarController();
                     break;

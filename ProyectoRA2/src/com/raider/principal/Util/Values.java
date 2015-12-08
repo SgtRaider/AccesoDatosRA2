@@ -17,4 +17,5 @@ public class Values {
     public static int idCuartel;
     public static int idUnidad;
     public static int idSoldado;
+    public static String driver;
 }

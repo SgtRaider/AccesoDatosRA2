@@ -4,9 +4,7 @@ import com.raider.principal.Util.Values;
 import com.raider.principal.base.Cuartel;
 import com.raider.principal.base.Soldado;
 import com.raider.principal.base.Unidad;
-import com.raider.principal.controller.Projectcontroller;
 
-import javax.lang.model.util.SimpleElementVisitor7;
 import javax.swing.*;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -23,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import jdk.internal.org.objectweb.asm.tree.analysis.Value;
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 import raider.Util.Utilities;
@@ -42,6 +41,7 @@ public class Projectmodel {
             configuracion.load(new FileInputStream("configuracion.props"));
 
             String driver = configuracion.getProperty("driver");
+            Values.driver = driver;
             String protocolo = configuracion.getProperty("protocolo");
             String servidor = configuracion.getProperty("servidor");
             String puerto = configuracion.getProperty("puerto");
@@ -50,7 +50,8 @@ public class Projectmodel {
             String contrasena = configuracion.getProperty("contrasena");
 
             Class.forName(driver).newInstance();
-            conexion = DriverManager.getConnection(protocolo + servidor + ":" + puerto + "/" + baseDatos, usuario, contrasena);
+            conexion = DriverManager.getConnection(protocolo + servidor + ":" +
+                    puerto + "/" + baseDatos, usuario, contrasena);
             Utilities.mensajeInformacion("Conexion realizada con exito");
 
 
@@ -71,7 +72,7 @@ public class Projectmodel {
                 try {
                     con.store(new FileOutputStream("configuracion.props"), "|--- PREFERENCIAS ---|");
                 } catch (FileNotFoundException fn) {
-                    Utilities.mensajeError("Ruta de configuracion no encontrada");
+                    Utilities.mensajeError("Error al leer fichero de configuracion");
                 } catch (IOException io) {
                     io.printStackTrace();
                 }
@@ -80,11 +81,11 @@ public class Projectmodel {
             conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/ejercito", "root", "pamaloyo18");
 
         } catch (IOException ioe) {
-            JOptionPane.showMessageDialog(null, "Error al leer el fichero de configuraci�n");
+            Utilities.mensajeError("Error al leer fichero de configuracion");
         } catch (ClassNotFoundException cnfe) {
-            JOptionPane.showMessageDialog(null, "No se ha podido cargar el driver de la Base de Datos");
+            Utilities.mensajeError("No se ha podido cargar el driver de la base de datos");
         } catch (SQLException sqle) {
-            JOptionPane.showMessageDialog(null, "No se ha podido conectar con la Base de Datos");
+            Utilities.mensajeError("No se ha podido conectar con la base de datos");
             sqle.printStackTrace();
         } catch (InstantiationException e) {
             e.printStackTrace();
@@ -112,7 +113,7 @@ public class Projectmodel {
             }
             rol = resultado.getString("rol");
         } catch (SQLException sqle) {
-            Utilities.mensajeError("Error Sql");
+            Utilities.mensajeError("Error al hacer login");
         }
 
         return rol;
@@ -120,64 +121,124 @@ public class Projectmodel {
 
     // Metodos de guardado
 
-    public void guardarCuartelSentencia(String nombre_cuartel, String localidad, Double latitud, Double longitud, Boolean actividad) {
+    public void guardarCuartelSentencia(String nombre_cuartel, String localidad,
+                                        Double latitud, Double longitud, Boolean actividad) {
 
         if (usoCuartel(nombre_cuartel) == 0) {
             cambiarUsoCuartel(1, nombre_cuartel);
-            String sql = "INSERT INTO cuartel (nombre_cuartel, latitud, longitud, actividad, localidad) VALUES (?,?,?,?,?)";
-            try {
-                PreparedStatement sentence = conexion.prepareStatement(sql);
-                sentence.setString(1, nombre_cuartel);
-                sentence.setDouble(2, latitud);
-                sentence.setDouble(3, longitud);
-                sentence.setBoolean(4, actividad);
-                sentence.setString(5, localidad);
 
-                sentence.executeUpdate();
-            } catch (SQLException e) {
-                Utilities.mensajeError("Error al dar de alta cuartel");
+            if (Values.driver.equalsIgnoreCase("org.postgresql.Driver")) {
+
+                String sql = "INSERT INTO cuartel (nombre_cuartel, latitud," +
+                        " longitud, actividad, localidad) VALUES (?,?,?,?,?)";
+                try {
+                    PreparedStatement sentence = conexion.prepareStatement(sql);
+                    sentence.setString(1, nombre_cuartel);
+                    sentence.setDouble(2, latitud);
+                    sentence.setDouble(3, longitud);
+                    if (actividad == true) {
+                        sentence.setInt(4, 1);
+                    } else {
+                        if (actividad == false) {
+                            sentence.setInt(4, 0);
+                        } else sentence.setInt(4, 1);
+                    }
+                    sentence.setString(5, localidad);
+
+                    sentence.executeUpdate();
+                } catch (SQLException e) {
+                    Utilities.mensajeError("Error al dar de alta cuartel");
+                    e.printStackTrace();
+                }
+
+            } else {
+
+                String sql = "call guardarCuartel(?,?,?,?,?)";
+                try {
+                    PreparedStatement sentence = conexion.prepareStatement(sql);
+                    sentence.setString(1, nombre_cuartel);
+                    sentence.setString(2, localidad);
+                    sentence.setDouble(3, latitud);
+                    sentence.setDouble(4, longitud);
+                    if (actividad == true) {
+                        sentence.setInt(5, 1);
+                    } else {
+                        if (actividad == false) {
+                            sentence.setInt(5, 0);
+                        } else sentence.setInt(5, 1);
+                    }
+
+
+                    sentence.executeUpdate();
+                } catch (SQLException e) {
+                    Utilities.mensajeError("Error al dar de alta cuartel");
+                    e.printStackTrace();
+                }
             }
             cambiarUsoCuartel(0, nombre_cuartel);
         } else {
-            Utilities.mensajeInformacion("No se puede guardar, campo siendo usado por otra persona");
+            Utilities.mensajeInformacion("No se puede guardar.\nCampo siendo usado por otra persona.\nInténtelo en unos segundos.");
         }
     }
 
-    public void guardarUnidadSentencia(String nombre_unidad, String tipo, int no_tropas, Date fecha_creacion, String cuartel) {
+    public void guardarUnidadSentencia(String nombre_unidad, String tipo,
+                                       int no_tropas, Date fecha_creacion, String cuartel) {
 
         if (usoUnidad(nombre_unidad) == 0) {
             cambiarUsoUnidad(1, nombre_unidad);
-            try {
-                conexion.setAutoCommit(false);
-                String sql = "INSERT INTO unidad (nombre_unidad, tipo, no_tropas, fecha_creacion, id_cuartel) VALUES (?,?,?,?,?)";
-                int id_cuartel = 0;
-                if ((id_cuartel = consultaID("id", "cuartel", "nombre_cuartel", cuartel)) != 0) ;
+            if (Values.driver.equalsIgnoreCase("org.postgresql.Driver")) {
 
-                PreparedStatement sentence = conexion.prepareStatement(sql);
-                sentence.setString(1, nombre_unidad);
-                sentence.setString(2, tipo);
-                sentence.setInt(3, no_tropas);
-                sentence.setDate(4, fecha_creacion);
-                sentence.setInt(5, id_cuartel);
+                try {
+                    conexion.setAutoCommit(false);
+                    String sql = "INSERT INTO unidad (nombre_unidad, tipo, no_tropas," +
+                            " fecha_creacion, id_cuartel) VALUES (?,?,?,?,?)";
+                    int id_cuartel = 0;
+                    if ((id_cuartel = consultaID("id", "cuartel", "nombre_cuartel", cuartel)) != 0) ;
 
-                sentence.executeUpdate();
-                conexion.commit();
-            } catch (SQLException sqle) {
-                Utilities.mensajeError("Error al dar de alta unidad");
+                    PreparedStatement sentence = conexion.prepareStatement(sql);
+                    sentence.setString(1, nombre_unidad);
+                    sentence.setString(2, tipo);
+                    sentence.setInt(3, no_tropas);
+                    sentence.setDate(4, fecha_creacion);
+                    sentence.setInt(5, id_cuartel);
+
+                    sentence.executeUpdate();
+                    conexion.commit();
+                } catch (SQLException sqle) {
+                    Utilities.mensajeError("Error al dar de alta unidad");
+                }
+            } else {
+
+                try {
+                    String sql = "call guardarUnidad(?,?,?,?,?)";
+
+                    PreparedStatement sentence = conexion.prepareStatement(sql);
+                    sentence.setString(1, nombre_unidad);
+                    sentence.setString(2, tipo);
+                    sentence.setInt(3, no_tropas);
+                    sentence.setDate(4, fecha_creacion);
+                    sentence.setString(5, cuartel);
+
+                    sentence.executeUpdate();
+                } catch (SQLException sqle) {
+                    Utilities.mensajeError("Error al dar de alta unidad");
+                }
             }
             cambiarUsoUnidad(0, nombre_unidad);
         } else {
-            Utilities.mensajeInformacion("No se puede guardar, campo siendo usado por otra persona");
+            Utilities.mensajeInformacion("No se puede guardar.\nCampo siendo usado por otra persona.\nInténtelo en unos segundos.");
         }
     }
 
-    public void guardarSoldadoSentencia(String nombre, String apellidos, Date fecha_nacimiento, String rango, String lugar_nacimiento, String unidad) {
+    public void guardarSoldadoSentencia(String nombre, String apellidos, Date fecha_nacimiento,
+                                        String rango, String lugar_nacimiento, String unidad) {
 
         if (usoSoldado(nombre, apellidos) == 0) {
             cambiarUsoSoldado(1, nombre, apellidos);
             try {
                 conexion.setAutoCommit(false);
-                String sql = "INSERT INTO soldado (nombre, apellidos, fecha_nacimiento, rango, lugar_nacimiento, id_unidad)" +
+                String sql = "INSERT INTO soldado (nombre, apellidos, fecha_nacimiento," +
+                        " rango, lugar_nacimiento, id_unidad)" +
                         " VALUES (?,?,?,?,?,?)";
                 int id_unidad = 0;
                 if ((id_unidad = consultaID("id", "unidad", "nombre_unidad", unidad)) != 0) ;
@@ -197,7 +258,7 @@ public class Projectmodel {
             }
             cambiarUsoSoldado(0, nombre, apellidos);
         } else {
-            Utilities.mensajeInformacion("No se puede guardar, campo siendo usado por otra persona");
+            Utilities.mensajeInformacion("No se puede guardar.\nCampo siendo usado por otra persona.\nInténtelo en unos segundos.");
         }
     }
 
@@ -219,7 +280,7 @@ public class Projectmodel {
             }
             cambiarUsoCuartel(0, id);
         } else {
-            Utilities.mensajeInformacion("No se puede borrar, campo siendo usado por otra persona");
+            Utilities.mensajeInformacion("No se puede guardar.\nCampo siendo usado por otra persona.\nInténtelo en unos segundos.");
         }
     }
 
@@ -239,7 +300,7 @@ public class Projectmodel {
             }
             cambiarUsoUnidad(0, id);
         } else {
-            Utilities.mensajeInformacion("No se puede borrar, campo siendo usado por otra persona");
+            Utilities.mensajeInformacion("No se puede guardar.\nCampo siendo usado por otra persona.\nInténtelo en unos segundos.");
         }
 
     }
@@ -260,7 +321,7 @@ public class Projectmodel {
             }
             cambiarUsoSoldado(0, id);
         } else {
-            Utilities.mensajeInformacion("No se puede borrar, campo siendo usado por otra persona");
+            Utilities.mensajeInformacion("No se puede guardar.\nCampo siendo usado por otra persona.\nInténtelo en unos segundos.");
         }
 
     }
@@ -291,7 +352,7 @@ public class Projectmodel {
             }
             cambiarUsoSoldado(0, id);
         } else {
-            Utilities.mensajeInformacion("No se puede modificar, campo siendo usado por otra persona");
+            Utilities.mensajeInformacion("No se puede guardar.\nCampo siendo usado por otra persona.\nInténtelo en unos segundos.");
         }
     }
 
@@ -326,7 +387,7 @@ public class Projectmodel {
             }
             cambiarUsoUnidad(0, id);
         } else {
-            Utilities.mensajeInformacion("No se puede modificar, campo siendo usado por otra persona");
+            Utilities.mensajeInformacion("No se puede guardar.\nCampo siendo usado por otra persona.\nInténtelo en unos segundos.");
         }
     }
 
@@ -362,7 +423,7 @@ public class Projectmodel {
             }
             cambiarUsoSoldado(0, id);
         } else {
-            Utilities.mensajeInformacion("No se puede modificar, campo siendo usado por otra persona");
+            Utilities.mensajeInformacion("No se puede guardar.\nCampo siendo usado por otra persona.\nInténtelo en unos segundos.");
         }
     }
 
@@ -404,7 +465,7 @@ public class Projectmodel {
                 return nombre;
 
             } catch (SQLException e) {
-                e.printStackTrace();
+                Utilities.mensajeError("Error al cotejar datos en consulta Cuartel");
             }
 
         } else {
@@ -424,7 +485,7 @@ public class Projectmodel {
                     return nombre;
 
                 } catch (SQLException e) {
-                    e.printStackTrace();
+                    Utilities.mensajeError("Error al cotejar datos en consulta Unidad");
                 }
             }
         }
@@ -456,7 +517,7 @@ public class Projectmodel {
                 return ret;
 
             } catch (SQLException e) {
-                e.printStackTrace();
+                Utilities.mensajeError("Error al actualizar combobox Unidad");
             }
 
         } else {
@@ -481,7 +542,7 @@ public class Projectmodel {
                     return ret;
 
                 } catch (SQLException e) {
-                    e.printStackTrace();
+                    Utilities.mensajeError("Error al actualizar combobox Soldado");
                 }
             }
         }
@@ -518,7 +579,7 @@ public class Projectmodel {
                 }
                 return list;
             } catch (SQLException e) {
-                e.printStackTrace();
+                Utilities.mensajeError("Error al listar Cuartel");
             }
 
 
@@ -543,13 +604,14 @@ public class Projectmodel {
                         Date fecha_creacion = resultado.getDate("fecha_creacion");
                         int id_cuartel = resultado.getInt("id_cuartel");
 
-                        fila = new Object[]{id, nombre_unidad, tipo, no_tropas, fecha_creacion, consultaNombreCuartel_NombreUnidad("cuartel", id_cuartel)};
+                        fila = new Object[]{id, nombre_unidad, tipo, no_tropas, fecha_creacion,
+                                consultaNombreCuartel_NombreUnidad("cuartel", id_cuartel)};
                         list.add(fila);
                     }
                     conexion.commit();
                     return list;
                 } catch (SQLException e) {
-                    e.printStackTrace();
+                    Utilities.mensajeError("Error al listar Unidad");
                 }
 
             } else {
@@ -573,13 +635,14 @@ public class Projectmodel {
                             Date fecha_nacimiento = resultado.getDate("fecha_nacimiento");
                             int id_unidad = resultado.getInt("id_unidad");
 
-                            fila = new Object[]{id, nombre, apellidos, rango, fecha_nacimiento, lugar_nacimiento, consultaNombreCuartel_NombreUnidad("unidad", id_unidad)};
+                            fila = new Object[]{id, nombre, apellidos, rango, fecha_nacimiento, lugar_nacimiento,
+                                    consultaNombreCuartel_NombreUnidad("unidad", id_unidad)};
                             list.add(fila);
                         }
                         conexion.commit();
                         return list;
                     } catch (SQLException e) {
-                        e.printStackTrace();
+                        Utilities.mensajeError("Error al listar Soldado");
                     }
                 }
             }
@@ -613,7 +676,7 @@ public class Projectmodel {
 
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            Utilities.mensajeError("Error al cargar Cuartel seleccionado");
         }
 
         return cuartel;
@@ -644,7 +707,7 @@ public class Projectmodel {
 
             return unidad;
         } catch (SQLException e) {
-            e.printStackTrace();
+            Utilities.mensajeError("Error al cargar Unidad seleccionada");
         }
 
         return unidad;
@@ -677,7 +740,7 @@ public class Projectmodel {
 
             return soldado;
         } catch (SQLException e) {
-            e.printStackTrace();
+            Utilities.mensajeError("Error al cargar Soldado seleccionado");
         }
 
         return soldado;
@@ -704,12 +767,13 @@ public class Projectmodel {
                 Date fecha_nacimiento = resultado.getDate("fecha_nacimiento");
                 int id_unidad = resultado.getInt("id_unidad");
 
-                fila = new Object[]{id, nombre, apellidos, rango, fecha_nacimiento, lugar_nacimiento, consultaNombreCuartel_NombreUnidad("unidad", id_unidad)};
+                fila = new Object[]{id, nombre, apellidos, rango, fecha_nacimiento, lugar_nacimiento,
+                        consultaNombreCuartel_NombreUnidad("unidad", id_unidad)};
                 list.add(fila);
             }
             return list;
         } catch (SQLException e) {
-            e.printStackTrace();
+            Utilities.mensajeError("Error al buscar Soldado");
         }
 
         return list;
@@ -735,12 +799,13 @@ public class Projectmodel {
                 Date fecha_creacion = resultado.getDate("fecha_creacion");
                 int id_cuartel = resultado.getInt("id_cuartel");
 
-                fila = new Object[]{id, nombre_unidad, tipo, no_tropas, fecha_creacion, consultaNombreCuartel_NombreUnidad("cuartel", id_cuartel)};
+                fila = new Object[]{id, nombre_unidad, tipo, no_tropas, fecha_creacion,
+                        consultaNombreCuartel_NombreUnidad("cuartel", id_cuartel)};
                 list.add(fila);
             }
             return list;
         } catch (SQLException e) {
-            e.printStackTrace();
+            Utilities.mensajeError("Error al buscar Unidad");
         }
 
         return list;
@@ -772,7 +837,7 @@ public class Projectmodel {
             }
             return list;
         } catch (SQLException e) {
-            e.printStackTrace();
+            Utilities.mensajeError("Error al buscar Cuartel");
         }
 
         return list;
@@ -876,7 +941,7 @@ public class Projectmodel {
         try {
             sentencia = conexion.prepareStatement(sql);
             sentencia.setString(1, nombre);
-            sentencia.setString(1, apellidos);
+            sentencia.setString(2, apellidos);
             ResultSet resultado = sentencia.executeQuery();
             if (resultado.next()) i = resultado.getInt("uso");
         } catch (SQLException e) {
@@ -1045,10 +1110,32 @@ public class Projectmodel {
             lo.add(ls);
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            Utilities.mensajeError("Error al preparar datos para documento xml");
         }
 
         return lo;
+    }
+
+    public void cargarImport(ArrayList<Object> pack) {
+        ArrayList<Cuartel> lc = (ArrayList<Cuartel>) pack.get(0);
+        ArrayList<Unidad> lu = (ArrayList<Unidad>) pack.get(1);
+        ArrayList<Soldado> ls = (ArrayList<Soldado>) pack.get(2);
+
+        for (int i = 0; i < lc.size(); i++) {
+            guardarCuartelSentencia(lc.get(i).getnCuartel(), lc.get(i).getLocalidad(), lc.get(i).getLatitud(),
+                    lc.get(i).getLongitud(), lc.get(i).getActividad());
+        }
+
+        for (int i = 0; i < lu.size(); i++) {
+            guardarUnidadSentencia(lu.get(i).getnUnidad(), lu.get(i).getTipo(), lu.get(i).getNoTropas(),
+                    new Date(lu.get(i).getFechaCreacion().getTime()), lu.get(i).getCuartel());
+        }
+
+        for (int i = 0; i < ls.size(); i++) {
+            guardarSoldadoSentencia(ls.get(i).getNombre(), ls.get(i).getApellidos(),
+                    new Date(ls.get(i).getFechaNacimiento().getTime()), ls.get(i).getRango(),
+                    ls.get(i).getLugarNacimiento(), ls.get(i).getUnidad());
+        }
     }
 
     // Metodo que exporta a XML los objetos, en una ruta determinada
