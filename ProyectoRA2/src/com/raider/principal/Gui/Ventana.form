@@ -12,7 +12,7 @@
     <colspec value="left:5px:noGrow"/>
     <colspec value="fill:5px:noGrow"/>
     <constraints>
-      <xy x="20" y="20" width="506" height="477"/>
+      <xy x="20" y="20" width="526" height="477"/>
     </constraints>
     <properties>
       <opaque value="true"/>
@@ -53,10 +53,10 @@
             <rowspec value="center:max(d;4px):noGrow"/>
             <colspec value="fill:max(d;4px):noGrow"/>
             <colspec value="left:4dlu:noGrow"/>
-            <colspec value="fill:140px:noGrow"/>
+            <colspec value="fill:150px:noGrow"/>
             <colspec value="left:5px:noGrow"/>
             <colspec value="fill:80px:noGrow"/>
-            <colspec value="fill:80px:noGrow"/>
+            <colspec value="fill:90px:noGrow"/>
             <colspec value="left:5px:noGrow"/>
             <colspec value="fill:150px:noGrow"/>
             <colspec value="left:5dlu:noGrow"/>
@@ -260,9 +260,9 @@
             <rowspec value="center:max(d;4px):noGrow"/>
             <colspec value="fill:max(d;4px):noGrow"/>
             <colspec value="left:4dlu:noGrow"/>
-            <colspec value="fill:140px:noGrow"/>
+            <colspec value="fill:150px:noGrow"/>
             <colspec value="left:5px:noGrow"/>
-            <colspec value="fill:160px:noGrow"/>
+            <colspec value="fill:170px:noGrow"/>
             <colspec value="left:5px:noGrow"/>
             <colspec value="fill:150px:noGrow"/>
             <colspec value="left:4dlu:noGrow"/>
@@ -456,9 +456,9 @@
             <rowspec value="center:max(d;4px):noGrow"/>
             <colspec value="fill:max(d;4px):noGrow"/>
             <colspec value="left:4dlu:noGrow"/>
-            <colspec value="fill:140px:noGrow"/>
+            <colspec value="fill:150px:noGrow"/>
             <colspec value="left:5px:noGrow"/>
-            <colspec value="fill:160px:noGrow"/>
+            <colspec value="fill:170px:noGrow"/>
             <colspec value="left:5px:noGrow"/>
             <colspec value="fill:150px:noGrow"/>
             <colspec value="left:4dlu:noGrow"/>

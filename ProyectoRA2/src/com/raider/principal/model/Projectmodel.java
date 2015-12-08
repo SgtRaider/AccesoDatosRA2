@@ -134,8 +134,6 @@ public class Projectmodel {
         return rol;
     }
 
-    // Metodos de guardado
-
     public void guardarCuartelSentencia(String nombre_cuartel, String localidad,
                                         Double latitud, Double longitud, Boolean actividad) {
 
@@ -442,23 +440,17 @@ public class Projectmodel {
         }
     }
 
-    public int consultaID(String select, String table, String campo, String condicion) {
+    public int consultaID(String select, String table, String campo, String condicion) throws SQLException{
 
         String sql = "SELECT " + select + " FROM " + table + " WHERE " + campo + " = ?";
         int id = 0;
         PreparedStatement sentencia = null;
-        try {
 
             sentencia = conexion.prepareStatement(sql);
             sentencia.setString(1, condicion);
             ResultSet resultado = sentencia.executeQuery();
 
             if (resultado.next())id = resultado.getInt(select);
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            Utilities.mensajeError("Error al cotejar ID");
-        }
 
         return id;
     }
@@ -761,71 +753,6 @@ public class Projectmodel {
         return soldado;
     }
 
-    public List<Object[]> buscarSoldado(String busqueda, String campo) {
-
-        List<Object[]> list;
-        Object[] fila;
-        String sql = "SELECT * FROM soldado WHERE " + campo + " LIKE '%" + busqueda + "%'";
-        list = new ArrayList<>();
-        try {
-            PreparedStatement sentencia = null;
-
-            sentencia = conexion.prepareStatement(sql);
-            ResultSet resultado = sentencia.executeQuery();
-            while (resultado.next()) {
-
-                int id = resultado.getInt("id");
-                String nombre = resultado.getString("nombre");
-                String apellidos = resultado.getString("apellidos");
-                String rango = resultado.getString("rango");
-                String lugar_nacimiento = resultado.getString("lugar_nacimiento");
-                Date fecha_nacimiento = resultado.getDate("fecha_nacimiento");
-                int id_unidad = resultado.getInt("id_unidad");
-
-                fila = new Object[]{id, nombre, apellidos, rango, fecha_nacimiento, lugar_nacimiento,
-                        consultaNombreCuartel_NombreUnidad("unidad", id_unidad)};
-                list.add(fila);
-            }
-            return list;
-        } catch (SQLException e) {
-            Utilities.mensajeError("Error al buscar Soldado");
-        }
-
-        return list;
-    }
-
-    public List<Object[]> buscarUnidad(String busqueda, String campo) {
-
-        List<Object[]> list;
-        Object[] fila;
-        String sql = "SELECT * FROM unidad WHERE " + campo + " LIKE '%" + busqueda + "%'";
-        list = new ArrayList<>();
-        try {
-            PreparedStatement sentencia = null;
-
-            sentencia = conexion.prepareStatement(sql);
-            ResultSet resultado = sentencia.executeQuery();
-            while (resultado.next()) {
-
-                int id = resultado.getInt("id");
-                String nombre_unidad = resultado.getString("nombre_unidad");
-                String tipo = resultado.getString("tipo");
-                int no_tropas = resultado.getInt("no_tropas");
-                Date fecha_creacion = resultado.getDate("fecha_creacion");
-                int id_cuartel = resultado.getInt("id_cuartel");
-
-                fila = new Object[]{id, nombre_unidad, tipo, no_tropas, fecha_creacion,
-                        consultaNombreCuartel_NombreUnidad("cuartel", id_cuartel)};
-                list.add(fila);
-            }
-            return list;
-        } catch (SQLException e) {
-            Utilities.mensajeError("Error al buscar Unidad");
-        }
-
-        return list;
-    }
-
     public List<Object[]> buscarCuartel(String busqueda, String campo) {
 
         List<Object[]> list;
@@ -856,6 +783,273 @@ public class Projectmodel {
         }
 
         return list;
+    }
+
+    public List<Object[]> buscarUnidad(String busqueda, String campo) {
+
+        List<Object[]> list;
+        Object[] fila;
+        list = new ArrayList<>();
+        String sql;
+        if (campo.equalsIgnoreCase("cuartel")) {
+
+            List<Integer> ids = buscarCuartelUnidad(busqueda);
+
+            for (int i = 0; i < ids.size(); i++) {
+
+                try {
+                    sql = "SELECT * FROM unidad WHERE id_cuartel = ?";
+                    PreparedStatement sentencia = null;
+
+                    sentencia = conexion.prepareStatement(sql);
+                    sentencia.setInt(1, ids.get(i));
+                    ResultSet resultado = sentencia.executeQuery();
+                    while (resultado.next()) {
+
+                        int id = resultado.getInt("id");
+                        String nombre_unidad = resultado.getString("nombre_unidad");
+                        String tipo = resultado.getString("tipo");
+                        int no_tropas = resultado.getInt("no_tropas");
+                        Date fecha_creacion = resultado.getDate("fecha_creacion");
+                        int id_cuartel = resultado.getInt("id_cuartel");
+
+                        fila = new Object[]{id, nombre_unidad, tipo, no_tropas, fecha_creacion,
+                                consultaNombreCuartel_NombreUnidad("cuartel", id_cuartel)};
+                        list.add(fila);
+                    }
+
+                } catch (SQLException e) {
+                    Utilities.mensajeError("Error al buscar Unidad");
+                }
+            }
+
+            return list;
+        } else {
+
+            sql = "SELECT * FROM unidad WHERE " + campo + " LIKE '%" + busqueda + "%'";
+
+            try {
+                PreparedStatement sentencia = null;
+
+                sentencia = conexion.prepareStatement(sql);
+                ResultSet resultado = sentencia.executeQuery();
+                while (resultado.next()) {
+
+                    int id = resultado.getInt("id");
+                    String nombre_unidad = resultado.getString("nombre_unidad");
+                    String tipo = resultado.getString("tipo");
+                    int no_tropas = resultado.getInt("no_tropas");
+                    Date fecha_creacion = resultado.getDate("fecha_creacion");
+                    int id_cuartel = resultado.getInt("id_cuartel");
+
+                    fila = new Object[]{id, nombre_unidad, tipo, no_tropas, fecha_creacion,
+                            consultaNombreCuartel_NombreUnidad("cuartel", id_cuartel)};
+                    list.add(fila);
+                }
+                return list;
+            } catch (SQLException e) {
+                Utilities.mensajeError("Error al buscar Unidad");
+            }
+        }
+
+        return list;
+    }
+
+    public List<Object[]> buscarSoldado(String busqueda, String campo) {
+
+        List<Object[]> list = new ArrayList<>();;
+        Object[] fila;
+        String sql;
+
+        if (campo.equalsIgnoreCase("unidad")) {
+            List<Integer> ids = buscarUnidadSoldado(busqueda);
+
+            for (int i = 0; i < ids.size(); i++) {
+
+                try {
+                    sql = "SELECT * FROM soldado WHERE id_unidad = ?";
+                    PreparedStatement sentencia = null;
+
+                    sentencia = conexion.prepareStatement(sql);
+                    sentencia.setInt(1, ids.get(i));
+                    ResultSet resultado = sentencia.executeQuery();
+                    while (resultado.next()) {
+
+                        int id = resultado.getInt("id");
+                        String nombre = resultado.getString("nombre");
+                        String apellidos = resultado.getString("apellidos");
+                        String rango = resultado.getString("rango");
+                        String lugar_nacimiento = resultado.getString("lugar_nacimiento");
+                        Date fecha_nacimiento = resultado.getDate("fecha_nacimiento");
+                        int id_unidad = resultado.getInt("id_unidad");
+
+                        fila = new Object[]{id, nombre, apellidos, rango, fecha_nacimiento, lugar_nacimiento,
+                                consultaNombreCuartel_NombreUnidad("unidad", id_unidad)};
+                        list.add(fila);
+                    }
+                } catch (SQLException e) {
+                    Utilities.mensajeError("Error al buscar Soldado");
+                }
+            }
+
+            return list;
+        } else {
+
+            if (campo.equalsIgnoreCase("cuartel")) {
+
+                List<Integer> ids = buscarCuartelSoldado(busqueda);
+
+                for (int i = 0; i < ids.size(); i++) {
+
+                    try {
+                        sql = "SELECT * FROM soldado WHERE id_unidad = ?";
+                        PreparedStatement sentencia = null;
+
+                        sentencia = conexion.prepareStatement(sql);
+                        sentencia.setInt(1, ids.get(i));
+                        ResultSet resultado = sentencia.executeQuery();
+                        while (resultado.next()) {
+
+                            int id = resultado.getInt("id");
+                            String nombre = resultado.getString("nombre");
+                            String apellidos = resultado.getString("apellidos");
+                            String rango = resultado.getString("rango");
+                            String lugar_nacimiento = resultado.getString("lugar_nacimiento");
+                            Date fecha_nacimiento = resultado.getDate("fecha_nacimiento");
+                            int id_unidad = resultado.getInt("id_unidad");
+
+                            fila = new Object[]{id, nombre, apellidos, rango, fecha_nacimiento, lugar_nacimiento,
+                                    consultaNombreCuartel_NombreUnidad("unidad", id_unidad)};
+                            list.add(fila);
+                        }
+                    } catch (SQLException e) {
+                        Utilities.mensajeError("Error al buscar Soldado");
+                    }
+                }
+
+                return list;
+            } else {
+
+                sql = "SELECT * FROM soldado WHERE " + campo + " LIKE '%" + busqueda + "%'";
+                try {
+                    PreparedStatement sentencia = null;
+
+                    sentencia = conexion.prepareStatement(sql);
+                    ResultSet resultado = sentencia.executeQuery();
+                    while (resultado.next()) {
+
+                        int id = resultado.getInt("id");
+                        String nombre = resultado.getString("nombre");
+                        String apellidos = resultado.getString("apellidos");
+                        String rango = resultado.getString("rango");
+                        String lugar_nacimiento = resultado.getString("lugar_nacimiento");
+                        Date fecha_nacimiento = resultado.getDate("fecha_nacimiento");
+                        int id_unidad = resultado.getInt("id_unidad");
+
+                        fila = new Object[]{id, nombre, apellidos, rango, fecha_nacimiento, lugar_nacimiento,
+                                consultaNombreCuartel_NombreUnidad("unidad", id_unidad)};
+                        list.add(fila);
+                    }
+                    return list;
+                } catch (SQLException e) {
+                    Utilities.mensajeError("Error al buscar Soldado");
+                }
+            }
+        }
+
+        return list;
+    }
+
+    public List<Integer> buscarCuartelUnidad(String busqueda) {
+
+        List<Integer> ids = new ArrayList<>();
+        String sql;
+
+        sql = "SELECT id FROM cuartel WHERE nombre_cuartel LIKE '%" + busqueda + "%'";
+
+        try {
+            PreparedStatement sentencia = null;
+
+            sentencia = conexion.prepareStatement(sql);
+            ResultSet resultado = sentencia.executeQuery();
+            while (resultado.next()) {
+
+                int id = resultado.getInt("id");
+                ids.add(id);
+            }
+
+        } catch (SQLException e) {
+            Utilities.mensajeError("Error al buscar Unidad");
+        }
+
+        return ids;
+    }
+
+    public List<Integer> buscarUnidadSoldado(String busqueda) {
+
+        List<Integer> ids = new ArrayList<>();
+        String sql;
+
+        sql = "SELECT id FROM unidad WHERE nombre_unidad LIKE '%" + busqueda + "%'";
+
+        try {
+            PreparedStatement sentencia = null;
+
+            sentencia = conexion.prepareStatement(sql);
+            ResultSet resultado = sentencia.executeQuery();
+            while (resultado.next()) {
+
+                int id = resultado.getInt("id");
+                ids.add(id);
+            }
+
+        } catch (SQLException e) {
+            Utilities.mensajeError("Error al buscar Soldado");
+        }
+
+        return ids;
+    }
+
+    public List<Integer> buscarCuartelSoldado(String busqueda) {
+
+        List<Integer> ids = new ArrayList<>();
+        List<Integer> ids_unidad = new ArrayList<>();
+
+        String sql;
+
+        sql = "SELECT id FROM cuartel WHERE nombre_cuartel LIKE '%" + busqueda + "%'";
+
+        try {
+            PreparedStatement sentencia = null;
+
+            sentencia = conexion.prepareStatement(sql);
+            ResultSet resultado = sentencia.executeQuery();
+            while (resultado.next()) {
+
+                int id = resultado.getInt("id");
+                ids.add(id);
+            }
+
+            for (int i = 0; i < ids.size(); i++) {
+                sql = "SELECT id FROM unidad WHERE id_cuartel = ?";
+                sentencia = null;
+
+                sentencia = conexion.prepareStatement(sql);
+                sentencia.setInt(1, ids.get(i));
+                resultado = sentencia.executeQuery();
+
+                while (resultado.next()) {
+
+                    int id = resultado.getInt("id");
+                    ids_unidad.add(id);
+                }
+            }
+
+        } catch (SQLException e) {
+            Utilities.mensajeError("Error al buscar Soldado");
+        }
+
+        return ids_unidad;
     }
 
     public int usoCuartel(int id) {

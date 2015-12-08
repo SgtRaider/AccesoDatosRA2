@@ -185,9 +185,9 @@ SELECT pg_catalog.setval('unidad_id_seq', 14, true);
 -- Data for Name: usuarios; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO usuarios VALUES ('Guillermo', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'usuario');
-INSERT INTO usuarios VALUES ('Dani', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'tecnico');
-INSERT INTO usuarios VALUES ('Raider', 'ea22853f937cc854d50efef25537d2963d7331af', 'administrador');
+INSERT INTO usuarios VALUES ('Guillermo', '1234', 'usuario');
+INSERT INTO usuarios VALUES ('Dani', '1234', 'tecnico');
+INSERT INTO usuarios VALUES ('Raider', '1234', 'administrador');
 
 
 --

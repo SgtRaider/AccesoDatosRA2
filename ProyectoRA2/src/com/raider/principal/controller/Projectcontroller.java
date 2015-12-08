@@ -20,6 +20,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.awt.event.ActionEvent;
@@ -193,6 +194,12 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
         defmodelcuartel.addColumn("Longitud");
         defmodelcuartel.addColumn("Actividad");
 
+        TableColumnModel cc = v.tCuartel.getColumnModel();
+        cc.getColumn(0).setPreferredWidth(10);
+        cc.getColumn(3).setPreferredWidth(35);
+        cc.getColumn(4).setPreferredWidth(35);
+        cc.getColumn(5).setPreferredWidth(35);
+
         defmodelunidad = new DefaultTableModel();
         v.tUnidad.setModel(defmodelunidad);
         defmodelunidad.addColumn("ID");
@@ -201,6 +208,12 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
         defmodelunidad.addColumn("No Tropas");
         defmodelunidad.addColumn("Fecha Creacion");
         defmodelunidad.addColumn("Cuartel");
+
+        TableColumnModel cu = v.tUnidad.getColumnModel();
+        cu.getColumn(0).setPreferredWidth(5);
+        cu.getColumn(2).setPreferredWidth(30);
+        cu.getColumn(3).setPreferredWidth(40);
+        cu.getColumn(5).setPreferredWidth(35);
 
         defmodelsoldado = new DefaultTableModel();
         v.tSoldado.setModel(defmodelsoldado);
@@ -211,6 +224,9 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
         defmodelsoldado.addColumn("Fecha Nacimiento");
         defmodelsoldado.addColumn("Lugar Nacimiento");
         defmodelsoldado.addColumn("Unidad");
+
+        TableColumnModel cs = v.tSoldado.getColumnModel();
+        cs.getColumn(0).setPreferredWidth(15);
     }
 
     public void listarCuartel() {
@@ -458,12 +474,17 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
 
         v.cbTablaUnidad.addItem("nombre_unidad");
         v.cbTablaUnidad.addItem("tipo");
-        v.cbTablaUnidad.addItem("no_tropas");
+        if (!Values.driver.equalsIgnoreCase("org.postgresql.Driver")) {
+            v.cbTablaUnidad.addItem("no_tropas");
+        }
+        v.cbTablaUnidad.addItem("cuartel");
 
         v.cbTablaSoldado.addItem("nombre");
         v.cbTablaSoldado.addItem("apellidos");
         v.cbTablaSoldado.addItem("rango");
         v.cbTablaSoldado.addItem("lugar_nacimiento");
+        v.cbTablaSoldado.addItem("unidad");
+        v.cbTablaSoldado.addItem("cuartel");
     }
 
     // Metodo que carga los datos de un archivo XML en los ARRAYLIST y posteriormente los lista
