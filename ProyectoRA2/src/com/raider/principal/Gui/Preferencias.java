@@ -1,5 +1,6 @@
 package com.raider.principal.Gui;
 
+import com.raider.principal.procesos.ComprobacionClaveSeguridad;
 import raider.Util.Utilities;
 
 import javax.swing.*;
@@ -20,6 +21,7 @@ public class Preferencias extends JDialog implements ActionListener {
     private JTextField txtPuerto;
     private JTextField txtUsuario;
     private JTextField txtContraseña;
+    public JPasswordField securityPw;
 
     public Preferencias() {
         super();
@@ -35,6 +37,8 @@ public class Preferencias extends JDialog implements ActionListener {
         btCancel.addActionListener(this);
         rbPostgre.addActionListener(this);
         rbMysql.addActionListener(this);
+        ComprobacionClaveSeguridad ccs = new ComprobacionClaveSeguridad(Preferencias.this);
+        ccs.start();
     }
 
     @Override

@@ -96,8 +96,18 @@ public class Projectmodel {
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
             }
-            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/ejercito", "root", "pamaloyo18");
-            Utilities.mensajeInformacion("Conexion realizada con exito");
+            try {
+                conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/ejercito", "root", "pamaloyo18");
+                Utilities.mensajeInformacion("Conexion realizada con exito");
+            } catch (MySQLSyntaxErrorException msqlsee) {
+                Utilities.mensajeError("Porfavor introduzca la base de datos ejercito en Mysql");
+                msqlsee.printStackTrace();
+                Values.warningBaseDatos = true;
+            } catch (PSQLException psqlsee) {
+                Utilities.mensajeError("Porfavor introduzca la base de datos ejercito en PostgreSQL");
+                psqlsee.printStackTrace();
+                Values.warningBaseDatos = true;
+            }
 
         } catch (IOException ioe) {
             Utilities.mensajeError("Error al leer fichero de configuracion");
@@ -106,7 +116,6 @@ public class Projectmodel {
         } catch (SQLException sqle) {
             Utilities.mensajeError("No se ha podido conectar con la base de datos");
             sqle.printStackTrace();
-            Values.warningBaseDatos = true;
         } catch (InstantiationException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
