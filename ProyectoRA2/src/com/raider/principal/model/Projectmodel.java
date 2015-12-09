@@ -1,5 +1,6 @@
 package com.raider.principal.model;
 
+import com.mysql.jdbc.exceptions.MySQLSyntaxErrorException;
 import com.raider.principal.controller.Projectcontroller;
 import com.raider.principal.util.Values;
 import com.raider.principal.base.Cuartel;
@@ -21,6 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import org.postgresql.util.PSQLException;
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 import raider.Util.Utilities;
@@ -49,9 +51,20 @@ public class Projectmodel {
             String contrasena = configuracion.getProperty("contrasena");
 
             Class.forName(driver).newInstance();
-            conexion = DriverManager.getConnection(protocolo + servidor + ":" +
-                    puerto + "/" + baseDatos, usuario, contrasena);
-            Utilities.mensajeInformacion("Conexion realizada con exito");
+            try {
+                conexion = DriverManager.getConnection(protocolo + servidor + ":" +
+                        puerto + "/" + baseDatos, usuario, contrasena);
+                Utilities.mensajeInformacion("Conexion realizada con exito");
+            } catch (MySQLSyntaxErrorException msqlsee) {
+                Utilities.mensajeError("Porfavor introduzca la base de datos ejercito en Mysql");
+                msqlsee.printStackTrace();
+                Values.warningBaseDatos = true;
+            } catch (PSQLException psqlsee) {
+                Utilities.mensajeError("Porfavor introduzca la base de datos ejercito en PostgreSQL");
+                psqlsee.printStackTrace();
+                Values.warningBaseDatos = true;
+            }
+
 
 
         } catch (FileNotFoundException fnfe) {
@@ -93,6 +106,7 @@ public class Projectmodel {
         } catch (SQLException sqle) {
             Utilities.mensajeError("No se ha podido conectar con la base de datos");
             sqle.printStackTrace();
+            Values.warningBaseDatos = true;
         } catch (InstantiationException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
@@ -102,36 +116,44 @@ public class Projectmodel {
 
     public String login(String usuario, String contrasena) {
 
-        String sql;
+        if (Values.warningBaseDatos == false) {
+            String sql;
 
-        if (Values.driver.equalsIgnoreCase("org.postgresql.Driver")) {
-            sql = "SELECT usuario, rol FROM usuarios WHERE " +
-                    "usuario = ? AND password = ?";
-        } else {
-            sql = "SELECT usuario, rol FROM usuarios WHERE " +
-                    "usuario = ? AND password = SHA1(?)";
-        }
+            if (Values.driver.equalsIgnoreCase("org.postgresql.Driver")) {
+                sql = "SELECT usuario, rol FROM usuarios WHERE " +
+                        "usuario = ? AND password = ?";
+            } else {
+                sql = "SELECT usuario, rol FROM usuarios WHERE " +
+                        "usuario = ? AND password = SHA1(?)";
+            }
 
 
-        String rol = "";
+            String rol = "";
 
-        try {
-            PreparedStatement sentencia = conexion.prepareStatement(sql);
-            sentencia.setString(1, usuario);
-            sentencia.setString(2, contrasena);
-            ResultSet resultado = sentencia.executeQuery();
+            try {
+                PreparedStatement sentencia = conexion.prepareStatement(sql);
+                sentencia.setString(1, usuario);
+                sentencia.setString(2, contrasena);
+                ResultSet resultado = sentencia.executeQuery();
 
-            if (!resultado.next()) {
-                Utilities.mensajeError("Usuario y contraseña incorrectos");
+                if (!resultado.next()) {
+                    Utilities.mensajeError("Usuario y contraseña incorrectos");
+                    return null;
+                }
+                rol = resultado.getString("rol");
+                return rol;
+            } catch (SQLException sqle) {
+                Utilities.mensajeError("Error al hacer login");
                 return null;
             }
-            rol = resultado.getString("rol");
-        } catch (SQLException sqle) {
-            Utilities.mensajeError("Error al hacer login");
+        } else {
+            Utilities.mensajeError("\tAvise al encargado del sistema.\n" +
+                    "Login no activo debido a fallo de conexion con base de datos.\n" +
+                    "Revise fichero de configuracion o compruebe si esta" +
+                    " disponible la base de datos ejercito en el servidor.\n" +
+                    "Tras solucionar el problema reinicie la aplicacion.");
             return null;
         }
-
-        return rol;
     }
 
     public void guardarCuartelSentencia(String nombre_cuartel, String localidad,

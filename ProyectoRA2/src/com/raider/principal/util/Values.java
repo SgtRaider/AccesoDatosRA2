@@ -12,10 +12,9 @@ public class Values {
 
     public static int tpConstant = 0;
     public static boolean modifyConstant = false;
-    public static String PATHmod = "";
-    public static String PATH = System.getProperty("user.home") + File.separator + "ArchivoEjercito.dat";
     public static int idCuartel;
     public static int idUnidad;
     public static int idSoldado;
     public static String driver = "com.mysql.jdbc.Driver";
+    public static boolean warningBaseDatos = false;
 }

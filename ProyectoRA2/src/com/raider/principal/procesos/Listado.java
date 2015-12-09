@@ -21,26 +21,30 @@ public class Listado extends Thread {
 
         while (isAlive()) {
 
-            if (v.txtBusquedacuartel.getText().isEmpty()) {
+            if (Values.warningBaseDatos == false) {
 
-                if (Values.tpConstant == 0) {
-                    pc.listarCuartel();
+                if (v.txtBusquedacuartel.getText().isEmpty()) {
+
+                    if (Values.tpConstant == 0) {
+                        pc.listarCuartel();
+                    }
+                }
+
+                if (v.txtBusquedaunidad.getText().isEmpty()) {
+
+                    if (Values.tpConstant == 1) {
+                        pc.listarUnidad();
+                    }
+                }
+
+                if (v.txtBusquedasoldado.getText().isEmpty()) {
+
+                    if(Values.tpConstant == 2) {
+                        pc.listarSoldado();
+                    }
                 }
             }
 
-            if (v.txtBusquedaunidad.getText().isEmpty()) {
-
-                if (Values.tpConstant == 1) {
-                    pc.listarUnidad();
-                }
-            }
-
-            if (v.txtBusquedasoldado.getText().isEmpty()) {
-
-                if(Values.tpConstant == 2) {
-                    pc.listarSoldado();
-                }
-            }
 
             try {
                 Thread.sleep(5000);

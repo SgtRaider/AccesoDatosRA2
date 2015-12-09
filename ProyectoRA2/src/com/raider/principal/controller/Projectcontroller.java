@@ -231,41 +231,47 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
 
     public void listarCuartel() {
 
-        List<Object[]> list = pm.listar("cuartel");
+        if (Values.warningBaseDatos == false) {
+            List<Object[]> list = pm.listar("cuartel");
 
-        if (list != null) {
+            if (list != null) {
 
-            defmodelcuartel.setNumRows(0);
-            for (int i = 0;i < list.size(); i++) {
+                defmodelcuartel.setNumRows(0);
+                for (int i = 0;i < list.size(); i++) {
 
-                defmodelcuartel.addRow(list.get(i));
+                    defmodelcuartel.addRow(list.get(i));
+                }
             }
         }
     }
 
     public void listarUnidad() {
 
-        List<Object[]> list = pm.listar("unidad");
+        if (Values.warningBaseDatos == false) {
+            List<Object[]> list = pm.listar("unidad");
 
-        if (list != null) {
-            defmodelunidad.setNumRows(0);
-            for (int i = 0;i < list.size(); i++) {
+            if (list != null) {
+                defmodelunidad.setNumRows(0);
+                for (int i = 0; i < list.size(); i++) {
 
-                defmodelunidad.addRow(list.get(i));
+                    defmodelunidad.addRow(list.get(i));
+                }
             }
         }
     }
 
     public void listarSoldado() {
 
-        List<Object[]> list = pm.listar("soldado");
+        if (Values.warningBaseDatos == false) {
+            List<Object[]> list = pm.listar("soldado");
 
-        if (list != null) {
+            if (list != null) {
 
-            defmodelsoldado.setNumRows(0);
-            for (int i = 0;i < list.size(); i++) {
+                defmodelsoldado.setNumRows(0);
+                for (int i = 0; i < list.size(); i++) {
 
-                defmodelsoldado.addRow(list.get(i));
+                    defmodelsoldado.addRow(list.get(i));
+                }
             }
         }
     }
@@ -547,24 +553,26 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
 
     public void actualizarComboBox(int op) {
 
-        List<String> cb = pm.consultaActualizarComboBox(op);
+        if (Values.warningBaseDatos == false) {
+            List<String> cb = pm.consultaActualizarComboBox(op);
 
-        if (op == 0) {
+            if (op == 0) {
 
-            v.cbCuartel.removeAllItems();
-            v.cbCuartel.addItem("");
-            for (int i = 0;i < cb.size(); i++) {
-                v.cbCuartel.addItem(cb.get(i));
-            }
+                v.cbCuartel.removeAllItems();
+                v.cbCuartel.addItem("");
+                for (int i = 0; i < cb.size(); i++) {
+                    v.cbCuartel.addItem(cb.get(i));
+                }
 
-        } else {
+            } else {
 
-            if (op == 1) {
+                if (op == 1) {
 
-                v.cbUnidad.removeAllItems();
-                v.cbUnidad.addItem("");
-                for (int i = 0;i < cb.size(); i++) {
-                    v.cbUnidad.addItem(cb.get(i));
+                    v.cbUnidad.removeAllItems();
+                    v.cbUnidad.addItem("");
+                    for (int i = 0; i < cb.size(); i++) {
+                        v.cbUnidad.addItem(cb.get(i));
+                    }
                 }
             }
         }
