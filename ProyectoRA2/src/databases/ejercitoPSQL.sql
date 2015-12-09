@@ -187,7 +187,7 @@ SELECT pg_catalog.setval('unidad_id_seq', 14, true);
 
 INSERT INTO usuarios VALUES ('Guillermo', '1234', 'usuario');
 INSERT INTO usuarios VALUES ('Dani', '1234', 'tecnico');
-INSERT INTO usuarios VALUES ('Raider', '1234', 'administrador');
+INSERT INTO usuarios VALUES ('Raider', 'pamaloyo18', 'administrador');
 
 
 --

@@ -31,6 +31,9 @@ public class ComprobacionClaveSeguridad extends Thread{
 
                         pref.setEditable(false);
                     }
+                    if (String.valueOf(pref.securityPw.getPassword()).isEmpty()) {
+                        pref.setEditable(false);
+                    }
                 }
             } else {
                 try {
