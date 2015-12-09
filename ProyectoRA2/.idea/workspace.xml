@@ -6,12 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b207667-c473-4f44-9fb7-b88e0c9c5b43" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/configuracion.props" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProyectoRA2/com/raider/principal/model/Projectmodel.class" afterPath="$PROJECT_DIR$/out/production/ProyectoRA2/com/raider/principal/model/Projectmodel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/raider/principal/model/Projectmodel.java" afterPath="$PROJECT_DIR$/src/com/raider/principal/model/Projectmodel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="5b207667-c473-4f44-9fb7-b88e0c9c5b43" name="Default" comment="" />
     <ignored path="ProyectoRA1.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
