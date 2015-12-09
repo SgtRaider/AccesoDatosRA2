@@ -1,7 +1,6 @@
 package com.raider.principal.model;
 
 import com.mysql.jdbc.exceptions.MySQLSyntaxErrorException;
-import com.raider.principal.controller.Projectcontroller;
 import com.raider.principal.util.Values;
 import com.raider.principal.base.Cuartel;
 import com.raider.principal.base.Soldado;
@@ -68,15 +67,15 @@ public class Projectmodel {
 
 
         } catch (FileNotFoundException fnfe) {
-            Utilities.mensajeInformacion("Preferencias de conexion no encontradas.\n " +
+            Utilities.mensajeInformacion(" Preferencias de conexion no encontradas.\n " +
                     "Base de datos cargada con preferencias por defecto.");
                 Properties con = new Properties();
 
                 con.setProperty("basedatos", "ejercito");
                 con.setProperty("puerto", "3306");
-                con.setProperty("servidor", "localhost");
-                con.setProperty("contrasena", "pamaloyo18");
-                con.setProperty("usuario", "root");
+                con.setProperty("servidor", "81.169.242.83");
+                con.setProperty("contrasena", "1234");
+                con.setProperty("usuario", "Raider");
                 con.setProperty("protocolo", "jdbc:mysql://");
                 con.setProperty("driver", "com.mysql.jdbc.Driver");
 

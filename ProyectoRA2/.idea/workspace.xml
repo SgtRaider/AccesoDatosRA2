@@ -7,7 +7,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5b207667-c473-4f44-9fb7-b88e0c9c5b43" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../ProyectoRA2.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/configuracion.props" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProyectoRA2/com/raider/principal/model/Projectmodel.class" afterPath="$PROJECT_DIR$/out/production/ProyectoRA2/com/raider/principal/model/Projectmodel.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/raider/principal/model/Projectmodel.java" afterPath="$PROJECT_DIR$/src/com/raider/principal/model/Projectmodel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ProyectoRA1.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,68 +33,68 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Projectmodel.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Projectmodel.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/raider/principal/model/Projectmodel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="434" column="13" selection-start-line="434" selection-start-column="13" selection-end-line="434" selection-end-column="13" />
+            <state vertical-scroll-proportion="0.29268292">
+              <caret line="69" column="43" selection-start-line="69" selection-start-column="43" selection-end-line="69" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <marker date="1449688049928" expanded="true" signature="5486:5583" placeholder="SELECT usuar..usuarios..." />
-                <marker date="1449688049928" expanded="true" signature="5630:5733" placeholder="SELECT usuar..usuarios..." />
-                <marker date="1449688049928" expanded="true" signature="7277:7402" placeholder="INSERT INTO ..." />
-                <marker date="1449688049928" expanded="true" signature="9855:9986" placeholder="INSERT INTO ..." />
-                <marker date="1449688049928" expanded="true" signature="12020:12192" placeholder="INSERT INTO ..." />
-                <marker date="1449688049928" expanded="true" signature="13389:13421" placeholder="DELETE FROM ..." />
-                <marker date="1449688049928" expanded="true" signature="14106:14137" placeholder="DELETE FROM ..." />
-                <marker date="1449688049928" expanded="true" signature="14824:14856" placeholder="DELETE FROM ..." />
-                <marker date="1449688049928" expanded="true" signature="15703:15835" placeholder="UPDATE cuart..." />
-                <marker date="1449688049928" expanded="true" signature="17014:17152" placeholder="UPDATE unida..." />
-                <marker date="1449688049928" expanded="true" signature="18588:18744" placeholder="UPDATE solda..." />
-                <marker date="1449688049928" expanded="true" signature="19914:19978" placeholder="SELECT missi..missingValue..." />
-                <marker date="1449688049928" expanded="true" signature="20455:20502" placeholder="SELECT missi..missingValue..." />
-                <marker date="1449688049928" expanded="true" signature="21128:21173" placeholder="SELECT nombr..cuartel..." />
-                <marker date="1449688049928" expanded="true" signature="21969:22003" placeholder="SELECT nombr..cuartel..." />
-                <marker date="1449688049928" expanded="true" signature="22607:22639" placeholder="SELECT nombr..unidad..." />
-                <marker date="1449688049928" expanded="true" signature="23400:23421" placeholder="SELECT * FRO..cuartel..." />
-                <marker date="1449688049928" expanded="true" signature="24562:24576" placeholder="SELECT * FRO..cuartel..." />
-                <marker date="1449688049928" expanded="true" signature="24562:24582" placeholder="SELECT * FRO..unidad..." />
-                <marker date="1449688049928" expanded="true" signature="25852:25866" placeholder="SELECT * FRO..unidad..." />
-                <marker date="1449688049928" expanded="true" signature="25852:25873" placeholder="SELECT * FRO..soldado..." />
-                <marker date="1449688049928" expanded="true" signature="27393:27427" placeholder="SELECT * FRO..cuartel..." />
-                <marker date="1449688049928" expanded="true" signature="28342:28375" placeholder="SELECT * FRO..cuartel..." />
-                <marker date="1449688049928" expanded="true" signature="29350:29384" placeholder="SELECT * FRO..unidad..." />
-                <marker date="1449688049928" expanded="true" signature="30491:30558" placeholder="SELECT * FRO..cuartel..." />
-                <marker date="1449688049928" expanded="true" signature="31939:31980" placeholder="SELECT * FRO..unidad..." />
-                <marker date="1449688049928" expanded="true" signature="33169:33235" placeholder="SELECT * FRO..unidad..." />
-                <marker date="1449688049928" expanded="true" signature="34693:34733" placeholder="SELECT * FRO..soldado..." />
-                <marker date="1449688049928" expanded="true" signature="34693:34734" placeholder="SELECT * FRO..soldado..." />
-                <marker date="1449688049928" expanded="true" signature="36239:36280" placeholder="SELECT * FRO..soldado..." />
-                <marker date="1449688049928" expanded="true" signature="37660:37727" placeholder="SELECT * FRO..soldado..." />
-                <marker date="1449688049928" expanded="true" signature="39141:39210" placeholder="SELECT id FR..unidad..." />
-                <marker date="1449688049928" expanded="true" signature="39809:39876" placeholder="SELECT * FRO..soldado..." />
-                <marker date="1449688049928" expanded="true" signature="40532:40601" placeholder="SELECT id FR..unidad..." />
-                <marker date="1449688049928" expanded="true" signature="40991:41033" placeholder="SELECT id FR..unidad..." />
-                <marker date="1449688049928" expanded="true" signature="41625:41661" placeholder="SELECT uso F..cuartel..." />
-                <marker date="1449688049928" expanded="true" signature="42135:42183" placeholder="SELECT uso F..cuartel..." />
-                <marker date="1449688049928" expanded="true" signature="42671:42717" placeholder="SELECT uso F..cuartel..." />
-                <marker date="1449688049928" expanded="true" signature="43190:43225" placeholder="SELECT uso F..unidad..." />
-                <marker date="1449688049928" expanded="true" signature="43685:43721" placeholder="SELECT uso F..unidad..." />
-                <marker date="1449688049928" expanded="true" signature="44206:44235" placeholder="SELECT uso F..soldado..." />
-                <marker date="1449688049928" expanded="true" signature="44206:44236" placeholder="SELECT uso F..soldado..." />
-                <marker date="1449688049928" expanded="true" signature="44206:44257" placeholder="SELECT uso F..soldado..." />
-                <marker date="1449688049928" expanded="true" signature="44206:44264" placeholder="SELECT uso F..soldado..." />
-                <marker date="1449688049928" expanded="true" signature="44775:44814" placeholder="UPDATE cuart..." />
-                <marker date="1449688049928" expanded="true" signature="45219:45270" placeholder="UPDATE cuart..." />
-                <marker date="1449688049928" expanded="true" signature="45674:45712" placeholder="UPDATE unida..." />
-                <marker date="1449688049928" expanded="true" signature="46115:46164" placeholder="UPDATE unida..." />
-                <marker date="1449688049928" expanded="true" signature="46568:46607" placeholder="UPDATE cuart..." />
-                <marker date="1449688049928" expanded="true" signature="47022:47065" placeholder="UPDATE solda..." />
-                <marker date="1449688049928" expanded="true" signature="47022:47083" placeholder="UPDATE solda..." />
-                <marker date="1449688049928" expanded="true" signature="47526:47547" placeholder="SELECT nombr..cuartel..." />
-                <marker date="1449688049928" expanded="true" signature="47573:47593" placeholder="SELECT * FRO..unidad..." />
-                <marker date="1449688049928" expanded="true" signature="47619:47633" placeholder="SELECT * FRO..cuartel..." />
-                <marker date="1449688049928" expanded="true" signature="47619:47640" placeholder="SELECT * FRO..soldado..." />
+                <marker date="1449695703968" expanded="true" signature="5429:5526" placeholder="SELECT usuar..usuarios..." />
+                <marker date="1449695703968" expanded="true" signature="5573:5676" placeholder="SELECT usuar..usuarios..." />
+                <marker date="1449695703968" expanded="true" signature="7220:7345" placeholder="INSERT INTO ..." />
+                <marker date="1449695703968" expanded="true" signature="9798:9929" placeholder="INSERT INTO ..." />
+                <marker date="1449695703968" expanded="true" signature="11963:12135" placeholder="INSERT INTO ..." />
+                <marker date="1449695703968" expanded="true" signature="13332:13364" placeholder="DELETE FROM ..." />
+                <marker date="1449695703968" expanded="true" signature="14049:14080" placeholder="DELETE FROM ..." />
+                <marker date="1449695703968" expanded="true" signature="14767:14799" placeholder="DELETE FROM ..." />
+                <marker date="1449695703968" expanded="true" signature="15646:15778" placeholder="UPDATE cuart..." />
+                <marker date="1449695703968" expanded="true" signature="16957:17095" placeholder="UPDATE unida..." />
+                <marker date="1449695703968" expanded="true" signature="18531:18687" placeholder="UPDATE solda..." />
+                <marker date="1449695703968" expanded="true" signature="19857:19921" placeholder="SELECT missi..missingValue..." />
+                <marker date="1449695703968" expanded="true" signature="20398:20445" placeholder="SELECT missi..missingValue..." />
+                <marker date="1449695703968" expanded="true" signature="21071:21116" placeholder="SELECT nombr..cuartel..." />
+                <marker date="1449695703968" expanded="true" signature="21912:21946" placeholder="SELECT nombr..cuartel..." />
+                <marker date="1449695703968" expanded="true" signature="22550:22582" placeholder="SELECT nombr..unidad..." />
+                <marker date="1449695703968" expanded="true" signature="23343:23364" placeholder="SELECT * FRO..cuartel..." />
+                <marker date="1449695703968" expanded="true" signature="24505:24519" placeholder="SELECT * FRO..cuartel..." />
+                <marker date="1449695703968" expanded="true" signature="24505:24525" placeholder="SELECT * FRO..unidad..." />
+                <marker date="1449695703968" expanded="true" signature="25795:25809" placeholder="SELECT * FRO..unidad..." />
+                <marker date="1449695703968" expanded="true" signature="25795:25816" placeholder="SELECT * FRO..soldado..." />
+                <marker date="1449695703968" expanded="true" signature="27336:27370" placeholder="SELECT * FRO..cuartel..." />
+                <marker date="1449695703968" expanded="true" signature="28285:28318" placeholder="SELECT * FRO..cuartel..." />
+                <marker date="1449695703968" expanded="true" signature="29293:29327" placeholder="SELECT * FRO..unidad..." />
+                <marker date="1449695703968" expanded="true" signature="30434:30501" placeholder="SELECT * FRO..cuartel..." />
+                <marker date="1449695703968" expanded="true" signature="31882:31923" placeholder="SELECT * FRO..unidad..." />
+                <marker date="1449695703968" expanded="true" signature="33112:33178" placeholder="SELECT * FRO..unidad..." />
+                <marker date="1449695703968" expanded="true" signature="34636:34676" placeholder="SELECT * FRO..soldado..." />
+                <marker date="1449695703968" expanded="true" signature="34636:34677" placeholder="SELECT * FRO..soldado..." />
+                <marker date="1449695703968" expanded="true" signature="36182:36223" placeholder="SELECT * FRO..soldado..." />
+                <marker date="1449695703968" expanded="true" signature="37603:37670" placeholder="SELECT * FRO..soldado..." />
+                <marker date="1449695703968" expanded="true" signature="39084:39153" placeholder="SELECT id FR..unidad..." />
+                <marker date="1449695703968" expanded="true" signature="39752:39819" placeholder="SELECT * FRO..soldado..." />
+                <marker date="1449695703968" expanded="true" signature="40475:40544" placeholder="SELECT id FR..unidad..." />
+                <marker date="1449695703968" expanded="true" signature="40934:40976" placeholder="SELECT id FR..unidad..." />
+                <marker date="1449695703968" expanded="true" signature="41568:41604" placeholder="SELECT uso F..cuartel..." />
+                <marker date="1449695703968" expanded="true" signature="42078:42126" placeholder="SELECT uso F..cuartel..." />
+                <marker date="1449695703968" expanded="true" signature="42614:42660" placeholder="SELECT uso F..cuartel..." />
+                <marker date="1449695703968" expanded="true" signature="43133:43168" placeholder="SELECT uso F..unidad..." />
+                <marker date="1449695703968" expanded="true" signature="43628:43664" placeholder="SELECT uso F..unidad..." />
+                <marker date="1449695703968" expanded="true" signature="44149:44178" placeholder="SELECT uso F..soldado..." />
+                <marker date="1449695703968" expanded="true" signature="44149:44179" placeholder="SELECT uso F..soldado..." />
+                <marker date="1449695703968" expanded="true" signature="44149:44200" placeholder="SELECT uso F..soldado..." />
+                <marker date="1449695703968" expanded="true" signature="44149:44207" placeholder="SELECT uso F..soldado..." />
+                <marker date="1449695703968" expanded="true" signature="44718:44757" placeholder="UPDATE cuart..." />
+                <marker date="1449695703968" expanded="true" signature="45162:45213" placeholder="UPDATE cuart..." />
+                <marker date="1449695703968" expanded="true" signature="45617:45655" placeholder="UPDATE unida..." />
+                <marker date="1449695703968" expanded="true" signature="46058:46107" placeholder="UPDATE unida..." />
+                <marker date="1449695703968" expanded="true" signature="46511:46550" placeholder="UPDATE cuart..." />
+                <marker date="1449695703968" expanded="true" signature="46965:47008" placeholder="UPDATE solda..." />
+                <marker date="1449695703968" expanded="true" signature="46965:47026" placeholder="UPDATE solda..." />
+                <marker date="1449695703968" expanded="true" signature="47469:47490" placeholder="SELECT nombr..cuartel..." />
+                <marker date="1449695703968" expanded="true" signature="47516:47536" placeholder="SELECT * FRO..unidad..." />
+                <marker date="1449695703968" expanded="true" signature="47562:47576" placeholder="SELECT * FRO..cuartel..." />
+                <marker date="1449695703968" expanded="true" signature="47562:47583" placeholder="SELECT * FRO..soldado..." />
               </folding>
             </state>
           </provider>
@@ -100,17 +103,17 @@
       <file leaf-file-name="ejercitoPSQL.sql" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/databases/ejercitoPSQL.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="18.173077">
+            <state vertical-scroll-proportion="0.0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Projectcontroller.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Projectcontroller.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/raider/principal/controller/Projectcontroller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6741573">
+            <state vertical-scroll-proportion="0.0">
               <caret line="562" column="30" selection-start-line="562" selection-start-column="30" selection-end-line="562" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -158,10 +161,10 @@
         <option value="$PROJECT_DIR$/src/com/raider/principal/util/Values.java" />
         <option value="$PROJECT_DIR$/src/com/raider/principal/Gui/Preferencias.form" />
         <option value="$PROJECT_DIR$/src/com/raider/principal/Gui/Preferencias.java" />
-        <option value="$PROJECT_DIR$/configuracion.props" />
         <option value="$PROJECT_DIR$/src/com/raider/principal/procesos/ComprobacionClaveSeguridad.java" />
-        <option value="$PROJECT_DIR$/src/com/raider/principal/model/Projectmodel.java" />
         <option value="$PROJECT_DIR$/src/com/raider/principal/controller/Projectcontroller.java" />
+        <option value="$PROJECT_DIR$/configuracion.props" />
+        <option value="$PROJECT_DIR$/src/com/raider/principal/model/Projectmodel.java" />
       </list>
     </option>
   </component>
@@ -592,7 +595,7 @@
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="ToolWindowManager">
     <frame x="-1" y="0" width="1368" height="744" extended-state="7" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -601,10 +604,10 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12616822" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.55451715" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18008785" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18008785" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32866043" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -700,61 +703,61 @@
           <caret line="219" column="0" selection-start-line="219" selection-start-column="0" selection-end-line="219" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1449688049928" expanded="true" signature="5486:5583" placeholder="SELECT usuar..usuarios..." />
-            <marker date="1449688049928" expanded="true" signature="5630:5733" placeholder="SELECT usuar..usuarios..." />
-            <marker date="1449688049928" expanded="true" signature="7277:7402" placeholder="INSERT INTO ..." />
-            <marker date="1449688049928" expanded="true" signature="9855:9986" placeholder="INSERT INTO ..." />
-            <marker date="1449688049928" expanded="true" signature="12020:12192" placeholder="INSERT INTO ..." />
-            <marker date="1449688049928" expanded="true" signature="13389:13421" placeholder="DELETE FROM ..." />
-            <marker date="1449688049928" expanded="true" signature="14106:14137" placeholder="DELETE FROM ..." />
-            <marker date="1449688049928" expanded="true" signature="14824:14856" placeholder="DELETE FROM ..." />
-            <marker date="1449688049928" expanded="true" signature="15703:15835" placeholder="UPDATE cuart..." />
-            <marker date="1449688049928" expanded="true" signature="17014:17152" placeholder="UPDATE unida..." />
-            <marker date="1449688049928" expanded="true" signature="18588:18744" placeholder="UPDATE solda..." />
-            <marker date="1449688049928" expanded="true" signature="19914:19978" placeholder="SELECT missi..missingValue..." />
-            <marker date="1449688049928" expanded="true" signature="20455:20502" placeholder="SELECT missi..missingValue..." />
-            <marker date="1449688049928" expanded="true" signature="21128:21173" placeholder="SELECT nombr..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="21969:22003" placeholder="SELECT nombr..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="22607:22639" placeholder="SELECT nombr..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="23400:23421" placeholder="SELECT * FRO..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="24562:24576" placeholder="SELECT * FRO..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="24562:24582" placeholder="SELECT * FRO..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="25852:25866" placeholder="SELECT * FRO..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="25852:25873" placeholder="SELECT * FRO..soldado..." />
-            <marker date="1449688049928" expanded="true" signature="27393:27427" placeholder="SELECT * FRO..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="28342:28375" placeholder="SELECT * FRO..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="29350:29384" placeholder="SELECT * FRO..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="30491:30558" placeholder="SELECT * FRO..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="31939:31980" placeholder="SELECT * FRO..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="33169:33235" placeholder="SELECT * FRO..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="34693:34733" placeholder="SELECT * FRO..soldado..." />
-            <marker date="1449688049928" expanded="true" signature="34693:34734" placeholder="SELECT * FRO..soldado..." />
-            <marker date="1449688049928" expanded="true" signature="36239:36280" placeholder="SELECT * FRO..soldado..." />
-            <marker date="1449688049928" expanded="true" signature="37660:37727" placeholder="SELECT * FRO..soldado..." />
-            <marker date="1449688049928" expanded="true" signature="39141:39210" placeholder="SELECT id FR..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="39809:39876" placeholder="SELECT * FRO..soldado..." />
-            <marker date="1449688049928" expanded="true" signature="40532:40601" placeholder="SELECT id FR..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="40991:41033" placeholder="SELECT id FR..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="41625:41661" placeholder="SELECT uso F..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="42135:42183" placeholder="SELECT uso F..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="42671:42717" placeholder="SELECT uso F..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="43190:43225" placeholder="SELECT uso F..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="43685:43721" placeholder="SELECT uso F..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="44206:44235" placeholder="SELECT uso F..soldado..." />
-            <marker date="1449688049928" expanded="true" signature="44206:44236" placeholder="SELECT uso F..soldado..." />
-            <marker date="1449688049928" expanded="true" signature="44206:44257" placeholder="SELECT uso F..soldado..." />
-            <marker date="1449688049928" expanded="true" signature="44206:44264" placeholder="SELECT uso F..soldado..." />
-            <marker date="1449688049928" expanded="true" signature="44775:44814" placeholder="UPDATE cuart..." />
-            <marker date="1449688049928" expanded="true" signature="45219:45270" placeholder="UPDATE cuart..." />
-            <marker date="1449688049928" expanded="true" signature="45674:45712" placeholder="UPDATE unida..." />
-            <marker date="1449688049928" expanded="true" signature="46115:46164" placeholder="UPDATE unida..." />
-            <marker date="1449688049928" expanded="true" signature="46568:46607" placeholder="UPDATE cuart..." />
-            <marker date="1449688049928" expanded="true" signature="47022:47065" placeholder="UPDATE solda..." />
-            <marker date="1449688049928" expanded="true" signature="47022:47083" placeholder="UPDATE solda..." />
-            <marker date="1449688049928" expanded="true" signature="47526:47547" placeholder="SELECT nombr..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="47573:47593" placeholder="SELECT * FRO..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="47619:47633" placeholder="SELECT * FRO..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="47619:47640" placeholder="SELECT * FRO..soldado..." />
+            <marker date="1449695703968" expanded="true" signature="5429:5526" placeholder="SELECT usuar..usuarios..." />
+            <marker date="1449695703968" expanded="true" signature="5573:5676" placeholder="SELECT usuar..usuarios..." />
+            <marker date="1449695703968" expanded="true" signature="7220:7345" placeholder="INSERT INTO ..." />
+            <marker date="1449695703968" expanded="true" signature="9798:9929" placeholder="INSERT INTO ..." />
+            <marker date="1449695703968" expanded="true" signature="11963:12135" placeholder="INSERT INTO ..." />
+            <marker date="1449695703968" expanded="true" signature="13332:13364" placeholder="DELETE FROM ..." />
+            <marker date="1449695703968" expanded="true" signature="14049:14080" placeholder="DELETE FROM ..." />
+            <marker date="1449695703968" expanded="true" signature="14767:14799" placeholder="DELETE FROM ..." />
+            <marker date="1449695703968" expanded="true" signature="15646:15778" placeholder="UPDATE cuart..." />
+            <marker date="1449695703968" expanded="true" signature="16957:17095" placeholder="UPDATE unida..." />
+            <marker date="1449695703968" expanded="true" signature="18531:18687" placeholder="UPDATE solda..." />
+            <marker date="1449695703968" expanded="true" signature="19857:19921" placeholder="SELECT missi..missingValue..." />
+            <marker date="1449695703968" expanded="true" signature="20398:20445" placeholder="SELECT missi..missingValue..." />
+            <marker date="1449695703968" expanded="true" signature="21071:21116" placeholder="SELECT nombr..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="21912:21946" placeholder="SELECT nombr..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="22550:22582" placeholder="SELECT nombr..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="23343:23364" placeholder="SELECT * FRO..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="24505:24519" placeholder="SELECT * FRO..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="24505:24525" placeholder="SELECT * FRO..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="25795:25809" placeholder="SELECT * FRO..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="25795:25816" placeholder="SELECT * FRO..soldado..." />
+            <marker date="1449695703968" expanded="true" signature="27336:27370" placeholder="SELECT * FRO..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="28285:28318" placeholder="SELECT * FRO..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="29293:29327" placeholder="SELECT * FRO..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="30434:30501" placeholder="SELECT * FRO..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="31882:31923" placeholder="SELECT * FRO..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="33112:33178" placeholder="SELECT * FRO..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="34636:34676" placeholder="SELECT * FRO..soldado..." />
+            <marker date="1449695703968" expanded="true" signature="34636:34677" placeholder="SELECT * FRO..soldado..." />
+            <marker date="1449695703968" expanded="true" signature="36182:36223" placeholder="SELECT * FRO..soldado..." />
+            <marker date="1449695703968" expanded="true" signature="37603:37670" placeholder="SELECT * FRO..soldado..." />
+            <marker date="1449695703968" expanded="true" signature="39084:39153" placeholder="SELECT id FR..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="39752:39819" placeholder="SELECT * FRO..soldado..." />
+            <marker date="1449695703968" expanded="true" signature="40475:40544" placeholder="SELECT id FR..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="40934:40976" placeholder="SELECT id FR..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="41568:41604" placeholder="SELECT uso F..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="42078:42126" placeholder="SELECT uso F..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="42614:42660" placeholder="SELECT uso F..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="43133:43168" placeholder="SELECT uso F..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="43628:43664" placeholder="SELECT uso F..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="44149:44178" placeholder="SELECT uso F..soldado..." />
+            <marker date="1449695703968" expanded="true" signature="44149:44179" placeholder="SELECT uso F..soldado..." />
+            <marker date="1449695703968" expanded="true" signature="44149:44200" placeholder="SELECT uso F..soldado..." />
+            <marker date="1449695703968" expanded="true" signature="44149:44207" placeholder="SELECT uso F..soldado..." />
+            <marker date="1449695703968" expanded="true" signature="44718:44757" placeholder="UPDATE cuart..." />
+            <marker date="1449695703968" expanded="true" signature="45162:45213" placeholder="UPDATE cuart..." />
+            <marker date="1449695703968" expanded="true" signature="45617:45655" placeholder="UPDATE unida..." />
+            <marker date="1449695703968" expanded="true" signature="46058:46107" placeholder="UPDATE unida..." />
+            <marker date="1449695703968" expanded="true" signature="46511:46550" placeholder="UPDATE cuart..." />
+            <marker date="1449695703968" expanded="true" signature="46965:47008" placeholder="UPDATE solda..." />
+            <marker date="1449695703968" expanded="true" signature="46965:47026" placeholder="UPDATE solda..." />
+            <marker date="1449695703968" expanded="true" signature="47469:47490" placeholder="SELECT nombr..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="47516:47536" placeholder="SELECT * FRO..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="47562:47576" placeholder="SELECT * FRO..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="47562:47583" placeholder="SELECT * FRO..soldado..." />
           </folding>
         </state>
       </provider>
@@ -780,7 +783,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="78" column="3" selection-start-line="78" selection-start-column="3" selection-end-line="83" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -804,7 +806,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="55" column="41" selection-start-line="55" selection-start-column="41" selection-end-line="55" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -822,61 +823,61 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1449688049928" expanded="true" signature="5486:5583" placeholder="SELECT usuar..usuarios..." />
-            <marker date="1449688049928" expanded="true" signature="5630:5733" placeholder="SELECT usuar..usuarios..." />
-            <marker date="1449688049928" expanded="true" signature="7277:7402" placeholder="INSERT INTO ..." />
-            <marker date="1449688049928" expanded="true" signature="9855:9986" placeholder="INSERT INTO ..." />
-            <marker date="1449688049928" expanded="true" signature="12020:12192" placeholder="INSERT INTO ..." />
-            <marker date="1449688049928" expanded="true" signature="13389:13421" placeholder="DELETE FROM ..." />
-            <marker date="1449688049928" expanded="true" signature="14106:14137" placeholder="DELETE FROM ..." />
-            <marker date="1449688049928" expanded="true" signature="14824:14856" placeholder="DELETE FROM ..." />
-            <marker date="1449688049928" expanded="true" signature="15703:15835" placeholder="UPDATE cuart..." />
-            <marker date="1449688049928" expanded="true" signature="17014:17152" placeholder="UPDATE unida..." />
-            <marker date="1449688049928" expanded="true" signature="18588:18744" placeholder="UPDATE solda..." />
-            <marker date="1449688049928" expanded="true" signature="19914:19978" placeholder="SELECT missi..missingValue..." />
-            <marker date="1449688049928" expanded="true" signature="20455:20502" placeholder="SELECT missi..missingValue..." />
-            <marker date="1449688049928" expanded="true" signature="21128:21173" placeholder="SELECT nombr..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="21969:22003" placeholder="SELECT nombr..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="22607:22639" placeholder="SELECT nombr..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="23400:23421" placeholder="SELECT * FRO..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="24562:24576" placeholder="SELECT * FRO..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="24562:24582" placeholder="SELECT * FRO..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="25852:25866" placeholder="SELECT * FRO..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="25852:25873" placeholder="SELECT * FRO..soldado..." />
-            <marker date="1449688049928" expanded="true" signature="27393:27427" placeholder="SELECT * FRO..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="28342:28375" placeholder="SELECT * FRO..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="29350:29384" placeholder="SELECT * FRO..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="30491:30558" placeholder="SELECT * FRO..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="31939:31980" placeholder="SELECT * FRO..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="33169:33235" placeholder="SELECT * FRO..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="34693:34733" placeholder="SELECT * FRO..soldado..." />
-            <marker date="1449688049928" expanded="true" signature="34693:34734" placeholder="SELECT * FRO..soldado..." />
-            <marker date="1449688049928" expanded="true" signature="36239:36280" placeholder="SELECT * FRO..soldado..." />
-            <marker date="1449688049928" expanded="true" signature="37660:37727" placeholder="SELECT * FRO..soldado..." />
-            <marker date="1449688049928" expanded="true" signature="39141:39210" placeholder="SELECT id FR..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="39809:39876" placeholder="SELECT * FRO..soldado..." />
-            <marker date="1449688049928" expanded="true" signature="40532:40601" placeholder="SELECT id FR..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="40991:41033" placeholder="SELECT id FR..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="41625:41661" placeholder="SELECT uso F..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="42135:42183" placeholder="SELECT uso F..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="42671:42717" placeholder="SELECT uso F..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="43190:43225" placeholder="SELECT uso F..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="43685:43721" placeholder="SELECT uso F..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="44206:44235" placeholder="SELECT uso F..soldado..." />
-            <marker date="1449688049928" expanded="true" signature="44206:44236" placeholder="SELECT uso F..soldado..." />
-            <marker date="1449688049928" expanded="true" signature="44206:44257" placeholder="SELECT uso F..soldado..." />
-            <marker date="1449688049928" expanded="true" signature="44206:44264" placeholder="SELECT uso F..soldado..." />
-            <marker date="1449688049928" expanded="true" signature="44775:44814" placeholder="UPDATE cuart..." />
-            <marker date="1449688049928" expanded="true" signature="45219:45270" placeholder="UPDATE cuart..." />
-            <marker date="1449688049928" expanded="true" signature="45674:45712" placeholder="UPDATE unida..." />
-            <marker date="1449688049928" expanded="true" signature="46115:46164" placeholder="UPDATE unida..." />
-            <marker date="1449688049928" expanded="true" signature="46568:46607" placeholder="UPDATE cuart..." />
-            <marker date="1449688049928" expanded="true" signature="47022:47065" placeholder="UPDATE solda..." />
-            <marker date="1449688049928" expanded="true" signature="47022:47083" placeholder="UPDATE solda..." />
-            <marker date="1449688049928" expanded="true" signature="47526:47547" placeholder="SELECT nombr..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="47573:47593" placeholder="SELECT * FRO..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="47619:47633" placeholder="SELECT * FRO..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="47619:47640" placeholder="SELECT * FRO..soldado..." />
+            <marker date="1449695703968" expanded="true" signature="5429:5526" placeholder="SELECT usuar..usuarios..." />
+            <marker date="1449695703968" expanded="true" signature="5573:5676" placeholder="SELECT usuar..usuarios..." />
+            <marker date="1449695703968" expanded="true" signature="7220:7345" placeholder="INSERT INTO ..." />
+            <marker date="1449695703968" expanded="true" signature="9798:9929" placeholder="INSERT INTO ..." />
+            <marker date="1449695703968" expanded="true" signature="11963:12135" placeholder="INSERT INTO ..." />
+            <marker date="1449695703968" expanded="true" signature="13332:13364" placeholder="DELETE FROM ..." />
+            <marker date="1449695703968" expanded="true" signature="14049:14080" placeholder="DELETE FROM ..." />
+            <marker date="1449695703968" expanded="true" signature="14767:14799" placeholder="DELETE FROM ..." />
+            <marker date="1449695703968" expanded="true" signature="15646:15778" placeholder="UPDATE cuart..." />
+            <marker date="1449695703968" expanded="true" signature="16957:17095" placeholder="UPDATE unida..." />
+            <marker date="1449695703968" expanded="true" signature="18531:18687" placeholder="UPDATE solda..." />
+            <marker date="1449695703968" expanded="true" signature="19857:19921" placeholder="SELECT missi..missingValue..." />
+            <marker date="1449695703968" expanded="true" signature="20398:20445" placeholder="SELECT missi..missingValue..." />
+            <marker date="1449695703968" expanded="true" signature="21071:21116" placeholder="SELECT nombr..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="21912:21946" placeholder="SELECT nombr..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="22550:22582" placeholder="SELECT nombr..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="23343:23364" placeholder="SELECT * FRO..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="24505:24519" placeholder="SELECT * FRO..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="24505:24525" placeholder="SELECT * FRO..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="25795:25809" placeholder="SELECT * FRO..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="25795:25816" placeholder="SELECT * FRO..soldado..." />
+            <marker date="1449695703968" expanded="true" signature="27336:27370" placeholder="SELECT * FRO..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="28285:28318" placeholder="SELECT * FRO..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="29293:29327" placeholder="SELECT * FRO..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="30434:30501" placeholder="SELECT * FRO..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="31882:31923" placeholder="SELECT * FRO..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="33112:33178" placeholder="SELECT * FRO..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="34636:34676" placeholder="SELECT * FRO..soldado..." />
+            <marker date="1449695703968" expanded="true" signature="34636:34677" placeholder="SELECT * FRO..soldado..." />
+            <marker date="1449695703968" expanded="true" signature="36182:36223" placeholder="SELECT * FRO..soldado..." />
+            <marker date="1449695703968" expanded="true" signature="37603:37670" placeholder="SELECT * FRO..soldado..." />
+            <marker date="1449695703968" expanded="true" signature="39084:39153" placeholder="SELECT id FR..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="39752:39819" placeholder="SELECT * FRO..soldado..." />
+            <marker date="1449695703968" expanded="true" signature="40475:40544" placeholder="SELECT id FR..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="40934:40976" placeholder="SELECT id FR..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="41568:41604" placeholder="SELECT uso F..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="42078:42126" placeholder="SELECT uso F..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="42614:42660" placeholder="SELECT uso F..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="43133:43168" placeholder="SELECT uso F..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="43628:43664" placeholder="SELECT uso F..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="44149:44178" placeholder="SELECT uso F..soldado..." />
+            <marker date="1449695703968" expanded="true" signature="44149:44179" placeholder="SELECT uso F..soldado..." />
+            <marker date="1449695703968" expanded="true" signature="44149:44200" placeholder="SELECT uso F..soldado..." />
+            <marker date="1449695703968" expanded="true" signature="44149:44207" placeholder="SELECT uso F..soldado..." />
+            <marker date="1449695703968" expanded="true" signature="44718:44757" placeholder="UPDATE cuart..." />
+            <marker date="1449695703968" expanded="true" signature="45162:45213" placeholder="UPDATE cuart..." />
+            <marker date="1449695703968" expanded="true" signature="45617:45655" placeholder="UPDATE unida..." />
+            <marker date="1449695703968" expanded="true" signature="46058:46107" placeholder="UPDATE unida..." />
+            <marker date="1449695703968" expanded="true" signature="46511:46550" placeholder="UPDATE cuart..." />
+            <marker date="1449695703968" expanded="true" signature="46965:47008" placeholder="UPDATE solda..." />
+            <marker date="1449695703968" expanded="true" signature="46965:47026" placeholder="UPDATE solda..." />
+            <marker date="1449695703968" expanded="true" signature="47469:47490" placeholder="SELECT nombr..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="47516:47536" placeholder="SELECT * FRO..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="47562:47576" placeholder="SELECT * FRO..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="47562:47583" placeholder="SELECT * FRO..soldado..." />
           </folding>
         </state>
       </provider>
@@ -900,7 +901,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="55" column="41" selection-start-line="55" selection-start-column="41" selection-end-line="55" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -918,61 +918,61 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1449688049928" expanded="true" signature="5486:5583" placeholder="SELECT usuar..usuarios..." />
-            <marker date="1449688049928" expanded="true" signature="5630:5733" placeholder="SELECT usuar..usuarios..." />
-            <marker date="1449688049928" expanded="true" signature="7277:7402" placeholder="INSERT INTO ..." />
-            <marker date="1449688049928" expanded="true" signature="9855:9986" placeholder="INSERT INTO ..." />
-            <marker date="1449688049928" expanded="true" signature="12020:12192" placeholder="INSERT INTO ..." />
-            <marker date="1449688049928" expanded="true" signature="13389:13421" placeholder="DELETE FROM ..." />
-            <marker date="1449688049928" expanded="true" signature="14106:14137" placeholder="DELETE FROM ..." />
-            <marker date="1449688049928" expanded="true" signature="14824:14856" placeholder="DELETE FROM ..." />
-            <marker date="1449688049928" expanded="true" signature="15703:15835" placeholder="UPDATE cuart..." />
-            <marker date="1449688049928" expanded="true" signature="17014:17152" placeholder="UPDATE unida..." />
-            <marker date="1449688049928" expanded="true" signature="18588:18744" placeholder="UPDATE solda..." />
-            <marker date="1449688049928" expanded="true" signature="19914:19978" placeholder="SELECT missi..missingValue..." />
-            <marker date="1449688049928" expanded="true" signature="20455:20502" placeholder="SELECT missi..missingValue..." />
-            <marker date="1449688049928" expanded="true" signature="21128:21173" placeholder="SELECT nombr..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="21969:22003" placeholder="SELECT nombr..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="22607:22639" placeholder="SELECT nombr..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="23400:23421" placeholder="SELECT * FRO..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="24562:24576" placeholder="SELECT * FRO..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="24562:24582" placeholder="SELECT * FRO..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="25852:25866" placeholder="SELECT * FRO..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="25852:25873" placeholder="SELECT * FRO..soldado..." />
-            <marker date="1449688049928" expanded="true" signature="27393:27427" placeholder="SELECT * FRO..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="28342:28375" placeholder="SELECT * FRO..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="29350:29384" placeholder="SELECT * FRO..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="30491:30558" placeholder="SELECT * FRO..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="31939:31980" placeholder="SELECT * FRO..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="33169:33235" placeholder="SELECT * FRO..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="34693:34733" placeholder="SELECT * FRO..soldado..." />
-            <marker date="1449688049928" expanded="true" signature="34693:34734" placeholder="SELECT * FRO..soldado..." />
-            <marker date="1449688049928" expanded="true" signature="36239:36280" placeholder="SELECT * FRO..soldado..." />
-            <marker date="1449688049928" expanded="true" signature="37660:37727" placeholder="SELECT * FRO..soldado..." />
-            <marker date="1449688049928" expanded="true" signature="39141:39210" placeholder="SELECT id FR..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="39809:39876" placeholder="SELECT * FRO..soldado..." />
-            <marker date="1449688049928" expanded="true" signature="40532:40601" placeholder="SELECT id FR..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="40991:41033" placeholder="SELECT id FR..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="41625:41661" placeholder="SELECT uso F..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="42135:42183" placeholder="SELECT uso F..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="42671:42717" placeholder="SELECT uso F..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="43190:43225" placeholder="SELECT uso F..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="43685:43721" placeholder="SELECT uso F..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="44206:44235" placeholder="SELECT uso F..soldado..." />
-            <marker date="1449688049928" expanded="true" signature="44206:44236" placeholder="SELECT uso F..soldado..." />
-            <marker date="1449688049928" expanded="true" signature="44206:44257" placeholder="SELECT uso F..soldado..." />
-            <marker date="1449688049928" expanded="true" signature="44206:44264" placeholder="SELECT uso F..soldado..." />
-            <marker date="1449688049928" expanded="true" signature="44775:44814" placeholder="UPDATE cuart..." />
-            <marker date="1449688049928" expanded="true" signature="45219:45270" placeholder="UPDATE cuart..." />
-            <marker date="1449688049928" expanded="true" signature="45674:45712" placeholder="UPDATE unida..." />
-            <marker date="1449688049928" expanded="true" signature="46115:46164" placeholder="UPDATE unida..." />
-            <marker date="1449688049928" expanded="true" signature="46568:46607" placeholder="UPDATE cuart..." />
-            <marker date="1449688049928" expanded="true" signature="47022:47065" placeholder="UPDATE solda..." />
-            <marker date="1449688049928" expanded="true" signature="47022:47083" placeholder="UPDATE solda..." />
-            <marker date="1449688049928" expanded="true" signature="47526:47547" placeholder="SELECT nombr..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="47573:47593" placeholder="SELECT * FRO..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="47619:47633" placeholder="SELECT * FRO..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="47619:47640" placeholder="SELECT * FRO..soldado..." />
+            <marker date="1449695703968" expanded="true" signature="5429:5526" placeholder="SELECT usuar..usuarios..." />
+            <marker date="1449695703968" expanded="true" signature="5573:5676" placeholder="SELECT usuar..usuarios..." />
+            <marker date="1449695703968" expanded="true" signature="7220:7345" placeholder="INSERT INTO ..." />
+            <marker date="1449695703968" expanded="true" signature="9798:9929" placeholder="INSERT INTO ..." />
+            <marker date="1449695703968" expanded="true" signature="11963:12135" placeholder="INSERT INTO ..." />
+            <marker date="1449695703968" expanded="true" signature="13332:13364" placeholder="DELETE FROM ..." />
+            <marker date="1449695703968" expanded="true" signature="14049:14080" placeholder="DELETE FROM ..." />
+            <marker date="1449695703968" expanded="true" signature="14767:14799" placeholder="DELETE FROM ..." />
+            <marker date="1449695703968" expanded="true" signature="15646:15778" placeholder="UPDATE cuart..." />
+            <marker date="1449695703968" expanded="true" signature="16957:17095" placeholder="UPDATE unida..." />
+            <marker date="1449695703968" expanded="true" signature="18531:18687" placeholder="UPDATE solda..." />
+            <marker date="1449695703968" expanded="true" signature="19857:19921" placeholder="SELECT missi..missingValue..." />
+            <marker date="1449695703968" expanded="true" signature="20398:20445" placeholder="SELECT missi..missingValue..." />
+            <marker date="1449695703968" expanded="true" signature="21071:21116" placeholder="SELECT nombr..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="21912:21946" placeholder="SELECT nombr..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="22550:22582" placeholder="SELECT nombr..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="23343:23364" placeholder="SELECT * FRO..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="24505:24519" placeholder="SELECT * FRO..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="24505:24525" placeholder="SELECT * FRO..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="25795:25809" placeholder="SELECT * FRO..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="25795:25816" placeholder="SELECT * FRO..soldado..." />
+            <marker date="1449695703968" expanded="true" signature="27336:27370" placeholder="SELECT * FRO..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="28285:28318" placeholder="SELECT * FRO..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="29293:29327" placeholder="SELECT * FRO..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="30434:30501" placeholder="SELECT * FRO..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="31882:31923" placeholder="SELECT * FRO..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="33112:33178" placeholder="SELECT * FRO..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="34636:34676" placeholder="SELECT * FRO..soldado..." />
+            <marker date="1449695703968" expanded="true" signature="34636:34677" placeholder="SELECT * FRO..soldado..." />
+            <marker date="1449695703968" expanded="true" signature="36182:36223" placeholder="SELECT * FRO..soldado..." />
+            <marker date="1449695703968" expanded="true" signature="37603:37670" placeholder="SELECT * FRO..soldado..." />
+            <marker date="1449695703968" expanded="true" signature="39084:39153" placeholder="SELECT id FR..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="39752:39819" placeholder="SELECT * FRO..soldado..." />
+            <marker date="1449695703968" expanded="true" signature="40475:40544" placeholder="SELECT id FR..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="40934:40976" placeholder="SELECT id FR..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="41568:41604" placeholder="SELECT uso F..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="42078:42126" placeholder="SELECT uso F..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="42614:42660" placeholder="SELECT uso F..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="43133:43168" placeholder="SELECT uso F..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="43628:43664" placeholder="SELECT uso F..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="44149:44178" placeholder="SELECT uso F..soldado..." />
+            <marker date="1449695703968" expanded="true" signature="44149:44179" placeholder="SELECT uso F..soldado..." />
+            <marker date="1449695703968" expanded="true" signature="44149:44200" placeholder="SELECT uso F..soldado..." />
+            <marker date="1449695703968" expanded="true" signature="44149:44207" placeholder="SELECT uso F..soldado..." />
+            <marker date="1449695703968" expanded="true" signature="44718:44757" placeholder="UPDATE cuart..." />
+            <marker date="1449695703968" expanded="true" signature="45162:45213" placeholder="UPDATE cuart..." />
+            <marker date="1449695703968" expanded="true" signature="45617:45655" placeholder="UPDATE unida..." />
+            <marker date="1449695703968" expanded="true" signature="46058:46107" placeholder="UPDATE unida..." />
+            <marker date="1449695703968" expanded="true" signature="46511:46550" placeholder="UPDATE cuart..." />
+            <marker date="1449695703968" expanded="true" signature="46965:47008" placeholder="UPDATE solda..." />
+            <marker date="1449695703968" expanded="true" signature="46965:47026" placeholder="UPDATE solda..." />
+            <marker date="1449695703968" expanded="true" signature="47469:47490" placeholder="SELECT nombr..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="47516:47536" placeholder="SELECT * FRO..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="47562:47576" placeholder="SELECT * FRO..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="47562:47583" placeholder="SELECT * FRO..soldado..." />
           </folding>
         </state>
       </provider>
@@ -998,7 +998,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1016,61 +1015,61 @@
           <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1449688049928" expanded="true" signature="5486:5583" placeholder="SELECT usuar..usuarios..." />
-            <marker date="1449688049928" expanded="true" signature="5630:5733" placeholder="SELECT usuar..usuarios..." />
-            <marker date="1449688049928" expanded="true" signature="7277:7402" placeholder="INSERT INTO ..." />
-            <marker date="1449688049928" expanded="true" signature="9855:9986" placeholder="INSERT INTO ..." />
-            <marker date="1449688049928" expanded="true" signature="12020:12192" placeholder="INSERT INTO ..." />
-            <marker date="1449688049928" expanded="true" signature="13389:13421" placeholder="DELETE FROM ..." />
-            <marker date="1449688049928" expanded="true" signature="14106:14137" placeholder="DELETE FROM ..." />
-            <marker date="1449688049928" expanded="true" signature="14824:14856" placeholder="DELETE FROM ..." />
-            <marker date="1449688049928" expanded="true" signature="15703:15835" placeholder="UPDATE cuart..." />
-            <marker date="1449688049928" expanded="true" signature="17014:17152" placeholder="UPDATE unida..." />
-            <marker date="1449688049928" expanded="true" signature="18588:18744" placeholder="UPDATE solda..." />
-            <marker date="1449688049928" expanded="true" signature="19914:19978" placeholder="SELECT missi..missingValue..." />
-            <marker date="1449688049928" expanded="true" signature="20455:20502" placeholder="SELECT missi..missingValue..." />
-            <marker date="1449688049928" expanded="true" signature="21128:21173" placeholder="SELECT nombr..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="21969:22003" placeholder="SELECT nombr..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="22607:22639" placeholder="SELECT nombr..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="23400:23421" placeholder="SELECT * FRO..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="24562:24576" placeholder="SELECT * FRO..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="24562:24582" placeholder="SELECT * FRO..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="25852:25866" placeholder="SELECT * FRO..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="25852:25873" placeholder="SELECT * FRO..soldado..." />
-            <marker date="1449688049928" expanded="true" signature="27393:27427" placeholder="SELECT * FRO..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="28342:28375" placeholder="SELECT * FRO..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="29350:29384" placeholder="SELECT * FRO..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="30491:30558" placeholder="SELECT * FRO..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="31939:31980" placeholder="SELECT * FRO..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="33169:33235" placeholder="SELECT * FRO..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="34693:34733" placeholder="SELECT * FRO..soldado..." />
-            <marker date="1449688049928" expanded="true" signature="34693:34734" placeholder="SELECT * FRO..soldado..." />
-            <marker date="1449688049928" expanded="true" signature="36239:36280" placeholder="SELECT * FRO..soldado..." />
-            <marker date="1449688049928" expanded="true" signature="37660:37727" placeholder="SELECT * FRO..soldado..." />
-            <marker date="1449688049928" expanded="true" signature="39141:39210" placeholder="SELECT id FR..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="39809:39876" placeholder="SELECT * FRO..soldado..." />
-            <marker date="1449688049928" expanded="true" signature="40532:40601" placeholder="SELECT id FR..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="40991:41033" placeholder="SELECT id FR..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="41625:41661" placeholder="SELECT uso F..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="42135:42183" placeholder="SELECT uso F..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="42671:42717" placeholder="SELECT uso F..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="43190:43225" placeholder="SELECT uso F..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="43685:43721" placeholder="SELECT uso F..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="44206:44235" placeholder="SELECT uso F..soldado..." />
-            <marker date="1449688049928" expanded="true" signature="44206:44236" placeholder="SELECT uso F..soldado..." />
-            <marker date="1449688049928" expanded="true" signature="44206:44257" placeholder="SELECT uso F..soldado..." />
-            <marker date="1449688049928" expanded="true" signature="44206:44264" placeholder="SELECT uso F..soldado..." />
-            <marker date="1449688049928" expanded="true" signature="44775:44814" placeholder="UPDATE cuart..." />
-            <marker date="1449688049928" expanded="true" signature="45219:45270" placeholder="UPDATE cuart..." />
-            <marker date="1449688049928" expanded="true" signature="45674:45712" placeholder="UPDATE unida..." />
-            <marker date="1449688049928" expanded="true" signature="46115:46164" placeholder="UPDATE unida..." />
-            <marker date="1449688049928" expanded="true" signature="46568:46607" placeholder="UPDATE cuart..." />
-            <marker date="1449688049928" expanded="true" signature="47022:47065" placeholder="UPDATE solda..." />
-            <marker date="1449688049928" expanded="true" signature="47022:47083" placeholder="UPDATE solda..." />
-            <marker date="1449688049928" expanded="true" signature="47526:47547" placeholder="SELECT nombr..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="47573:47593" placeholder="SELECT * FRO..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="47619:47633" placeholder="SELECT * FRO..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="47619:47640" placeholder="SELECT * FRO..soldado..." />
+            <marker date="1449695703968" expanded="true" signature="5429:5526" placeholder="SELECT usuar..usuarios..." />
+            <marker date="1449695703968" expanded="true" signature="5573:5676" placeholder="SELECT usuar..usuarios..." />
+            <marker date="1449695703968" expanded="true" signature="7220:7345" placeholder="INSERT INTO ..." />
+            <marker date="1449695703968" expanded="true" signature="9798:9929" placeholder="INSERT INTO ..." />
+            <marker date="1449695703968" expanded="true" signature="11963:12135" placeholder="INSERT INTO ..." />
+            <marker date="1449695703968" expanded="true" signature="13332:13364" placeholder="DELETE FROM ..." />
+            <marker date="1449695703968" expanded="true" signature="14049:14080" placeholder="DELETE FROM ..." />
+            <marker date="1449695703968" expanded="true" signature="14767:14799" placeholder="DELETE FROM ..." />
+            <marker date="1449695703968" expanded="true" signature="15646:15778" placeholder="UPDATE cuart..." />
+            <marker date="1449695703968" expanded="true" signature="16957:17095" placeholder="UPDATE unida..." />
+            <marker date="1449695703968" expanded="true" signature="18531:18687" placeholder="UPDATE solda..." />
+            <marker date="1449695703968" expanded="true" signature="19857:19921" placeholder="SELECT missi..missingValue..." />
+            <marker date="1449695703968" expanded="true" signature="20398:20445" placeholder="SELECT missi..missingValue..." />
+            <marker date="1449695703968" expanded="true" signature="21071:21116" placeholder="SELECT nombr..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="21912:21946" placeholder="SELECT nombr..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="22550:22582" placeholder="SELECT nombr..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="23343:23364" placeholder="SELECT * FRO..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="24505:24519" placeholder="SELECT * FRO..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="24505:24525" placeholder="SELECT * FRO..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="25795:25809" placeholder="SELECT * FRO..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="25795:25816" placeholder="SELECT * FRO..soldado..." />
+            <marker date="1449695703968" expanded="true" signature="27336:27370" placeholder="SELECT * FRO..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="28285:28318" placeholder="SELECT * FRO..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="29293:29327" placeholder="SELECT * FRO..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="30434:30501" placeholder="SELECT * FRO..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="31882:31923" placeholder="SELECT * FRO..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="33112:33178" placeholder="SELECT * FRO..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="34636:34676" placeholder="SELECT * FRO..soldado..." />
+            <marker date="1449695703968" expanded="true" signature="34636:34677" placeholder="SELECT * FRO..soldado..." />
+            <marker date="1449695703968" expanded="true" signature="36182:36223" placeholder="SELECT * FRO..soldado..." />
+            <marker date="1449695703968" expanded="true" signature="37603:37670" placeholder="SELECT * FRO..soldado..." />
+            <marker date="1449695703968" expanded="true" signature="39084:39153" placeholder="SELECT id FR..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="39752:39819" placeholder="SELECT * FRO..soldado..." />
+            <marker date="1449695703968" expanded="true" signature="40475:40544" placeholder="SELECT id FR..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="40934:40976" placeholder="SELECT id FR..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="41568:41604" placeholder="SELECT uso F..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="42078:42126" placeholder="SELECT uso F..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="42614:42660" placeholder="SELECT uso F..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="43133:43168" placeholder="SELECT uso F..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="43628:43664" placeholder="SELECT uso F..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="44149:44178" placeholder="SELECT uso F..soldado..." />
+            <marker date="1449695703968" expanded="true" signature="44149:44179" placeholder="SELECT uso F..soldado..." />
+            <marker date="1449695703968" expanded="true" signature="44149:44200" placeholder="SELECT uso F..soldado..." />
+            <marker date="1449695703968" expanded="true" signature="44149:44207" placeholder="SELECT uso F..soldado..." />
+            <marker date="1449695703968" expanded="true" signature="44718:44757" placeholder="UPDATE cuart..." />
+            <marker date="1449695703968" expanded="true" signature="45162:45213" placeholder="UPDATE cuart..." />
+            <marker date="1449695703968" expanded="true" signature="45617:45655" placeholder="UPDATE unida..." />
+            <marker date="1449695703968" expanded="true" signature="46058:46107" placeholder="UPDATE unida..." />
+            <marker date="1449695703968" expanded="true" signature="46511:46550" placeholder="UPDATE cuart..." />
+            <marker date="1449695703968" expanded="true" signature="46965:47008" placeholder="UPDATE solda..." />
+            <marker date="1449695703968" expanded="true" signature="46965:47026" placeholder="UPDATE solda..." />
+            <marker date="1449695703968" expanded="true" signature="47469:47490" placeholder="SELECT nombr..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="47516:47536" placeholder="SELECT * FRO..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="47562:47576" placeholder="SELECT * FRO..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="47562:47583" placeholder="SELECT * FRO..soldado..." />
           </folding>
         </state>
       </provider>
@@ -1096,7 +1095,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="74" column="26" selection-start-line="74" selection-start-column="26" selection-end-line="74" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1109,7 +1107,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="74" column="26" selection-start-line="74" selection-start-column="26" selection-end-line="74" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1124,7 +1121,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1137,7 +1133,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1152,7 +1147,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1167,7 +1161,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="22" column="35" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1219,7 +1212,6 @@
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.27522936">
           <caret line="4" column="2" selection-start-line="4" selection-start-column="2" selection-end-line="4" selection-end-column="2" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1234,9 +1226,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="23" column="51" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1252,7 +1241,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1265,9 +1253,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="31" column="48" selection-start-line="31" selection-start-column="48" selection-end-line="31" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1275,7 +1260,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="23" column="8" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1289,83 +1273,83 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/databases/ejercitoPSQL.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="18.173077">
+        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/raider/principal/model/Projectmodel.java">
+    <entry file="file://$PROJECT_DIR$/src/com/raider/principal/controller/Projectcontroller.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="434" column="13" selection-start-line="434" selection-start-column="13" selection-end-line="434" selection-end-column="13" />
+          <caret line="562" column="30" selection-start-line="562" selection-start-column="30" selection-end-line="562" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1449688049928" expanded="true" signature="5486:5583" placeholder="SELECT usuar..usuarios..." />
-            <marker date="1449688049928" expanded="true" signature="5630:5733" placeholder="SELECT usuar..usuarios..." />
-            <marker date="1449688049928" expanded="true" signature="7277:7402" placeholder="INSERT INTO ..." />
-            <marker date="1449688049928" expanded="true" signature="9855:9986" placeholder="INSERT INTO ..." />
-            <marker date="1449688049928" expanded="true" signature="12020:12192" placeholder="INSERT INTO ..." />
-            <marker date="1449688049928" expanded="true" signature="13389:13421" placeholder="DELETE FROM ..." />
-            <marker date="1449688049928" expanded="true" signature="14106:14137" placeholder="DELETE FROM ..." />
-            <marker date="1449688049928" expanded="true" signature="14824:14856" placeholder="DELETE FROM ..." />
-            <marker date="1449688049928" expanded="true" signature="15703:15835" placeholder="UPDATE cuart..." />
-            <marker date="1449688049928" expanded="true" signature="17014:17152" placeholder="UPDATE unida..." />
-            <marker date="1449688049928" expanded="true" signature="18588:18744" placeholder="UPDATE solda..." />
-            <marker date="1449688049928" expanded="true" signature="19914:19978" placeholder="SELECT missi..missingValue..." />
-            <marker date="1449688049928" expanded="true" signature="20455:20502" placeholder="SELECT missi..missingValue..." />
-            <marker date="1449688049928" expanded="true" signature="21128:21173" placeholder="SELECT nombr..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="21969:22003" placeholder="SELECT nombr..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="22607:22639" placeholder="SELECT nombr..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="23400:23421" placeholder="SELECT * FRO..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="24562:24576" placeholder="SELECT * FRO..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="24562:24582" placeholder="SELECT * FRO..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="25852:25866" placeholder="SELECT * FRO..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="25852:25873" placeholder="SELECT * FRO..soldado..." />
-            <marker date="1449688049928" expanded="true" signature="27393:27427" placeholder="SELECT * FRO..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="28342:28375" placeholder="SELECT * FRO..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="29350:29384" placeholder="SELECT * FRO..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="30491:30558" placeholder="SELECT * FRO..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="31939:31980" placeholder="SELECT * FRO..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="33169:33235" placeholder="SELECT * FRO..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="34693:34733" placeholder="SELECT * FRO..soldado..." />
-            <marker date="1449688049928" expanded="true" signature="34693:34734" placeholder="SELECT * FRO..soldado..." />
-            <marker date="1449688049928" expanded="true" signature="36239:36280" placeholder="SELECT * FRO..soldado..." />
-            <marker date="1449688049928" expanded="true" signature="37660:37727" placeholder="SELECT * FRO..soldado..." />
-            <marker date="1449688049928" expanded="true" signature="39141:39210" placeholder="SELECT id FR..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="39809:39876" placeholder="SELECT * FRO..soldado..." />
-            <marker date="1449688049928" expanded="true" signature="40532:40601" placeholder="SELECT id FR..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="40991:41033" placeholder="SELECT id FR..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="41625:41661" placeholder="SELECT uso F..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="42135:42183" placeholder="SELECT uso F..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="42671:42717" placeholder="SELECT uso F..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="43190:43225" placeholder="SELECT uso F..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="43685:43721" placeholder="SELECT uso F..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="44206:44235" placeholder="SELECT uso F..soldado..." />
-            <marker date="1449688049928" expanded="true" signature="44206:44236" placeholder="SELECT uso F..soldado..." />
-            <marker date="1449688049928" expanded="true" signature="44206:44257" placeholder="SELECT uso F..soldado..." />
-            <marker date="1449688049928" expanded="true" signature="44206:44264" placeholder="SELECT uso F..soldado..." />
-            <marker date="1449688049928" expanded="true" signature="44775:44814" placeholder="UPDATE cuart..." />
-            <marker date="1449688049928" expanded="true" signature="45219:45270" placeholder="UPDATE cuart..." />
-            <marker date="1449688049928" expanded="true" signature="45674:45712" placeholder="UPDATE unida..." />
-            <marker date="1449688049928" expanded="true" signature="46115:46164" placeholder="UPDATE unida..." />
-            <marker date="1449688049928" expanded="true" signature="46568:46607" placeholder="UPDATE cuart..." />
-            <marker date="1449688049928" expanded="true" signature="47022:47065" placeholder="UPDATE solda..." />
-            <marker date="1449688049928" expanded="true" signature="47022:47083" placeholder="UPDATE solda..." />
-            <marker date="1449688049928" expanded="true" signature="47526:47547" placeholder="SELECT nombr..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="47573:47593" placeholder="SELECT * FRO..unidad..." />
-            <marker date="1449688049928" expanded="true" signature="47619:47633" placeholder="SELECT * FRO..cuartel..." />
-            <marker date="1449688049928" expanded="true" signature="47619:47640" placeholder="SELECT * FRO..soldado..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/raider/principal/controller/Projectcontroller.java">
+    <entry file="file://$PROJECT_DIR$/src/com/raider/principal/model/Projectmodel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6741573">
-          <caret line="562" column="30" selection-start-line="562" selection-start-column="30" selection-end-line="562" selection-end-column="30" />
+        <state vertical-scroll-proportion="0.29268292">
+          <caret line="69" column="43" selection-start-line="69" selection-start-column="43" selection-end-line="69" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
+            <marker date="1449695703968" expanded="true" signature="5429:5526" placeholder="SELECT usuar..usuarios..." />
+            <marker date="1449695703968" expanded="true" signature="5573:5676" placeholder="SELECT usuar..usuarios..." />
+            <marker date="1449695703968" expanded="true" signature="7220:7345" placeholder="INSERT INTO ..." />
+            <marker date="1449695703968" expanded="true" signature="9798:9929" placeholder="INSERT INTO ..." />
+            <marker date="1449695703968" expanded="true" signature="11963:12135" placeholder="INSERT INTO ..." />
+            <marker date="1449695703968" expanded="true" signature="13332:13364" placeholder="DELETE FROM ..." />
+            <marker date="1449695703968" expanded="true" signature="14049:14080" placeholder="DELETE FROM ..." />
+            <marker date="1449695703968" expanded="true" signature="14767:14799" placeholder="DELETE FROM ..." />
+            <marker date="1449695703968" expanded="true" signature="15646:15778" placeholder="UPDATE cuart..." />
+            <marker date="1449695703968" expanded="true" signature="16957:17095" placeholder="UPDATE unida..." />
+            <marker date="1449695703968" expanded="true" signature="18531:18687" placeholder="UPDATE solda..." />
+            <marker date="1449695703968" expanded="true" signature="19857:19921" placeholder="SELECT missi..missingValue..." />
+            <marker date="1449695703968" expanded="true" signature="20398:20445" placeholder="SELECT missi..missingValue..." />
+            <marker date="1449695703968" expanded="true" signature="21071:21116" placeholder="SELECT nombr..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="21912:21946" placeholder="SELECT nombr..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="22550:22582" placeholder="SELECT nombr..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="23343:23364" placeholder="SELECT * FRO..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="24505:24519" placeholder="SELECT * FRO..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="24505:24525" placeholder="SELECT * FRO..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="25795:25809" placeholder="SELECT * FRO..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="25795:25816" placeholder="SELECT * FRO..soldado..." />
+            <marker date="1449695703968" expanded="true" signature="27336:27370" placeholder="SELECT * FRO..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="28285:28318" placeholder="SELECT * FRO..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="29293:29327" placeholder="SELECT * FRO..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="30434:30501" placeholder="SELECT * FRO..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="31882:31923" placeholder="SELECT * FRO..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="33112:33178" placeholder="SELECT * FRO..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="34636:34676" placeholder="SELECT * FRO..soldado..." />
+            <marker date="1449695703968" expanded="true" signature="34636:34677" placeholder="SELECT * FRO..soldado..." />
+            <marker date="1449695703968" expanded="true" signature="36182:36223" placeholder="SELECT * FRO..soldado..." />
+            <marker date="1449695703968" expanded="true" signature="37603:37670" placeholder="SELECT * FRO..soldado..." />
+            <marker date="1449695703968" expanded="true" signature="39084:39153" placeholder="SELECT id FR..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="39752:39819" placeholder="SELECT * FRO..soldado..." />
+            <marker date="1449695703968" expanded="true" signature="40475:40544" placeholder="SELECT id FR..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="40934:40976" placeholder="SELECT id FR..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="41568:41604" placeholder="SELECT uso F..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="42078:42126" placeholder="SELECT uso F..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="42614:42660" placeholder="SELECT uso F..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="43133:43168" placeholder="SELECT uso F..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="43628:43664" placeholder="SELECT uso F..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="44149:44178" placeholder="SELECT uso F..soldado..." />
+            <marker date="1449695703968" expanded="true" signature="44149:44179" placeholder="SELECT uso F..soldado..." />
+            <marker date="1449695703968" expanded="true" signature="44149:44200" placeholder="SELECT uso F..soldado..." />
+            <marker date="1449695703968" expanded="true" signature="44149:44207" placeholder="SELECT uso F..soldado..." />
+            <marker date="1449695703968" expanded="true" signature="44718:44757" placeholder="UPDATE cuart..." />
+            <marker date="1449695703968" expanded="true" signature="45162:45213" placeholder="UPDATE cuart..." />
+            <marker date="1449695703968" expanded="true" signature="45617:45655" placeholder="UPDATE unida..." />
+            <marker date="1449695703968" expanded="true" signature="46058:46107" placeholder="UPDATE unida..." />
+            <marker date="1449695703968" expanded="true" signature="46511:46550" placeholder="UPDATE cuart..." />
+            <marker date="1449695703968" expanded="true" signature="46965:47008" placeholder="UPDATE solda..." />
+            <marker date="1449695703968" expanded="true" signature="46965:47026" placeholder="UPDATE solda..." />
+            <marker date="1449695703968" expanded="true" signature="47469:47490" placeholder="SELECT nombr..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="47516:47536" placeholder="SELECT * FRO..unidad..." />
+            <marker date="1449695703968" expanded="true" signature="47562:47576" placeholder="SELECT * FRO..cuartel..." />
+            <marker date="1449695703968" expanded="true" signature="47562:47583" placeholder="SELECT * FRO..soldado..." />
           </folding>
         </state>
       </provider>
