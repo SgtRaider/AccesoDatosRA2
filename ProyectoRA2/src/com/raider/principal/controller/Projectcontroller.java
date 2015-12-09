@@ -554,7 +554,6 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
             if (op == 0) {
 
                 v.cbCuartel.removeAllItems();
-                if (!Values.driver.equalsIgnoreCase("org.postgresql.Driver")) v.cbCuartel.addItem("");
                 for (int i = 0; i < cb.size(); i++) {
                     v.cbCuartel.addItem(cb.get(i));
                 }
@@ -564,7 +563,6 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
                 if (op == 1) {
 
                     v.cbUnidad.removeAllItems();
-                    if (!Values.driver.equalsIgnoreCase("org.postgresql.Driver")) v.cbUnidad.addItem("");
                     for (int i = 0; i < cb.size(); i++) {
                         v.cbUnidad.addItem(cb.get(i));
                     }

@@ -241,8 +241,10 @@ CREATE INDEX unidad_id_cuartel_idx ON unidad USING btree (id_cuartel);
 --
 
 ALTER TABLE ONLY unidad
-    ADD CONSTRAINT unidad_id_cuartel_fkey FOREIGN KEY (id_cuartel) REFERENCES cuartel(id);
+    ADD CONSTRAINT unidad_id_cuartel_fkey FOREIGN KEY (id_cuartel) REFERENCES cuartel(id) MATCH SIMPLE ON UPDATE CASCADE ON DELETE CASCADE;
 
+ALTER TABLE ONLY soldado
+    ADD CONSTRAINT soldado_id_unidad_fkey FOREIGN KEY (id_unidad) REFERENCES unidad(id) MATCH SIMPLE ON UPDATE CASCADE ON DELETE CASCADE;
 
 --
 -- Name: public; Type: ACL; Schema: -; Owner: postgres

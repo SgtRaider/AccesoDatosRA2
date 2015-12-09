@@ -248,6 +248,7 @@ public class Projectmodel {
 
                     sentence.executeUpdate();
                     conexion.commit();
+                    conexion.setAutoCommit(true);
                 } catch (SQLException sqle) {
                     Utilities.mensajeError("Error al dar de alta unidad");
                 }
@@ -297,6 +298,7 @@ public class Projectmodel {
 
                 sentence.executeUpdate();
                 conexion.commit();
+                conexion.setAutoCommit(true);
             } catch (SQLException e) {
                 Utilities.mensajeError("Error al dar de alta soldado");
             }
@@ -426,8 +428,10 @@ public class Projectmodel {
                 sentence.setInt(6, id);
                 sentence.executeUpdate();
                 conexion.commit();
+                conexion.setAutoCommit(true);
             } catch (SQLException e) {
                 Utilities.mensajeError("Error al modificar unidad");
+                e.printStackTrace();
             }
             cambiarUsoUnidad(0, id);
         } else {
@@ -462,6 +466,7 @@ public class Projectmodel {
                 sentence.setInt(7, id);
                 sentence.executeUpdate();
                 conexion.commit();
+                conexion.setAutoCommit(true);
             } catch (SQLException e) {
                 Utilities.mensajeError("Error al modificar soldado");
             }
@@ -628,7 +633,6 @@ public class Projectmodel {
                 String sql = "SELECT * FROM unidad";
                 list = new ArrayList<>();
                 try {
-                    conexion.setAutoCommit(false);
                     PreparedStatement sentencia = null;
 
                     sentencia = conexion.prepareStatement(sql);
@@ -646,7 +650,6 @@ public class Projectmodel {
                                 consultaNombreCuartel_NombreUnidad("cuartel", id_cuartel)};
                         list.add(fila);
                     }
-                    conexion.commit();
                     return list;
                 } catch (SQLException e) {
                     Utilities.mensajeError("Error al listar Unidad");
@@ -660,7 +663,6 @@ public class Projectmodel {
                     list = new ArrayList<>();
                     try {
                         PreparedStatement sentencia = null;
-                        conexion.setAutoCommit(false);
                         sentencia = conexion.prepareStatement(sql);
                         ResultSet resultado = sentencia.executeQuery();
                         while (resultado.next()) {
@@ -677,7 +679,6 @@ public class Projectmodel {
                                     consultaNombreCuartel_NombreUnidad("unidad", id_unidad)};
                             list.add(fila);
                         }
-                        conexion.commit();
                         return list;
                     } catch (SQLException e) {
                         Utilities.mensajeError("Error al listar Soldado");
