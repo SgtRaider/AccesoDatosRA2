@@ -108,7 +108,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 INSERT INTO `usuarios` (`usuario`, `password`, `rol`) VALUES
 ('Dani', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'tecnico'),
 ('Guillermo', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'usuario'),
-('Raider', 'ea22853f937cc854d50efef25537d2963d7331af', 'administrador');
+('Raider', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'administrador');
 
 --
 -- Índices para tablas volcadas
