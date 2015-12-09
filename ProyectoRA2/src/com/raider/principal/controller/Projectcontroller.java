@@ -148,11 +148,6 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
         v.txtBusquedaunidad.addKeyListener(this);
         v.txtBusquedasoldado.addKeyListener(this);
 
-        //Carga de datos externos usando el path estandar o el path modificado,
-        // en caso de haber guardado otro path, siempre y cuando exista el Archivo
-        // TODO crear fichero de configuración con el path modificado
-
-
         listarCuartel();
         Listado proceso = new Listado(Projectcontroller.this, v);
         proceso.start();
@@ -559,7 +554,7 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
             if (op == 0) {
 
                 v.cbCuartel.removeAllItems();
-                v.cbCuartel.addItem("");
+                if (!Values.driver.equalsIgnoreCase("org.postgresql.Driver")) v.cbCuartel.addItem("");
                 for (int i = 0; i < cb.size(); i++) {
                     v.cbCuartel.addItem(cb.get(i));
                 }
@@ -569,7 +564,7 @@ public class Projectcontroller implements ListSelectionListener, ChangeListener,
                 if (op == 1) {
 
                     v.cbUnidad.removeAllItems();
-                    v.cbUnidad.addItem("");
+                    if (!Values.driver.equalsIgnoreCase("org.postgresql.Driver")) v.cbUnidad.addItem("");
                     for (int i = 0; i < cb.size(); i++) {
                         v.cbUnidad.addItem(cb.get(i));
                     }
